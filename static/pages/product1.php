@@ -92,6 +92,8 @@ $svgStar='<svg height="800px" width="800px" version="1.1" id="Capa_1" xmlns="htt
         }
         .product_sat_dispec_o.o_display{visibility:visible;padding:12px 16px;height:auto;margin-bottom:12px;}
         .product_sat_dispec_o pre{white-space:pre-wrap;margin:0}
+        ul.product_sat_dispec_o{font-size:13px}
+        ul.product_sat_dispec_o>li{list-style-type:initial;margin-left:21px}
 
 
 
@@ -101,6 +103,9 @@ $svgStar='<svg height="800px" width="800px" version="1.1" id="Capa_1" xmlns="htt
     }
         .product_carosel_f5>img{height: 100%;object-fit: contain;}
         .product_carosel_ga9a{position:absolute;top:40%;height:120px;width:43px;z-index:12;border:0;background-color:#ccc}
+        .product_carosel_ga9a.r{right:0;}
+        .product_carosel_ga9a.l{left:0;}
+        .pa9h{width:100%;text-align-last: center;}
     </style>
 </head>
 
@@ -121,27 +126,29 @@ $svgStar='<svg height="800px" width="800px" version="1.1" id="Capa_1" xmlns="htt
     <div class="product_a_e_f">
 
         <div class="product_a_el">
-
+            <div class="pa9h">0/0</div>
             <div style="width:100%;height:100%;position:relative;">
-                <button class="product_carosel_ga9a l" style="left:0;"><</button>
+                <button class="product_carosel_ga9a l"><</button>
                 <ul class="product_carosel">
                     <?php $productcarosel=0;foreach(json_decode($pimages) as $ai){echo '<li class="product_carosel_f5" style="left:'.($productcarosel*100).'%"><img src="'.$ai.'"/></li>';$productcarosel++;}?>
                 </ul>
-                <button class="product_carosel_ga9a r" style="right:0;">></button>
+                <button class="product_carosel_ga9a r">></button>
 
 <script type="text/javascript">
     var t=$(".product_carosel"),atk=0,clen=$(".product_carosel>li").length -1;
- 
+    $(".pa9h").html("1/"+Math.abs(clen+1));
     $(".product_carosel_ga9a.r").click(function(){
         if(atk > -(clen*100)){
             atk=atk-100;
             t.css("left",atk+"%");
+            $(".pa9h").html((Math.abs(atk/100)+1)+"/"+Math.abs(clen+1));
         }
     });
     $(".product_carosel_ga9a.l").click(function(){
         if(atk < 0){
             atk=atk+100;
             t.css("left",atk+"%");
+            $(".pa9h").html((Math.abs(atk/100)+1)+"/"+Math.abs(clen+1));
         }
     });
 </script>
@@ -200,7 +207,9 @@ $svgStar='<svg height="800px" width="800px" version="1.1" id="Capa_1" xmlns="htt
             </div>
             <div class="product_sat_dispec">
                 <div class="product_sat_dispec_f"><svg fill="#000000" height="18" width="30" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 -15 380 330" xml:space="preserve"> <path id="XMLID_225_" d="M325.607,79.393c-5.857-5.857-15.355-5.858-21.213,0.001l-139.39,139.393L25.607,79.393 c-5.857-5.857-15.355-5.858-21.213,0.001c-5.858,5.858-5.858,15.355,0,21.213l150.004,150c2.813,2.813,6.628,4.393,10.606,4.393 s7.794-1.581,10.606-4.394l149.996-150C331.465,94.749,331.465,85.251,325.607,79.393z"/></svg>Free Shipping</div>
-                <div class="product_sat_dispec_o">adgsfhd</div>
+                <ul class="product_sat_dispec_o">
+                    <li>Shipping free on orders <b>above</b> $50</li>
+                </ul>
             </div>
 
         </div>
