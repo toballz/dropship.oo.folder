@@ -1,6 +1,6 @@
 <?php
 
-$reloadStatic="b@a";
+$reloadStatic="a..sas";
 
 class site{
     const name="Dropship";
@@ -32,9 +32,10 @@ class tools{
  
      public static function dir() {
         return (object)array(
-        'php'=>'static/art',
-        'img'=>'static/img',
-        'cssjs'=>'static/cj'
+        'php'=>dir.'/static/art',
+        'img'=>site::url('domain').'/static/img',
+        'cssjs'=>'static/cj',
+        'pages'=>site::url('domain').'/static/pages'
         );
     }
 }

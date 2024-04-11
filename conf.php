@@ -17,5 +17,7 @@ class db{
         return mysqli_query(self::conn(), $stm);
     }
 }
+
+const dir = __dir__;
 include_once('static/art/_functionItJe.php');
 ?>
