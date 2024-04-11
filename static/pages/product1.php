@@ -47,7 +47,7 @@ $svgStar='<svg height="800px" width="800px" version="1.1" id="Capa_1" xmlns="htt
         }
 
         .product_a_el{
-            width:50%;padding: 12px; 
+            width:50%;padding: 12px; overflow:hidden;
         }
         .product_a_er{
             width:50%;padding: 12px;
@@ -88,18 +88,19 @@ $svgStar='<svg height="800px" width="800px" version="1.1" id="Capa_1" xmlns="htt
             display: flex;align-items: center;font-weight: 600;margin-bottom:1px; 
         }
         .product_sat_dispec_o{
-            transition: all 0.2s ease;   
-            background-color: #f9f9f9; 
-            box-shadow:-3px 6px 9px 0 rgba(0,0,0,0.2);
-            padding: 0;
-            height:0;
-            visibility: hidden;
+            transition:all 0.2s ease;background-color:#f9f9f9;box-shadow:-3px 6px 9px 0 rgba(0,0,0,0.2);padding:0;height:0;letter-spacing:1.1px;line-height:19px;visibility:hidden;
         }
-        .product_sat_dispec_o.o_display{  
-            visibility: visible; padding: 12px 16px;
-            height: auto;margin-bottom: 12px;
-        }
+        .product_sat_dispec_o.o_display{visibility:visible;padding:12px 16px;height:auto;margin-bottom:12px;}
+        .product_sat_dispec_o pre{white-space:pre-wrap;margin:0}
 
+
+
+
+        .product_carosel{position:absolute;left:0;top:0;width:100%;transition:all 0.2s ease}
+        .product_carosel_f5{position:absolute;left: 0;top: 0;height:540px;width: 100%;
+    }
+        .product_carosel_f5>img{height: 100%;object-fit: contain;}
+        .product_carosel_ga9a{position:absolute;top:40%;height:120px;width:43px;z-index:12;border:0;background-color:#ccc}
     </style>
 </head>
 
@@ -121,10 +122,30 @@ $svgStar='<svg height="800px" width="800px" version="1.1" id="Capa_1" xmlns="htt
 
         <div class="product_a_el">
 
-            <div>
-                <ul>
-                    <li><?php foreach(json_decode($pimages) as $ai){echo '<img src="'.$ai.'"/>';}?></li>
+            <div style="width:100%;height:100%;position:relative;">
+                <button class="product_carosel_ga9a l" style="left:0;"><</button>
+                <ul class="product_carosel">
+                    <?php $productcarosel=0;foreach(json_decode($pimages) as $ai){echo '<li class="product_carosel_f5" style="left:'.($productcarosel*100).'%"><img src="'.$ai.'"/></li>';$productcarosel++;}?>
                 </ul>
+                <button class="product_carosel_ga9a r" style="right:0;">></button>
+
+<script type="text/javascript">
+    var t=$(".product_carosel"),atk=0,clen=$(".product_carosel>li").length -1;
+ 
+    $(".product_carosel_ga9a.r").click(function(){
+        if(atk > -(clen*100)){
+            atk=atk-100;
+            t.css("left",atk+"%");
+        }
+    });
+    $(".product_carosel_ga9a.l").click(function(){
+        if(atk < 0){
+            atk=atk+100;
+            t.css("left",atk+"%");
+        }
+    });
+</script>
+
             </div>
 
         </div>
@@ -174,7 +195,7 @@ $svgStar='<svg height="800px" width="800px" version="1.1" id="Capa_1" xmlns="htt
             <div class="product_sat_dispec">
                 <div class="product_sat_dispec_f"><svg fill="#000000" height="18" width="30" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 -15 380 330" xml:space="preserve"> <path id="XMLID_225_" d="M325.607,79.393c-5.857-5.857-15.355-5.858-21.213,0.001l-139.39,139.393L25.607,79.393 c-5.857-5.857-15.355-5.858-21.213,0.001c-5.858,5.858-5.858,15.355,0,21.213l150.004,150c2.813,2.813,6.628,4.393,10.606,4.393 s7.794-1.581,10.606-4.394l149.996-150C331.465,94.749,331.465,85.251,325.607,79.393z"/></svg>Description / Specification</div>
                 <div class="product_sat_dispec_o">
-                    <?php echo $pdescription;?>
+                    <pre><?php echo $pdescription;?></pre>
                 </div>
             </div>
             <div class="product_sat_dispec">
