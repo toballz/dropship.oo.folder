@@ -49,6 +49,7 @@ $svgStar='<svg height="800px" width="800px" version="1.1" id="Capa_1" xmlns="htt
         .product_a_el{
             width:50%;padding: 12px; overflow:hidden;
         }
+        .product_a_eldp{width:100%;height:100%;position:relative;}
         .product_a_er{
             width:50%;padding: 12px;
             font-family: "Poppins", sans-serif;
@@ -81,6 +82,11 @@ $svgStar='<svg height="800px" width="800px" version="1.1" id="Capa_1" xmlns="htt
 
         .product_sat_share{border:0;background: transparent;font-family: "Poppins", sans-serif;font-size: 14px;padding:0; display: flex; min-height: 2.4rem;justify-content: space-around; align-items: center;
         }
+      .product_f3haw>.product_f3haw_q{border:1px solid #000; width: 124px;padding: 14px;border-bottom: 0;font-weight:600}
+      .product_f3haw_n{padding: 14px;border:1px solid #000;display:flex;justify-content: space-around;}
+      .product_f3haw_n_haj4{width:292px;font-size:14px;}
+      .product_f3haw_n_haj4 p{white-space:nowrap;overflow:hidden;text-overflow: ellipsis;width:100%}
+
 
         .product_sat_dispec{ }
         .product_sat_dispec_f{
@@ -93,14 +99,17 @@ $svgStar='<svg height="800px" width="800px" version="1.1" id="Capa_1" xmlns="htt
         .product_sat_dispec_o.o_display{visibility:visible;padding:12px 16px;height:auto;margin-bottom:12px;}
         .product_sat_dispec_o pre{white-space:pre-wrap;margin:0}
         ul.product_sat_dispec_o{font-size:13px}
-        ul.product_sat_dispec_o>li{list-style-type:initial;margin-left:21px}
+        ul.product_sat_dispec_o>li{ margin-left:4px;font-size:13px}
+        ul.product_sat_dispec_o>li>b{ margin-right:8px}
 
-
+    .product_sat_color{display: flex;flex-wrap: wrap;}
+    .product_sat_color>label{width:65px;margin-right:12px;margin-bottom:6px;border:2px solid var(--bg-color);cursor:pointer; }
+    .product_sat_color input{display: none;}
+    .product_sat_color input:checked+label{border: 2px solid #4bff52;}
 
 
         .product_carosel{position:absolute;left:0;top:0;width:100%;transition:all 0.2s ease}
-        .product_carosel_f5{position:absolute;left: 0;top: 0;height:540px;width: 100%;
-    }
+        .product_carosel_f5{position:absolute;left: 0;top: 0;height:540px;width: 100%; }
         .product_carosel_f5>img{height: 100%;object-fit: contain;}
         .product_carosel_ga9a{position:absolute;top:40%;height:120px;width:43px;z-index:12;border:0;background-color:#ccc}
         .product_carosel_ga9a.r{right:0;}
@@ -127,31 +136,13 @@ $svgStar='<svg height="800px" width="800px" version="1.1" id="Capa_1" xmlns="htt
 
         <div class="product_a_el">
             <div class="pa9h">0/0</div>
-            <div style="width:100%;height:100%;position:relative;">
+            <div class="product_a_eldp">
                 <button class="product_carosel_ga9a l"><</button>
                 <ul class="product_carosel">
                     <?php $productcarosel=0;foreach(json_decode($pimages) as $ai){echo '<li class="product_carosel_f5" style="left:'.($productcarosel*100).'%"><img src="'.$ai.'"/></li>';$productcarosel++;}?>
                 </ul>
                 <button class="product_carosel_ga9a r">></button>
-
-<script type="text/javascript">
-    var t=$(".product_carosel"),atk=0,clen=$(".product_carosel>li").length -1;
-    $(".pa9h").html("1/"+Math.abs(clen+1));
-    $(".product_carosel_ga9a.r").click(function(){
-        if(atk > -(clen*100)){
-            atk=atk-100;
-            t.css("left",atk+"%");
-            $(".pa9h").html((Math.abs(atk/100)+1)+"/"+Math.abs(clen+1));
-        }
-    });
-    $(".product_carosel_ga9a.l").click(function(){
-        if(atk < 0){
-            atk=atk+100;
-            t.css("left",atk+"%");
-            $(".pa9h").html((Math.abs(atk/100)+1)+"/"+Math.abs(clen+1));
-        }
-    });
-</script>
+ 
 
             </div>
 
@@ -174,13 +165,7 @@ $svgStar='<svg height="800px" width="800px" version="1.1" id="Capa_1" xmlns="htt
               <input type="radio" id="star5" name="rating" value="5">
               <label for="star5"><?php echo $svgStar;?></label>
              </div>
-<style type="text/css">
-    .product_sat_color{display: flex;flex-wrap: wrap;}
-    .product_sat_color>label{width:65px;margin-right:12px;margin-bottom:6px;border:2px solid var(--bg-color);cursor:pointer;
-    }
-    .product_sat_color input{display: none;}
-    .product_sat_color input:checked+label{border: 2px solid #4bff52;}
-</style>
+ 
 
             <?php if($pcolor != null){?>
             <span class="product_sat_quantity_in">Color</span>
@@ -208,31 +193,42 @@ $svgStar='<svg height="800px" width="800px" version="1.1" id="Capa_1" xmlns="htt
             <div class="product_sat_dispec">
                 <div class="product_sat_dispec_f"><svg fill="#000000" height="18" width="30" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 -15 380 330" xml:space="preserve"> <path id="XMLID_225_" d="M325.607,79.393c-5.857-5.857-15.355-5.858-21.213,0.001l-139.39,139.393L25.607,79.393 c-5.857-5.857-15.355-5.858-21.213,0.001c-5.858,5.858-5.858,15.355,0,21.213l150.004,150c2.813,2.813,6.628,4.393,10.606,4.393 s7.794-1.581,10.606-4.394l149.996-150C331.465,94.749,331.465,85.251,325.607,79.393z"/></svg>Free Shipping</div>
                 <ul class="product_sat_dispec_o">
-                    <li>Shipping free on orders <b>above</b> $50</li>
+                    <li><b>✓</b> Shipping free on orders <strong>above</strong> $50</li>
                 </ul>
             </div>
 
         </div>
     </div>
-  <br>
 
-  <style type="text/css">
-      .product_f3haw>.product_f3haw_q{
-        border:1px solid #000; width: 124px;padding: 14px;border-bottom: 0;
-      }
-      .product_f3haw_n{
-        padding: 14px;border:1px solid #000;
-      }
-  </style>
-    <hr/>
+
+ <!--ggggg-->
+  <br><br>
     <div class="product_f3haw">
         <div class="product_f3haw_q">Related</div>
-        <div class="product_f3haw_n"></div>
+        <div class="product_f3haw_n">
+            <?php $gttw=db::stmt("SELECT * FROM `items` LIMIT 5");
+            while ($getInfo=mysqli_fetch_assoc($gttw)){ 
+
+                echo '<a href="#@$" class="product_f3haw_n_haj4">
+                        <div style="background:#ccc;height:292px;background:red" ><img src="'.json_decode($getInfo["images"])[0].'" style="height:100%;object-fit: contain;" /></div>
+                        <p>'.$getInfo["title"].'</p>
+                    </a>';
+            } ?>
+        </div>
     </div>
     <br/>
     <div class="product_f3haw">
         <div class="product_f3haw_q">Suggested</div>
-        <div class="product_f3haw_n"></div>
+        <div class="product_f3haw_n">
+            <?php $gttq=db::stmt("SELECT * FROM `items` LIMIT 5");
+            while ($getInfo=mysqli_fetch_assoc($gttq)){ 
+
+                echo '<a href="#@$" class="product_f3haw_n_haj4">
+                        <div style="background:#ccc;height:292px;background:red" ><img src="'.json_decode($getInfo["images"])[0].'" style="height:100%;object-fit: contain;" /></div>
+                        <p>'.$getInfo["title"].'</p>
+                    </a>';
+            } ?>
+        </div>
     </div>
     <br>
 
@@ -243,6 +239,24 @@ $svgStar='<svg height="800px" width="800px" version="1.1" id="Capa_1" xmlns="htt
 <?php include(tools::dir()->php."/footer.php");?>
 
 <script>
+//carosel
+        var t=$(".product_carosel"),atk=0,clen=$(".product_carosel>li").length -1;
+    $(".pa9h").html("1/"+Math.abs(clen+1));
+    $(".product_carosel_ga9a.r").click(function(){
+        if(atk > -(clen*100)){
+            atk=atk-100;
+            t.css("left",atk+"%");
+            $(".pa9h").html((Math.abs(atk/100)+1)+"/"+Math.abs(clen+1));
+        }
+    });
+    $(".product_carosel_ga9a.l").click(function(){
+        if(atk < 0){
+            atk=atk+100;
+            t.css("left",atk+"%");
+            $(".pa9h").html((Math.abs(atk/100)+1)+"/"+Math.abs(clen+1));
+        }
+    });
+
 
         //descript/specific
         $(".product_sat_dispec_f").click(function(){
