@@ -5,9 +5,7 @@ RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
 RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
 
 #
-RewriteRule ^catch/(.*)$ a/$1
-RewriteRule ^privacy$ blogdiscuss/353491234/Privacy-Policy [R=301,L]
-RewriteRule ^blogdiscuss/(.*)/(.*)$ discuss.php?blogid=$1&blogtitle=$2 [NC,L]
+RewriteRule ^product/(.*)$ /static/pages/product1.php?i=$1 
 ErrorDocument 404 /.404.php
 
 #

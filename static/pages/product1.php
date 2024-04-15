@@ -26,6 +26,7 @@ $svgStar='<svg height="800px" width="800px" version="1.1" id="Capa_1" xmlns="htt
 <html lang="en">
 <head>
     <?php $headTitle=site::name." | Home"; include(tools::dir()->php."/head.php");?>
+    <meta name="adventure" content="<?php echo $_GET['i'];?>"/>
  
     <style type="text/css">
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
@@ -209,8 +210,8 @@ $svgStar='<svg height="800px" width="800px" version="1.1" id="Capa_1" xmlns="htt
             <?php $gttw=db::stmt("SELECT * FROM `items` LIMIT 5");
             while ($getInfo=mysqli_fetch_assoc($gttw)){ 
 
-                echo '<a href="#@$" class="product_f3haw_n_haj4">
-                        <div style="background:#ccc;height:292px;background:red" ><img src="'.json_decode($getInfo["images"])[0].'" style="height:100%;object-fit: contain;" /></div>
+                echo '<a href="/product/'.$getInfo["item_id"].'" class="product_f3haw_n_haj4">
+                        <div style=" height:292px " ><img src="'.json_decode($getInfo["images"])[0].'" style="height:100%;object-fit: contain;" /></div>
                         <p>'.$getInfo["title"].'</p>
                     </a>';
             } ?>
@@ -223,8 +224,8 @@ $svgStar='<svg height="800px" width="800px" version="1.1" id="Capa_1" xmlns="htt
             <?php $gttq=db::stmt("SELECT * FROM `items` LIMIT 5");
             while ($getInfo=mysqli_fetch_assoc($gttq)){ 
 
-                echo '<a href="#@$" class="product_f3haw_n_haj4">
-                        <div style="background:#ccc;height:292px;background:red" ><img src="'.json_decode($getInfo["images"])[0].'" style="height:100%;object-fit: contain;" /></div>
+                echo '<a href="/product/'.$getInfo["item_id"].'" class="product_f3haw_n_haj4">
+                        <div style=" height:292px; " ><img src="'.json_decode($getInfo["images"])[0].'" style="height:100%;object-fit: contain;" /></div>
                         <p>'.$getInfo["title"].'</p>
                     </a>';
             } ?>
@@ -288,35 +289,28 @@ $svgStar='<svg height="800px" width="800px" version="1.1" id="Capa_1" xmlns="htt
 //product add cart
 $(".product_sat_addcart").click(function(){
 
-    if($('input[name="product_color"]').length >0 && $('input[name="product_color"]:checked').length == 0) {
+    if($('input[name="product_color"]').length >0 && $('input[name="product_color"]:checked').length <= 0) {
         alert("select a color");
         return;
     }
     if($('.product_sat_quantity>input').val()>10){
-        alert('Contact us for orders over 10 per customer.');return;
+        alert('Contact us for orders over 10 per item.');return;
     }
     if($('.product_sat_quantity>input').val()<1){
         alert('You must have more than 1 item');return;
     }
-    alert("submitted");
+
+    var pid= document.querySelector('meta[name="adventure"]').getAttribute('content'),
+    qui=$(".product_d_n").val(),
+    col=$('.product_sat_color input[name="product_color"]:checked').attr("id");
+
+
+    alert(pid+"."+qui+"."+col);
 });
 
 
-
-   $(".product_sat_share").click(async function(){
-
-        try {
-            await  navigator.share({
-                    title: 'Title of shared content',
-                    text: 'Content to share',
-                    url: 'https://example.com',
-                });
-                console.log('Successfully shared');
-            } catch (error) {
-                console.error('Error sharing:', error);
-            }
-
-   });
+//share product
+   $(".product_sat_share").click(async function(){ await navigator.share({ title: document.title, text: document.title, url: window.location.href,});});
 </script>
 </footer>
 
