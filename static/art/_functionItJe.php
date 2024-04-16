@@ -1,6 +1,6 @@
 <?php
 
-$reloadStatic="a..sas";
+$reloadStatic="a.dn";
 
 class site{
     const name="Dropship";
@@ -30,7 +30,7 @@ class tools{
     const passwordsalt="\u2315c#7@&8*";
 
  
-     public static function dir() {
+    public static function dir() {
         return (object)array(
         'php'=>dir.'/static/art',
         'img'=>site::url('domain').'/static/img',
@@ -38,4 +38,16 @@ class tools{
         'pages'=>site::url('domain').'/static/pages'
         );
     }
+
+    public static function countQuantityCart(){
+        $totalQuantity = 0;
+        if (isset($_SESSION['cart'])) {
+            foreach ($_SESSION['cart'] as $item) {
+                $totalQuantity += $item['productquantity'];
+            }
+        }
+        return $totalQuantity;
+    }
+
+
 }

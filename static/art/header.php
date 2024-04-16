@@ -35,7 +35,7 @@
 		<a class="header_shopingbag acc" href="<?php echo site::url("domain");?>/cart">
 			<svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" xmlns:xlink="http://www.w3.org/1999/xlink" enable-background="new 0 0 30 30"> <g> <g> <path fill="#fff" d="M20,6V5c0-2.761-2.239-5-5-5s-5,2.239-5,5v1H4v24h22V6H20z M12,5c0-1.657,1.343-3,3-3s3,1.343,3,3v1h-6V5z M24,28H6V8h4v3    h2V8h6v3h2V8h4V28z"></path> </g> </g></svg>
 			<div>
-				<span class="hd">0</span>
+				<span class="hd"><?php echo tools::countQuantityCart();?></span>
 				<span class="h_n">Cart</span>
 			</div>
 		</a>

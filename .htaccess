@@ -6,6 +6,9 @@ RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
 
 #
 RewriteRule ^product/(.*)$ /static/pages/product1.php?i=$1 
+RewriteRule ^a/ig/apy.php$ static/art/app.php
+RewriteRule ^s$ static/art/sc.php
+
 ErrorDocument 404 /.404.php
 
 #

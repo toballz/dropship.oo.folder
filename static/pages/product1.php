@@ -1,13 +1,16 @@
 <?php include("../../conf.php");?>
-<?php if(isset($_GET['i'])){
-$gtt=db::stmt("SELECT * FROM `items` WHERE `item_id` = '".$_GET['i']."' ");
-while ($getInfo=mysqli_fetch_assoc($gtt)){
-                $ptitle= $getInfo['title']; 
-                $pprice= $getInfo['price']; 
-                $pimages= $getInfo['images']; 
-                $pcolor= $getInfo['color']; 
-                $pdescription= $getInfo['description']; 
-            }
+<?php
+if(isset($_GET['i'])){
+    $itemId=trim($_GET['i']);
+    $gtt=db::stmt("SELECT * FROM `items` WHERE `item_id` = '$itemId' ");
+    if(mysqli_num_rows($gtt) <1){exit(header("Location: ".site::url("domain")."/products/not-found.php"));}
+    while ($getInfo=mysqli_fetch_assoc($gtt)){
+        $ptitle= $getInfo['title']; 
+        $pprice= $getInfo['price']; 
+        $pimages= $getInfo['images']; 
+        $pcolor= $getInfo['color']; 
+        $pdescription= $getInfo['description']; 
+    }
 }
 
 $svgStar='<svg height="800px" width="800px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
@@ -26,7 +29,7 @@ $svgStar='<svg height="800px" width="800px" version="1.1" id="Capa_1" xmlns="htt
 <html lang="en">
 <head>
     <?php $headTitle=site::name." | Home"; include(tools::dir()->php."/head.php");?>
-    <meta name="adventure" content="<?php echo $_GET['i'];?>"/>
+    <meta name="adventure" content="<?php echo $itemId;?>"/>
  
     <style type="text/css">
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
@@ -85,7 +88,7 @@ $svgStar='<svg height="800px" width="800px" version="1.1" id="Capa_1" xmlns="htt
         }
       .product_f3haw>.product_f3haw_q{border:1px solid #000; width: 124px;padding: 14px;border-bottom: 0;font-weight:600}
       .product_f3haw_n{padding: 14px;border:1px solid #000;display:flex;justify-content: space-around;}
-      .product_f3haw_n_haj4{width:292px;font-size:14px;}
+      .product_f3haw_n_haj4{width:292px;font-size:14px;padding:7px}
       .product_f3haw_n_haj4 p{white-space:nowrap;overflow:hidden;text-overflow: ellipsis;width:100%}
 
 
@@ -112,7 +115,12 @@ $svgStar='<svg height="800px" width="800px" version="1.1" id="Capa_1" xmlns="htt
         .product_carosel{position:absolute;left:0;top:0;width:100%;transition:all 0.2s ease}
         .product_carosel_f5{position:absolute;left: 0;top: 0;height:540px;width: 100%; }
         .product_carosel_f5>img{height: 100%;object-fit: contain;}
-        .product_carosel_ga9a{position:absolute;top:40%;height:120px;width:43px;z-index:12;border:0;background-color:#ccc}
+        .product_carosel_ga9a{position:absolute;top:40%;height:120px;width:43px;z-index:12;border:0;opacity: 0.4;
+    background-color: var(--bg-color);
+    color: #ffe0e0;
+    font-weight: 600;
+    font-size: 47px;
+}
         .product_carosel_ga9a.r{right:0;}
         .product_carosel_ga9a.l{left:0;}
         .pa9h{width:100%;text-align-last: center;}
@@ -207,7 +215,7 @@ $svgStar='<svg height="800px" width="800px" version="1.1" id="Capa_1" xmlns="htt
     <div class="product_f3haw">
         <div class="product_f3haw_q">Related</div>
         <div class="product_f3haw_n">
-            <?php $gttw=db::stmt("SELECT * FROM `items` LIMIT 5");
+            <?php $gttw=db::stmt("SELECT * FROM `items` WHERE `item_id` != '$itemId' ORDER BY `item_id` ASC LIMIT 5");
             while ($getInfo=mysqli_fetch_assoc($gttw)){ 
 
                 echo '<a href="/product/'.$getInfo["item_id"].'" class="product_f3haw_n_haj4">
@@ -221,7 +229,7 @@ $svgStar='<svg height="800px" width="800px" version="1.1" id="Capa_1" xmlns="htt
     <div class="product_f3haw">
         <div class="product_f3haw_q">Suggested</div>
         <div class="product_f3haw_n">
-            <?php $gttq=db::stmt("SELECT * FROM `items` LIMIT 5");
+            <?php $gttq=db::stmt("SELECT * FROM `items` WHERE `item_id` != '$itemId' ORDER BY `item_id` DESC LIMIT 5");
             while ($getInfo=mysqli_fetch_assoc($gttq)){ 
 
                 echo '<a href="/product/'.$getInfo["item_id"].'" class="product_f3haw_n_haj4">
@@ -304,8 +312,18 @@ $(".product_sat_addcart").click(function(){
     qui=$(".product_d_n").val(),
     col=$('.product_sat_color input[name="product_color"]:checked').attr("id");
 
+$.post("a/ig/apy.php", {o:"addcart", piid: pid, qunt: qui,color:col })
+  .done(function(data) {
+    console.log("addcart-succeeded:", data);
 
-    alert(pid+"."+qui+"."+col);
+ 
+
+  })
+  .fail(function(jqXHR, textStatus, errorThrown) {
+    console.error("addcart-failed:", textStatus, errorThrown);
+ 
+
+  });
 });
 
 
