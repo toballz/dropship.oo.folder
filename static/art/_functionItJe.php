@@ -1,6 +1,6 @@
 <?php
 
-$reloadStatic="a.dn";
+$reloadStatic="as.as,ssdn".rand();
 
 class site{
     const name="Dropship";
@@ -34,8 +34,7 @@ class tools{
         return (object)array(
         'php'=>dir.'/static/art',
         'img'=>site::url('domain').'/static/img',
-        'cssjs'=>'static/cj',
-        'pages'=>site::url('domain').'/static/pages'
+        'cssjs'=>'static/cj'
         );
     }
 

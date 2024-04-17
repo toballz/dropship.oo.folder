@@ -310,6 +310,6 @@ to { box-shadow: 0 0 100px 15px #F4F6AD; }
 <script type="text/javascript">
 //reload page after gaining back focus
 window.addEventListener('focus', function() {
-    location.reload();
+   // location.reload();
 });
 </script>

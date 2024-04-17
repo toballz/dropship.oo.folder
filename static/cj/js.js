@@ -1,5 +1,5 @@
 !(function(){
-
+var bH = document.baseURI;
 
     //index carosel
     //hover1
@@ -19,4 +19,29 @@
         // On hover out, remove the 'highlight' class
         $('.index_f_1>div').removeClass('index_f_1_2');
     });
+
+
+
+
+
+
 }());
+
+
+
+$(document).ready(function(){
+
+    var bH = document.baseURI;
+   // cart num
+    $.post(bH+"a/ig/apy.php", {o:"getsession", re1: "cartnum"}).done(function(data) {
+        if(data.code == 200){
+            $("span.hd").html(data.message.cartnum);
+        }else{
+            alert(7);
+        }
+    }).fail(function(jqXHR, textStatus, errorThrown) {
+        console.error("session null:", textStatus, errorThrown);
+    });
+
+
+});

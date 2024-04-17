@@ -1,6 +1,6 @@
 <?php include_once("../../conf.php");
 
-if(isset($_POST['o']) &&  strlen($_POST['o']) > 1){
+if(isset($_POST['o']) &&  strlen($_POST['o']) > 2){
 header('Content-Type: application/json');
 
 //code::int:500|404|200
@@ -41,6 +41,17 @@ if($_POST['o']=="addcart" && isset($_POST['piid']) && $_POST['qunt']){
     //return;;;
 	$return["code"]=200;
 	$return["message"]="Added to cart";
+
+
+    //&&&&&&&&&&&&
+}else if($_POST['o']=="getsession"){
+
+    if(isset($_POST['re1']) && $_POST['re1'] == "cartnum"){
+        $return["message"]["cartnum"]= tools::countQuantityCart();
+    }
+
+
+    $return["code"]=200;
 }
 
 
@@ -93,7 +104,7 @@ if($_POST['o']=="addcart" && isset($_POST['piid']) && $_POST['qunt']){
 
 
 //return response
-if(count($return)>0){print_r($_SESSION['cart']);}else{die("return;".count($return));}
+if(count($return)>0){echo json_encode($return);}else{die("return;".count($return));}
 
 }else{echo "0";}
 

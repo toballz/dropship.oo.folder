@@ -87,8 +87,8 @@ $svgStar='<svg height="800px" width="800px" version="1.1" id="Capa_1" xmlns="htt
         .product_sat_share{border:0;background: transparent;font-family: "Poppins", sans-serif;font-size: 14px;padding:0; display: flex; min-height: 2.4rem;justify-content: space-around; align-items: center;
         }
       .product_f3haw>.product_f3haw_q{border:1px solid #000; width: 124px;padding: 14px;border-bottom: 0;font-weight:600}
-      .product_f3haw_n{padding: 14px;border:1px solid #000;display:flex;justify-content: space-around;}
-      .product_f3haw_n_haj4{width:292px;font-size:14px;padding:7px}
+      .product_f3haw_n{padding: 14px;border:1px solid #000;display:flex;justify-content: space-around;flex-wrap:wrap;}
+      .product_f3haw_n_haj4{width:252px;font-size:14px;padding:7px}
       .product_f3haw_n_haj4 p{white-space:nowrap;overflow:hidden;text-overflow: ellipsis;width:100%}
 
 
@@ -97,7 +97,7 @@ $svgStar='<svg height="800px" width="800px" version="1.1" id="Capa_1" xmlns="htt
             padding:8px 12px;font-size: 16px;cursor: pointer;background: #ccc;
             display: flex;align-items: center;font-weight: 600;margin-bottom:1px; 
         }
-        .product_sat_dispec_o{
+        .product_sat_dispec_o{overflow: hidden;
             transition:all 0.2s ease;background-color:#f9f9f9;box-shadow:-3px 6px 9px 0 rgba(0,0,0,0.2);padding:0;height:0;letter-spacing:1.1px;line-height:19px;visibility:hidden;
         }
         .product_sat_dispec_o.o_display{visibility:visible;padding:12px 16px;height:auto;margin-bottom:12px;}
@@ -242,7 +242,36 @@ $svgStar='<svg height="800px" width="800px" version="1.1" id="Capa_1" xmlns="htt
     <br>
 
  </section>
-
+<div class="addedtocart_6f75">
+    <style>
+        .addedtocart_6f75{display:none;position:fixed;font-size:13px;top:0;left:0;width: 100%;height: 100%;z-index: 1212;background: rgb(15 16 27 / 68%); align-items: center;justify-content: center;}
+        .addedtocart_kej75{width:100%;max-width: 416px; min-width: 400px;background:#fff;height: 124px;border-radius:20px;min-height: 300px;overflow:hidden;}
+        .addedtocart_kej75_heaader{background:var(--bg-color);color:#fff;text-align: center;font-size:21px;font-weight:600;padding:14px;}
+        .addedtocart_kej75_1b{padding:12px;}
+        .addedtocart_kej75_2b{display:flex;justify-content: space-between;padding:12px}
+        .addedtocart_kej75_2b>div,.addedtocart_kej75_2b>a{border-radius:15px;text-align:center;min-width: 187px;padding:14px 10px;font-size:13px;background:#ccc;margin:2px;cursor:pointer;}
+        .addedtocart_kej75_2b>div{background-color:var(--bg-color);color: #fff}
+        .addedtocart_kej75_2b>a{background-color:#ba2;color: #fff}
+        .addedtocart_kej75_1btitle{font-size: 16px;width:60%}
+        .addedtocart_kej75_1bbdy{margin-top:16px;display: flex;justify-content: space-around;}
+        .addedtocart_kej75_1bbdyimg{width:30%}
+    </style>
+    <div class="addedtocart_kej75">
+            <div class="addedtocart_kej75_heaader">1 Item Added to Cart</div>
+            <div class="addedtocart_kej75_1b">
+                
+                <div class="addedtocart_kej75_1bbdy">
+                    <div class="addedtocart_kej75_1bbdyimg"><img src=""/></div>
+                    <div class="addedtocart_kej75_1btitle"></div>
+                </div>
+            </div>
+            <div class="addedtocart_kej75_2b">
+                <div class="" onclick="$('.addedtocart_6f75').remove();">Continue Shopping</div>
+                <a href="<?php echo site::url("domain");?>/cart">Go to Cart</a>
+            </div>
+    </div>
+    
+</div>
 
 <footer>
 <?php include(tools::dir()->php."/footer.php");?>
@@ -314,15 +343,20 @@ $(".product_sat_addcart").click(function(){
 
 $.post("a/ig/apy.php", {o:"addcart", piid: pid, qunt: qui,color:col })
   .done(function(data) {
-    console.log("addcart-succeeded:", data);
-
- 
-
+    if(data.code == 200){
+        $(".addedtocart_kej75_heaader").html($(".product_d_n").val()+" Item(s) Added to Cart");
+        $(".addedtocart_kej75_1btitle").html($(".product_sat_title").html());
+        var tt=$('[name="product_color"]:checked');
+        if(tt.length > 0){
+            $(".addedtocart_kej75_1bbdyimg>img").attr("src",tt.next("label").find("img").attr("src") );
+         }else{
+            $(".addedtocart_kej75_1bbdyimg>img").attr("src",$(".product_carosel_f5:first-child>img").attr("src") );
+         }
+        $(".addedtocart_6f75").css("display","flex");
+    }  
   })
   .fail(function(jqXHR, textStatus, errorThrown) {
     console.error("addcart-failed:", textStatus, errorThrown);
- 
-
   });
 });
 

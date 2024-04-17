@@ -5,11 +5,11 @@
 .header_a3g{padding: 10px 31px}
 .header_r5jj{display: flex;justify-content: space-between;}
 .header_shopingbag{color: #ccc;font-size:14px;display: flex;align-items: center;}
-.header_shopingbag.acc{margin-right:19px;margin-top: -7px;}
+.header_shopingbag.acc{margin-right:19px;margin-bottom:5px;}
 .header_shopingbag>svg{height:32px;margin-right:4px;}
 .header_shopingbag>div{display: flex; flex-direction: column;font-size: 12px;align-items: center;}
 .header_shopingbag>div>.h_n{margin-top:3px; }
-.header_shopingbag>div>.hd{border-radius:11px;background: red;padding:2.6px 10px 0.9px 8px;text-align: center;margin-top: 6px;font-weight:600}
+.header_shopingbag>div>.hd{border-radius:11px;background: red;padding:2.6px 10px 1px 8px;text-align: center;margin-top: 6px;font-weight:600}
 
 	.header_a3g_g5{max-width: 800px;margin: auto;display: flex;}
 	.header_a3g_g5>input,.header_a3g_g5>button{
@@ -35,7 +35,7 @@
 		<a class="header_shopingbag acc" href="<?php echo site::url("domain");?>/cart">
 			<svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" xmlns:xlink="http://www.w3.org/1999/xlink" enable-background="new 0 0 30 30"> <g> <g> <path fill="#fff" d="M20,6V5c0-2.761-2.239-5-5-5s-5,2.239-5,5v1H4v24h22V6H20z M12,5c0-1.657,1.343-3,3-3s3,1.343,3,3v1h-6V5z M24,28H6V8h4v3    h2V8h6v3h2V8h4V28z"></path> </g> </g></svg>
 			<div>
-				<span class="hd"><?php echo tools::countQuantityCart();?></span>
+				<span class="hd">0</span>
 				<span class="h_n">Cart</span>
 			</div>
 		</a>

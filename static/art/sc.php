@@ -38,7 +38,7 @@ if(isset($_POST['urlfrom']) && isset($_POST['title']) && isset($_POST['price']) 
 	VALUES ('$itemId', '$titler', '$descri',  '$imagee', '$pricce', '[]', NULL, '$coolor', 'b', '$frmsto', current_timestamp());";
 	if( db::stmt($rr))
 	{
-		exit("<script>window.close();</script>");
+		exit("<script>    window.open('".site::url("domain")."/product/$itemId','_blank');//window.close();</script>");
 	}else{
 		echo $rr;
 	};
@@ -61,7 +61,7 @@ if(isset($_POST['urlfrom']) && isset($_POST['title']) && isset($_POST['price']) 
 				<ul>
 					<textarea name="pictures" oninput="autoResize(this)"><?php echo json_encode(str_replace("_80x80","_", $ar->images)) ;?></textarea>
 					<?php foreach ($ar->images as $p=>$j) {
-						echo '<li class="awa'.$p.'"><div onclick="removeimage(this,\''.$j.'\',\'.awa'.$p.'\')">x</div><img src="'.str_replace("_80x80","", $j).'"/></li>';
+						echo '<li class="awa'.$p.'"><div onclick="removeimage(this,\''.str_replace("_80x80","_", $j).'\',\'.awa'.$p.'\')">x</div><img src="'.str_replace("_80x80","_", $j).'"/></li>';
 					};?>
 				</ul>
 			</label>
@@ -69,7 +69,7 @@ if(isset($_POST['urlfrom']) && isset($_POST['title']) && isset($_POST['price']) 
 				<ul>
 					<textarea name="colors" oninput="autoResize(this)"><?php echo json_encode(str_replace("_80x80","_", $ar->color)) ;?></textarea>
 					<?php foreach ($ar->color as $p=>$j) {
-						echo '<li class="color'.$p.'"><div onclick="removecolor(this,\''.$j.'\',\'.color'.$p.'\')">x</div><img src="'.str_replace("80x80","", $j).'"/></li>';
+						echo '<li class="color'.$p.'"><div onclick="removecolor(this,\''.str_replace("_80x80","_", $j).'\',\'.color'.$p.'\')">x</div><img src="'.str_replace("80x80","_", $j).'"/></li>';
 					};?>
 				</ul>
 			</label>
@@ -89,6 +89,7 @@ function removeimage(e,o,w){
 	var tt = ttu.filter(function(ttu) {
 	    return ttu !== o;
 	});
+	console.log(o);
 	$('[name="pictures"]').val(JSON.stringify(tt)); 
 	$(w).remove(); 
 	 
