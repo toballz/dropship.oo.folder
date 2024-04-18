@@ -25,11 +25,15 @@
     .cartv1 select:focus-visible,.cartv1 select:focus{border:0 !important;outline:none;}
 
     .cartv2{position:relative;width:32%;margin-left:1rem}
-    .cartv2>ul{padding:12px;position: sticky;top: 2px;border:1px solid #000}
+    .cartv2>ul{padding:12px;position: sticky;top: 2px;border:1px solid #e5e5e5}
     .cartv2>ul>li{display:flex;justify-content: space-between;margin-bottom:9px}
     .cartv2>ul>li>hr{width: 100%}
-    .cartv2>ul>li>a{margin-top: 19px;background-color:#3665f3;padding:19px;width:100%;text-align:center;border-radius:15px;color: #fff}
-    .totall{font-weight:600}
+    .cartv2>ul>li>a{margin-top:10px;background-color:#3665f3;padding:19px;width:100%;text-align:center;border-radius:15px;color: #fff}
+    .cartv2 .subtotall{font-weight:600}
+    .cartv1 h2{margin-bottom:26px;font-size:23px}
+    .cartv1 .carttitle a{color:#000;font-weight:600;line-height:18px}
+    .cartv2 .loginsespoint>span{margin-bottom:12px}
+    .cartv2 .loginsespoint>span>a{display:inline;color:blue;}
     </style>
 </head>
 
@@ -37,22 +41,23 @@
 <body>
     <header><?php include(tools::dir()->php."/header.php");?></header>
  
-
+<?php tools::stripe_CreateDynamicLink();?>
 
  <section class="cart_container">
     <?php $quantityTpriceArr=tools::countQualCart("quantityprice");?>
    <div class="cartv1">
    <!--<pre><?php //print_r($_SESSION['cart']);?></pre>-->
+   <h2>Your Shopping Cart</h2>
     <?php 
     if(isset($_SESSION['cart']) && count($_SESSION['cart'])>0){
         $io=0;
         foreach($_SESSION['cart'] as $re){?>
            <ul>
                <li><div class=""><img src="<?php echo $re['productcolor'];?>"/></div></li>
-               <li><div class=""><a href="<?php echo site::url("domain")."/product/".$re['productid'];?>"><?php echo $re['producttitle'];?></a></div></li>
+               <li><div class="carttitle"><u><a href="<?php echo site::url("domain")."/product/".$re['productid'];?>"><?php echo $re['producttitle'];?></a></u></div></li>
                <li>
                     <div class="pscaa">$<?php echo $quantityTpriceArr[$io];?></div>
-                    <div class="sees"><select><?php for($i=1;$i<=10;$i++){echo "<option value='".$i."' ".(($re['productquantity'] == $i)?"selected='true'":'').">Qty ".$i."</option>";}?></select></div>
+                    <div class="sees"><select id="changequnt"><?php for($i=1;$i<=10;$i++){echo "<option value='".$i."' ".(($re['productquantity'] == $i)?"selected='true'":'').">Qty ".$i."</option>";}?></select></div>
                     <div class="delt" onclick="deletefromcart('<?php echo $re['productcolor'];?>',<?php echo $re['productid'];?>);">remove</div>
                 </li>
                 
@@ -64,11 +69,11 @@
        <ul>
             <?php $itemSum= array_sum($quantityTpriceArr);?>
            <li><span>Items ( <?php echo tools::countQualCart("cartquantity");?> )</span><span>$<?php echo $itemSum;?></span></li>
-           <li><span>Shipping</span><?php echo ($itemSum > 50) ? "<span style='color:green'>FREE</span>" : "<span>".(($itemSum == 0) ? "$0" : "$".tools::shippingFee)."</span>";?></li>
+           <li><span>Shipping</span><?php echo ($itemSum > 50) ? "<span style='color:green'>FREE</span>" : "<span>".(($itemSum == 0) ? "$0" : "Enter shipping address")."</span>";?></li>
            <li><hr/></li>
-           <li><span>Subtotal</span><span>$<?php echo $subtotal=$itemSum+((($itemSum == 0) || ($itemSum > 50)) ? 0 :tools::shippingFee);?></span></li>
-           <li class="totall"><span>Total</span><span>$<?php echo $subtotal;?></span></li>
-           <li><a href="<?php echo ($subtotal == 0)?'javascript:void(0)':'cart/checkout/';?>">Go to Checkout</a></li>
+           <li class="loginsespoint"><?php if(!isset($_SESSION['usera01'])){?><span><a href="">Login</a> to use your points</span><?php }?></li>
+           <li class="subtotall"><span>SubTotal</span><span>$<?php echo $itemSum;?></span></li>
+           <li><a href="<?php echo ($itemSum == 0)?'javascript:void(0)':'cart/checkout/';?>">Go to Checkout</a></li>
        </ul>
    </div>
     

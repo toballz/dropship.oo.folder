@@ -1,6 +1,8 @@
 <?php
 
 $reloadStatic="as.as,ssdn".rand();
+//isset($_SESSION['usera01'])
+//isset($_SESSION['cart'])
 
 class site{
     const name="Dropship";
@@ -28,9 +30,40 @@ class site{
 class tools{ 
 
     const passwordsalt="\u2315c#7@&8*";
-    const shippingFee=15.99;
+    const stripe_Secret_key_API="sk_test_51NFmpULWQbqqSt59gnw0rTcvFeZ6t226bfUAx3do8u3J2f5pFZ5gCcxWIyuZULEYBKl15dE343r7ZuonVeEa563N00yTmQBkiG";
 
- 
+    public static function stripe_CreateDynamicLink($cemail,$pprice){
+        if(!isset($cemail) || !isset($pprice)){exit("Payment platform error");}
+        if(strlen($cemail) < 4 || $pprice < 1){exit("Payment platform error");}
+        //
+        require_once dir.'/static/3rdparty/stripe-php-master/init.php';
+
+        \Stripe\Stripe::setApiKey(self::stripe_Secret_key_API);
+
+        // Create a new Checkout Session
+        $session = \Stripe\Checkout\Session::create([
+            'payment_method_types' => ['card'],
+            'line_items' => [
+                [
+                    'price_data' => [
+                        'currency' => 'usd',
+                        'product_data' => [
+                            'name' => site::name.' checkout page with Stripe',
+                        ],
+                        'unit_amount' => $pprice, // Amount in cents
+                    ],
+                    'quantity' => 1,
+                ],
+            ],
+            'mode' => 'payment',
+            'success_url' => 'https://example.com/success',
+            'cancel_url' => 'https://example.com/cancel',
+            'customer_email' => $cemail, // Customer email
+            //'customer_phone' => '+1234567890',
+        ]);
+        return $session->url;
+    }
+
     public static function dir() {
         return (object)array(
         'php'=>dir.'/static/art',
