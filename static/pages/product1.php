@@ -188,7 +188,7 @@ $svgStar='<svg height="800px" width="800px" version="1.1" id="Capa_1" xmlns="htt
             <div class="product_sat_quantity"><span class="product_d_m">-</span><input type="number" min="1" max="10" value="1" class="product_d_n" /><span class="product_d_p">+</span></div>
 
             <button class="product_sat_addcart">ADD TO CART • $<?php echo $pprice;?> USD</button>
-            <span class="al0_2">Extra <b><?php echo explode(".",($pprice/3))[0];?></b> points with this item</span>
+            <span class="al0_2">Earn <b><?php echo explode(".",($pprice/3))[0];?></b> points with this item</span>
 
             <hr/>
             <button class="product_sat_share"><svg width="21" height="12" viewBox="0 1 13 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><path d="M1.625 8.125V10.2917C1.625 10.579 1.73914 10.8545 1.9423 11.0577C2.14547 11.2609 2.42102 11.375 2.70833 11.375H10.2917C10.579 11.375 10.8545 11.2609 11.0577 11.0577C11.2609 10.8545 11.375 10.579 11.375 10.2917V8.125" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path> <path fill-rule="evenodd" clip-rule="evenodd" d="M6.14775 1.27137C6.34301 1.0761 6.65959 1.0761 6.85485 1.27137L9.56319 3.9797C9.75845 4.17496 9.75845 4.49154 9.56319 4.6868C9.36793 4.88207 9.05135 4.88207 8.85609 4.6868L6.5013 2.33203L4.14652 4.6868C3.95126 4.88207 3.63468 4.88207 3.43942 4.6868C3.24415 4.49154 3.24415 4.17496 3.43942 3.9797L6.14775 1.27137Z" fill="currentColor"></path> <path fill-rule="evenodd" clip-rule="evenodd" d="M6.5 1.125C6.77614 1.125 7 1.34886 7 1.625V8.125C7 8.40114 6.77614 8.625 6.5 8.625C6.22386 8.625 6 8.40114 6 8.125V1.625C6 1.34886 6.22386 1.125 6.5 1.125Z" fill="currentColor"></path></svg>   Share   </button>
@@ -266,8 +266,8 @@ $svgStar='<svg height="800px" width="800px" version="1.1" id="Capa_1" xmlns="htt
                 </div>
             </div>
             <div class="addedtocart_kej75_2b">
-                <div class="" onclick="$('.addedtocart_6f75').remove();">Continue Shopping</div>
-                <a href="<?php echo site::url("domain");?>/cart">Go to Cart</a>
+                <div class="" onclick="$('.addedtocart_6f75').toggle();">Continue Shopping</div>
+                <a href="<?php echo site::url("domain");?>/cart/">Go to Cart</a>
             </div>
     </div>
     
@@ -339,14 +339,18 @@ $(".product_sat_addcart").click(function(){
 
     var pid= document.querySelector('meta[name="adventure"]').getAttribute('content'),
     qui=$(".product_d_n").val(),
-    col=$('.product_sat_color input[name="product_color"]:checked').attr("id");
+    colS=$('.product_sat_color input[name="product_color"]:checked'),
+    col=(colS.length > 0)?colS.next("label").find("img").attr("src"):$(".product_carosel_f5:first-child>img").attr("src"),
+    til=$(".product_sat_title").html();
 
-$.post("a/ig/apy.php", {o:"addcart", piid: pid, qunt: qui,color:col })
+
+$.post("a/ig/apy.php", {o:"addcart", piid: pid, qunt: qui,color:col,tile:til })
   .done(function(data) {
     if(data.code == 200){
+        reloadStatic();
         $(".addedtocart_kej75_heaader").html($(".product_d_n").val()+" Item(s) Added to Cart");
         $(".addedtocart_kej75_1btitle").html($(".product_sat_title").html());
-        var tt=$('[name="product_color"]:checked');
+        var tt=$('.product_sat_color [name="product_color"]:checked');
         if(tt.length > 0){
             $(".addedtocart_kej75_1bbdyimg>img").attr("src",tt.next("label").find("img").attr("src") );
          }else{

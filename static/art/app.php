@@ -11,13 +11,17 @@ $return=[];
 
 
 
-if($_POST['o']=="addcart" && isset($_POST['piid']) && $_POST['qunt']){
+if($_POST['o']=="addcart" && isset($_POST['piid']) && isset($_POST['tile']) && $_POST['qunt']){
 	$pid=trim($_POST['piid']);
 	$color=(isset($_POST['color']))?$_POST['color']:null;
+    $title=trim($_POST['tile']);
 	$qpre=trim($_POST['qunt']);
 	$quantity= (strlen($qpre) > 10) ? 10 : 
             ((strlen($qpre) < 1) ? 1 : 
             $qpre);
+    if(!isset($_SESSION['cart'])){
+        $_SESSION['cart'] = array();
+    }
     // Flag to indicate if the item was found in the cart
     $found = false;
     // Iterate through the cart to find the item
@@ -34,6 +38,7 @@ if($_POST['o']=="addcart" && isset($_POST['piid']) && $_POST['qunt']){
         $_SESSION['cart'][] = array(
             'productid' => $pid,
             'productcolor' => $color,
+            'producttitle' => $title,
             'productquantity' => $quantity
         );
     }
