@@ -12,6 +12,7 @@ $return=[];
 
 
 if($_POST['o']=="addcart" && isset($_POST['piid']) && isset($_POST['tile']) && $_POST['qunt']){
+    //ADD to cart
 	$pid=trim($_POST['piid']);
 	$color=(isset($_POST['color']))?$_POST['color']:null;
     $title=trim($_POST['tile']);
@@ -50,13 +51,33 @@ if($_POST['o']=="addcart" && isset($_POST['piid']) && isset($_POST['tile']) && $
 
     //&&&&&&&&&&&&
 }else if($_POST['o']=="getsession"){
-
+    //count all cart
     if(isset($_POST['re1']) && $_POST['re1'] == "cartnum"){
-        $return["message"]["cartnum"]= tools::countQuantityCart();
+        $return["message"]["cartnum"]= tools::countQualCart("cartquantity");
     }
 
 
+    //return;;;
     $return["code"]=200;
+    $return["message"]="";
+
+
+    //&&&&&&&&&&&&
+}else if($_POST['o'] == "deltecart" && isset($_POST['cartid']) && isset($_POST['colre'])){
+    //delete from cart
+    $products = $_SESSION['cart'];
+    $productcolorToRemove = $_POST['colre'];
+    $productidToRemove = $_POST['cartid'];
+
+    // Iterate through the array to find and remove the item
+    foreach ($products as $key => $product) {
+        if ($product["productid"] == $productidToRemove && $product["productcolor"] == $productcolorToRemove) {
+            unset($_SESSION['cart'][$key]);
+            $return["code"]= 301;
+            $return["message"]= site::url("domain")."/cart/";
+            break;
+        }
+    }
 }
 
 
