@@ -14,18 +14,18 @@
     .cartv1{width:68%;}
     .cartv1>ul{padding:12px; width:100%;display: grid;    column-gap: 16px;margin-bottom:12px;
     grid-template-columns: repeat(16,calc(6.25% - 16px + 1px));
-    row-gap: 16px; border: 1px solid #e5e5e5;}
+    row-gap: 16px; border: 1px solid var(--grey);}
     .cartv1>ul>li:nth-child(1){grid-area: 1/1/span 1/span 3;}
     .cartv1>ul>li:nth-child(2){grid-area: 1/4/span 1/span 11;}
     .cartv1>ul>li:nth-child(3){grid-area: 1/15/span 1/span 2;display: flex;flex-direction: column;justify-content: space-between;align-items: center;}
     .cartv1>ul>li:nth-child(3)>.pscaa{font-weight:600;font-size:19px}
     .cartv1>ul>li:nth-child(3)>.sees{width: 100%;border:1px solid #ccc;padding:3px 4px;cursor:pointer;outline:none;}
-    .cartv1>ul>li:nth-child(3)>.delt{cursor:pointer;}
+    .cartv1>ul>li:nth-child(3)>.delt{cursor:pointer;font-size: 12px}
     .cartv1>ul>li:nth-child(3)>div>select{border:0;width:100%;padding:6px 0; background-image: url('<?php echo tools::dir()->img."/da.svg?".$reloadStatic;?>');background-size: 16px;background-position: right center; background-repeat: no-repeat; padding-right: 1.5em;}
     .cartv1 select:focus-visible,.cartv1 select:focus{border:0 !important;outline:none;}
 
     .cartv2{position:relative;width:32%;margin-left:1rem}
-    .cartv2>ul{padding:12px;position: sticky;top: 2px;border:1px solid #e5e5e5}
+    .cartv2>ul{padding:12px;position: sticky;top: 2px;border:1px solid var(--grey)}
     .cartv2>ul>li{display:flex;justify-content: space-between;margin-bottom:9px}
     .cartv2>ul>li>hr{width: 100%}
     .cartv2>ul>li>a{margin-top:10px;background-color:#3665f3;padding:19px;width:100%;text-align:center;border-radius:15px;color: #fff}
@@ -40,9 +40,7 @@
 
 <body>
     <header><?php include(tools::dir()->php."/header.php");?></header>
- 
-<?php tools::stripe_CreateDynamicLink();?>
-
+  
  <section class="cart_container">
     <?php $quantityTpriceArr=tools::countQualCart("quantityprice");?>
    <div class="cartv1">
@@ -63,7 +61,7 @@
                 
            </ul>
         <?php $io++;}
-   }else{echo "<p>Your cart is empty.</p>";}?>
+   }else{echo "<p>Your cart is empty.</p><div style='width:50%;margin:auto'><img src='".tools::dir()->img."/emptycart.png?".$reloadStatic."' /></div>";}?>
    </div>
    <div class="cartv2">
        <ul>

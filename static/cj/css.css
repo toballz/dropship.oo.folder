@@ -11,8 +11,8 @@ h1,h2,h3,h4,h5,li,ul{list-style-type:none;margin:0;padding:0}
 select{border:1px solid #ccc;cursor:pointer;-moz-appearance:none;-webkit-appearance:none;}
 :root {
   --bg-color: #0f101b;
-  --secondary-color: #6c757d;
-  --accent-color: #ffc107;
+  --grey: #e5e5e5;
+  --err-red: #dd1d1d;
 }
 
 

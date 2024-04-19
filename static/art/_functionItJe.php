@@ -29,17 +29,18 @@ class site{
 }
 class tools{ 
 
-    const passwordsalt="\u2315c#7@&8*";
+    const passwordsalt="\u2315?>c#7@&8*`";
     const stripe_Secret_key_API="sk_test_51NFmpULWQbqqSt59gnw0rTcvFeZ6t226bfUAx3do8u3J2f5pFZ5gCcxWIyuZULEYBKl15dE343r7ZuonVeEa563N00yTmQBkiG";
 
-    public static function stripe_CreateDynamicLink($cemail,$pprice){
-        if(!isset($cemail) || !isset($pprice)){exit("Payment platform error");}
-        if(strlen($cemail) < 4 || $pprice < 1){exit("Payment platform error");}
+    public static function stripe_Create_Dynamic_Link_for_payments($cemail,$pprice){
+        if(!isset($cemail) || !isset($pprice)){exit("Payment platform error #2896-2407");}
+        if(strlen($cemail) < 4 || !filter_var($cemail, FILTER_VALIDATE_EMAIL) || $pprice < 1){exit("Payment platform error #4890-7455");}
+        $realpprice=$pprice*100;
         //
         require_once dir.'/static/3rdparty/stripe-php-master/init.php';
-
+        //
         \Stripe\Stripe::setApiKey(self::stripe_Secret_key_API);
-
+        //
         // Create a new Checkout Session
         $session = \Stripe\Checkout\Session::create([
             'payment_method_types' => ['card'],
@@ -50,7 +51,7 @@ class tools{
                         'product_data' => [
                             'name' => site::name.' checkout page with Stripe',
                         ],
-                        'unit_amount' => $pprice, // Amount in cents
+                        'unit_amount' => $realpprice, // Amount in cents
                     ],
                     'quantity' => 1,
                 ],

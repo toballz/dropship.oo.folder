@@ -58,8 +58,7 @@ if($_POST['o']=="addcart" && isset($_POST['piid']) && isset($_POST['tile']) && $
 
 
     //return;;;
-    $return["code"]=200;
-    $return["message"]="";
+    $return["code"]=200; 
 
 
     //&&&&&&&&&&&&
@@ -73,11 +72,55 @@ if($_POST['o']=="addcart" && isset($_POST['piid']) && isset($_POST['tile']) && $
     foreach ($products as $key => $product) {
         if ($product["productid"] == $productidToRemove && $product["productcolor"] == $productcolorToRemove) {
             unset($_SESSION['cart'][$key]);
+
+            //return;;;
             $return["code"]= 301;
             $return["message"]= site::url("domain")."/cart/";
             break;
         }
     }
+    //&&&&&&&&&&&&
+}else if($_POST['o'] == "paynow" && isset($_POST['wemail'])){
+    //pay now process
+    $vemail = trim($_POST['wemail']);
+    //validate email
+    if(!filter_var($vemail, FILTER_VALIDATE_EMAIL)){
+        $return["code"]= 404;
+        $return["message"]= "Email error! #5743-3554";
+        return;
+    }
+
+
+    //if user loggedin save address n email
+    if(){
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+    $quantityNprice=tools::countQualCart("quantityprice");
+    $shipping=0.0;
+    $tax=0.0;
+    $totalPrice=array_sum($quantityNprice)+$shipping+$tax;
+
+    //paynow
+    $payLink=tools::stripe_Create_Dynamic_Link_for_payments($vemail,$totalPrice);
+
+    //return;;;
+    $return["code"]= 301;
+    $return["message"]= "{$payLink}";
+
+    //&&&&&&&&&&&&
 }
 
 
