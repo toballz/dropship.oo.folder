@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 19, 2024 at 02:47 AM
+-- Generation Time: Apr 19, 2024 at 04:11 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.0.28
 
@@ -44,30 +44,30 @@ INSERT INTO `coupon` (`coupon_id`, `description`, `date_created`, `active`) VALU
 -- --------------------------------------------------------
 
 --
--- Table structure for table `items_product`
+-- Table structure for table `items_products`
 --
 
-CREATE TABLE `items_product` (
+CREATE TABLE `items_products` (
   `item_id` varchar(99) NOT NULL COMMENT '7 - 11\r\n',
-  `title` text NOT NULL,
-  `description` text NOT NULL COMMENT '[]',
-  `images` text NOT NULL COMMENT '[]',
-  `price` double(7,2) NOT NULL COMMENT '00.00',
-  `sale` text NOT NULL DEFAULT '[]' COMMENT '{00.00, buy this get one}',
+  `item_title` text NOT NULL,
+  `item_description` longtext NOT NULL COMMENT '[]',
+  `item_images` text NOT NULL COMMENT '[]',
+  `item_price` double(7,2) NOT NULL COMMENT '00.00',
+  `item_on_sale` text NOT NULL DEFAULT '\'[]\'' COMMENT '{00.00, buy this get one}',
   `size` text DEFAULT NULL COMMENT '[]',
-  `color` text DEFAULT NULL COMMENT '[]',
-  `tag` text NOT NULL COMMENT 'space',
-  `fromstore` text NOT NULL COMMENT 'url',
-  `dateadded` timestamp NOT NULL DEFAULT current_timestamp(),
-  `howmanysold` int(99) NOT NULL DEFAULT 0,
-  `starrating` text NOT NULL DEFAULT '{"1star":"1","2star":"0","3star":"26","4star":"4","5star":"26"}' COMMENT '{}'
+  `item_colors` text DEFAULT NULL COMMENT '[]',
+  `item_tags` text NOT NULL COMMENT 'space',
+  `item_fromstore` text NOT NULL COMMENT 'url',
+  `item_dateadded` timestamp NOT NULL DEFAULT current_timestamp(),
+  `item_howmanysold` int(99) NOT NULL DEFAULT 0,
+  `item_starrating` text NOT NULL DEFAULT '\'{"1star":"1","2star":"0","3star":"26","4star":"4","5star":"26"}\'' COMMENT '{}'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `items_product`
+-- Dumping data for table `items_products`
 --
 
-INSERT INTO `items_product` (`item_id`, `title`, `description`, `images`, `price`, `sale`, `size`, `color`, `tag`, `fromstore`, `dateadded`, `howmanysold`, `starrating`) VALUES
+INSERT INTO `items_products` (`item_id`, `item_title`, `item_description`, `item_images`, `item_price`, `item_on_sale`, `size`, `item_colors`, `item_tags`, `item_fromstore`, `item_dateadded`, `item_howmanysold`, `item_starrating`) VALUES
 ('1111116543213', 'Waterproof Wired 104-Keys Gaming Membrane Keyboard with LED Backlighting', 'Specifications:\r\n\r\nKeyboard Size: L430W125H30mm\r\nKeyboard Weight: 470±0.05g\r\nKeyboard Keys: 104 keys\r\nKeyboard Interface: USB\r\nWaterproof Function: Yes\r\nErgonomics Support: Yes\r\nFeatures:\r\n\r\nUltra-thin design for delicate and lightweight feel.\r\nFloating buttons for a stronger sense of paragraph.\r\nEquipped with a game-specific chip for versatile gaming experiences.\r\nCool rainbow light effect enhances aesthetics.\r\nExcellent waterproof performance ensures durability.\r\nAdditional Specifications:\r\n\r\nFull-size keyboard: Yes\r\nOperation Style: Mechanical\r\nLanguage: UK\r\nKeyboard Standard: 104 Keys\r\nApplication: Desktop, Laptop\r\nType: Wired', '[\"https://ae01.alicdn.com/kf/S221e33d7b52b42719c167a68e84b2ff92/Gaming-Membrane-Keyboard-Wired-104-Keys-Keyboard-With-LED-Backlit-Waterproof-Electronic-Keyboard-For-Computer-Laptop.jpg_.webp\",\n\"https://ae01.alicdn.com/kf/S3eb3acb8ed2c4d9eb046f7294117de78U/Gaming-Membrane-Keyboard-Wired-104-Keys-Keyboard-With-LED-Backlit-Waterproof-Electronic-Keyboard-For-Computer-Laptop.jpg_.webp\",\n\"https://ae01.alicdn.com/kf/S221e33d7b52b42719c167a68e84b2ff92/Gaming-Membrane-Keyboard-Wired-104-Keys-Keyboard-With-LED-Backlit-Waterproof-Electronic-Keyboard-For-Computer-Laptop.jpg_640x640.jpg_.webp\"\n\n\n\n]', 22.99, '[]', NULL, '[\"https://ae01.alicdn.com/kf/S221e33d7b52b42719c167a68e84b2ff92/Gaming-Membrane-Keyboard-Wired-104-Keys-Keyboard-With-LED-Backlit-Waterproof-Electronic-Keyboard-For-Computer-Laptop.jpg_.webp\",\n\"https://ae01.alicdn.com/kf/S3eb3acb8ed2c4d9eb046f7294117de78U/Gaming-Membrane-Keyboard-Wired-104-Keys-Keyboard-With-LED-Backlit-Waterproof-Electronic-Keyboard-For-Computer-Laptop.jpg_.webp\",\n\"https://ae01.alicdn.com/kf/S221e33d7b52b42719c167a68e84b2ff92/Gaming-Membrane-Keyboard-Wired-104-Keys-Keyboard-With-LED-Backlit-Waterproof-Electronic-Keyboard-For-Computer-Laptop.jpg_640x640.jpg_.webp\"\n\n\n\n]', '', 'https://www.aliexpress.us/item/3256806501198105.html', '2024-04-16 04:18:33', 0, '{\"1star\":\"1\",\"2star\":\"0\",\"3star\":\"26\",\"4star\":\"4\",\"5star\":\"26\"}'),
 ('11111200690', 'Keyboard and Mouse Set with RGB Backlight, Wired Connection, Rubberized PC Keycaps', 'Description:\r\n\r\nEnhance your gaming experience with this ergonomic keyboard and mouse set. With its support for human engineering, it\'s specifically designed to provide comfort during long gaming sessions. The package includes both the keyboard and mouse, offering a seamless gaming solution. This ERGONOMIC set supports both Bluetooth and USB interfaces, providing versatility and ease of use. Elevate your gaming setup with the trusted brand name, WYMECT.\r\n\r\nSpecifications:\r\n\r\nSupports Human Engineering: Yes\r\nApplicable Object: For Game\r\nPackage: Yes\r\nType: ERGONOMIC\r\nInterface: Bluetooth, USB\r\nBrand Name: WYMECT', '[\"https://ae01.alicdn.com/kf/S74cc6400959c4845b0e6ff3e6d1888369/Wired-Gaming-Keyboard-And-Mouse-RGB-Backlit-Keyboard-Rubber-PC-Keycaps-Keyboard-Mouse-Gamer-Gaming-Mouse.jpg_.jpg_.webp\",\"https://ae01.alicdn.com/kf/Sbf45b6836ae749299864c93b09155b2fu/Wired-Gaming-Keyboard-And-Mouse-RGB-Backlit-Keyboard-Rubber-PC-Keycaps-Keyboard-Mouse-Gamer-Gaming-Mouse.jpg_.jpg_.webp\",\"https://ae01.alicdn.com/kf/Sf49b563f621b482c92cee75f10b19b85K/Wired-Gaming-Keyboard-And-Mouse-RGB-Backlit-Keyboard-Rubber-PC-Keycaps-Keyboard-Mouse-Gamer-Gaming-Mouse.jpg_.jpg_.webp\",\"https://ae01.alicdn.com/kf/Sfb67cb0c948748fe8dd0579ea53e05bcg/Wired-Gaming-Keyboard-And-Mouse-RGB-Backlit-Keyboard-Rubber-PC-Keycaps-Keyboard-Mouse-Gamer-Gaming-Mouse.jpg_.jpg_.webp\",\"https://ae01.alicdn.com/kf/S7f8aba4eaaa54ebfae951b92f449f3ce5/Wired-Gaming-Keyboard-And-Mouse-RGB-Backlit-Keyboard-Rubber-PC-Keycaps-Keyboard-Mouse-Gamer-Gaming-Mouse.jpg_.jpg_.webp\",\"https://ae01.alicdn.com/kf/See13afe60d9c4e388442b2f01ed05c69G/Wired-Gaming-Keyboard-And-Mouse-RGB-Backlit-Keyboard-Rubber-PC-Keycaps-Keyboard-Mouse-Gamer-Gaming-Mouse.jpg_.jpg_.webp\"]', 22.99, '[]', NULL, '', 'b', 'https://www.aliexpress.us/item/3256804094174437.html', '2024-04-16 12:27:51', 0, '{\"1star\":\"1\",\"2star\":\"0\",\"3star\":\"26\",\"4star\":\"4\",\"5star\":\"26\"}'),
 ('111113352', 'Wireless Gaming Headset with Bluetooth 5.1, Noise-Canceling Microphone, and Wired Earphone Option - Perfect for Phone Gaming', 'Experience immersive gaming with our high-fidelity HD microphone and ultra-low bass, delivering exceptional sound quality. The ergonomic design and soft ear pads provide extra comfort during long gaming sessions. Compatible with PS4 and Xbox, as well as smartphones and PCs, thanks to its standard 3.5mm plug. This exclusive design features a foldable and adjustable structure, making it versatile for various gaming platforms. Get ready for an unparalleled gaming experience with our versatile gaming headset.\r\n\r\nItem Type: Game Headset\r\nLoudspeaker diameter: 40mm\r\nFrequency range: 20-20,000 Hz\r\nSensitivity: 112 ± 3dB at 1 kHz\r\nImpedance: 24 ohms at 1 kHz\r\nMaximum input power: 30mW\r\nMicrophone sensitivity: -54dB/-3dB\r\nMicrophone frequency range: 5-10kHz\r\nMicrophone impedance: 2.2 kΩ at 1 kHz\r\nCable length: about 1.8m', '[\"https://ae01.alicdn.com/kf/Sab3e97a61e084bdf8af927aa27da0fb2l/luetooth-5-1-Gaming-Headsets-Gamer-Wireless-Headphones-With-Noise-Cancelling-Microphone-Wired-Earphone-For-Phone.png_640x640.png_.webp\",\r\n\"https://ae01.alicdn.com/kf/S2ca4041fc6654dacabbc5484e3d738b96/luetooth-5-1-Gaming-Headsets-Gamer-Wireless-Headphones-With-Noise-Cancelling-Microphone-Wired-Earphone-For-Phone.jpg_640x640.jpg_.webp\",\"https://ae01.alicdn.com/kf/Sbc07919a686841bfb18aa11464ef0a25w/luetooth-5-1-Gaming-Headsets-Gamer-Wireless-Headphones-With-Noise-Cancelling-Microphone-Wired-Earphone-For-Phone.png_640x640.png_.webp\"\r\n\r\n]', 24.99, '[]', NULL, '[\"https://ae01.alicdn.com/kf/Sab3e97a61e084bdf8af927aa27da0fb2l/luetooth-5-1-Gaming-Headsets-Gamer-Wireless-Headphones-With-Noise-Cancelling-Microphone-Wired-Earphone-For-Phone.png_640x640.png_.webp\",\r\n\"https://ae01.alicdn.com/kf/S2ca4041fc6654dacabbc5484e3d738b96/luetooth-5-1-Gaming-Headsets-Gamer-Wireless-Headphones-With-Noise-Cancelling-Microphone-Wired-Earphone-For-Phone.jpg_640x640.jpg_.webp\",\"https://ae01.alicdn.com/kf/Sbc07919a686841bfb18aa11464ef0a25w/luetooth-5-1-Gaming-Headsets-Gamer-Wireless-Headphones-With-Noise-Cancelling-Microphone-Wired-Earphone-For-Phone.png_640x640.png_.webp\"\r\n\r\n]', '', 'https://www.aliexpress.us/item/3256805860985784.html?spm=oneshop.search_products.0.0.47497f6bEQM0cM&skuId=12000036031429092&gatewayAdapt=glo2usa4itemAdapt', '2024-04-11 13:25:51', 0, '{\"1star\":\"1\",\"2star\":\"0\",\"3star\":\"26\",\"4star\":\"4\",\"5star\":\"26\"}'),
@@ -140,9 +140,9 @@ ALTER TABLE `coupon`
   ADD PRIMARY KEY (`coupon_id`);
 
 --
--- Indexes for table `items_product`
+-- Indexes for table `items_products`
 --
-ALTER TABLE `items_product`
+ALTER TABLE `items_products`
   ADD PRIMARY KEY (`item_id`);
 
 --

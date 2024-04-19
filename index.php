@@ -62,6 +62,35 @@
 </div>
 
 
+<style type="text/css">
+    .index_f3haw_n{display:flex;}
+</style>
+
+
+<div> 
+    <div class="indexhome_collection">
+        <?php $gttw=db::stmt("SELECT * FROM `items_products` WHERE `item_id`='1111116543213' OR `item_id`='11111200690' OR `item_id`='6366601348' OR `item_id`='7562225743' ORDER BY `item_id` ASC");
+
+        function flexs($f3l2){ 
+            switch ($f3l2) {
+                case 0: return 1.5;break;
+                case 1: return 2;break;
+                case 2: return 1.2;break;
+                default: return 1.4;
+            }
+        }
+        $i=0;
+        while ($getInfo=mysqli_fetch_assoc($gttw)){
+            echo '<a href="/product/'.$getInfo["item_id"].'" style="flex: '.flexs($i).';"><div style=" height:292px " ><img src="'.json_decode($getInfo["item_images"])[0].'" style="height:100%;object-fit: contain;" /></div><p>'.$getInfo["item_title"].'</p></a>';
+        $i++;} ?>
+    </div> 
+</div>
+
+
+
+
+
+
 
  </section>
 

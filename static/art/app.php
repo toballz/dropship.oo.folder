@@ -20,9 +20,7 @@ if($_POST['o']=="addcart" && isset($_POST['piid']) && isset($_POST['tile']) && $
 	$quantity= (strlen($qpre) > 10) ? 10 : 
             ((strlen($qpre) < 1) ? 1 : 
             $qpre);
-    if(!isset($_SESSION['cart'])){
-        $_SESSION['cart'] = array();
-    }
+
     // Flag to indicate if the item was found in the cart
     $found = false;
     // Iterate through the cart to find the item
@@ -92,16 +90,9 @@ if($_POST['o']=="addcart" && isset($_POST['piid']) && isset($_POST['tile']) && $
 
 
     //if user loggedin save address n email
-    if(){
+    if(isset($_SESSION['usera01'])){
 
-    }
-
-
-
-
-
-
-
+    } 
 
 
 
@@ -121,14 +112,13 @@ if($_POST['o']=="addcart" && isset($_POST['piid']) && isset($_POST['tile']) && $
     $return["message"]= "{$payLink}";
 
     //&&&&&&&&&&&&
+}else if($_POST['o'] == "saveshippingaddress" && isset($_POST['avi'])){
+   
+    $_SESSION['usera01']['address'] =  json_decode($_POST['avi']);
+    $return["code"]= 301;
+    $return["message"]= site::url("domain")."/cart/";
+
 }
-
-
-
-
-
-
-
 
 
 

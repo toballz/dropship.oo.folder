@@ -34,7 +34,7 @@ var bH = document.baseURI;
             if(data.code == 200){
                 $("span.hd").html(data.message.cartnum);
             }else{
-                alert(7);
+                alert("#3777-4777");
             }
         }).fail(function(jqXHR, textStatus, errorThrown) {
             console.error("session null:", textStatus, errorThrown);

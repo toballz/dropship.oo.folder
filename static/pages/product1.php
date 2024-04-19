@@ -2,14 +2,14 @@
 <?php
 if(isset($_GET['i'])){
     $itemId=trim($_GET['i']);
-    $gtt=db::stmt("SELECT * FROM `items` WHERE `item_id` = '$itemId' ");
+    $gtt=db::stmt("SELECT * FROM `items_products` WHERE `item_id` = '$itemId' ");
     if(mysqli_num_rows($gtt) <1){exit(header("Location: ".site::url("domain")."/products/not-found.php"));}
     while ($getInfo=mysqli_fetch_assoc($gtt)){
-        $ptitle= $getInfo['title']; 
-        $pprice= $getInfo['price']; 
-        $pimages= $getInfo['images']; 
-        $pcolor= $getInfo['color']; 
-        $pdescription= $getInfo['description']; 
+        $ptitle= $getInfo['item_title']; 
+        $pprice= $getInfo['item_price']; 
+        $pimages= $getInfo['item_images']; 
+        $pcolor= $getInfo['item_colors']; 
+        $pdescription= $getInfo['item_description']; 
     }
 }
 
@@ -39,9 +39,7 @@ $svgStar='<svg height="800px" width="800px" version="1.1" id="Capa_1" xmlns="htt
             max-width: 1470px;
             margin: auto;
             padding:0 6px ;
-        }
-
-
+        } 
         .product_a_e_f{
             display: -webkit-box;
             display: -ms-flexbox;
@@ -215,13 +213,9 @@ $svgStar='<svg height="800px" width="800px" version="1.1" id="Capa_1" xmlns="htt
     <div class="product_f3haw">
         <div class="product_f3haw_q">Related</div>
         <div class="product_f3haw_n">
-            <?php $gttw=db::stmt("SELECT * FROM `items` WHERE `item_id` != '$itemId' ORDER BY `item_id` ASC LIMIT 5");
-            while ($getInfo=mysqli_fetch_assoc($gttw)){ 
-
-                echo '<a href="/product/'.$getInfo["item_id"].'" class="product_f3haw_n_haj4">
-                        <div style=" height:292px " ><img src="'.json_decode($getInfo["images"])[0].'" style="height:100%;object-fit: contain;" /></div>
-                        <p>'.$getInfo["title"].'</p>
-                    </a>';
+            <?php $gttw=db::stmt("SELECT * FROM `items_products` WHERE `item_id` != '$itemId' ORDER BY `item_id` ASC LIMIT 5");
+            while ($getInfo=mysqli_fetch_assoc($gttw)){
+                echo '<a href="/product/'.$getInfo["item_id"].'" class="product_f3haw_n_haj4"><div style=" height:292px " ><img src="'.json_decode($getInfo["item_images"])[0].'" style="height:100%;object-fit: contain;" /></div><p>'.$getInfo["item_title"].'</p></a>';
             } ?>
         </div>
     </div>
@@ -229,12 +223,12 @@ $svgStar='<svg height="800px" width="800px" version="1.1" id="Capa_1" xmlns="htt
     <div class="product_f3haw">
         <div class="product_f3haw_q">Suggested</div>
         <div class="product_f3haw_n">
-            <?php $gttq=db::stmt("SELECT * FROM `items` WHERE `item_id` != '$itemId' ORDER BY `item_id` DESC LIMIT 5");
+            <?php $gttq=db::stmt("SELECT * FROM `items_products` WHERE `item_id` != '$itemId' ORDER BY `item_id` DESC LIMIT 5");
             while ($getInfo=mysqli_fetch_assoc($gttq)){ 
 
                 echo '<a href="/product/'.$getInfo["item_id"].'" class="product_f3haw_n_haj4">
-                        <div style=" height:292px; " ><img src="'.json_decode($getInfo["images"])[0].'" style="height:100%;object-fit: contain;" /></div>
-                        <p>'.$getInfo["title"].'</p>
+                        <div style=" height:292px; " ><img src="'.json_decode($getInfo["item_images"])[0].'" style="height:100%;object-fit: contain;" /></div>
+                        <p>'.$getInfo["item_title"].'</p>
                     </a>';
             } ?>
         </div>

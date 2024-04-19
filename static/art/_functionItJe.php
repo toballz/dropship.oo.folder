@@ -1,8 +1,16 @@
 <?php
 
 $reloadStatic="as.as,ssdn".rand();
-//isset($_SESSION['usera01'])
+//$_SESSION['usera01']
 //isset($_SESSION['cart'])
+
+if(!isset($_SESSION['cart'])){
+    $_SESSION['cart']=array();
+}
+
+
+
+
 
 class site{
     const name="Dropship";
@@ -27,6 +35,48 @@ class site{
         }
     }
 }
+
+
+
+class session{
+
+    public static function userLoggedIn() {
+        if(isset($_SESSION['usera01']['id']) && strlen($_SESSION['usera01']['id'])>4 ){
+            return true;
+        }
+        return false;
+    }
+
+    public static function user(){
+
+        if(!isset($_SESSION['usera01']['address'])){
+            $_SESSION['usera01']['address']=(object)array(
+                                                "shippingStreet"=>"",
+                                                "shippingApt"=>"",
+                                                "shippingCity"=>"",
+                                                "shippingState"=>"",
+                                                "shippingZipPostal"=>"",
+                                                "shippingEmail"=>"",
+                                                "shippingFname"=>"",
+                                                "shippingLname"=>"",
+                                                "shippingPhonel"=>"",
+                                            );
+        }
+        if(self::userLoggedIn()){
+            //get address from DB::user_profile
+            //$_SESSION['usera01']['address']=(object)json_decode();
+        }
+
+        return (object)array(
+            'id'=> (self::userLoggedIn())?trim($_SESSION['usera01']):false,
+            'address'=> $_SESSION['usera01']['address'],
+        );
+  
+    }
+}
+
+
+
 class tools{ 
 
     const passwordsalt="\u2315?>c#7@&8*`";
@@ -76,7 +126,7 @@ class tools{
     public static function countQualCart($agg){
         if($agg == "cartquantity"){
             $totalQuantity = 0;
-            if (isset($_SESSION['cart'])) {
+            if ($_SESSION['cart']) {
                 foreach ($_SESSION['cart'] as $item) {
                     $totalQuantity += $item['productquantity'];
                 }
@@ -89,11 +139,11 @@ class tools{
                 $productIds[] = $product['productid'];
             }
             //get price from productID
-            $gtt=db::stmt("SELECT `item_id`,`price` FROM `items` WHERE `item_id` IN ('" . implode("','", $productIds) . "')");                
+            $gtt=db::stmt("SELECT `item_id`,`item_price` FROM `items_products` WHERE `item_id` IN ('" . implode("','", $productIds) . "')");                
             $pPriceandIdforeach=array();
             while ($getInfo=mysqli_fetch_assoc($gtt)){
                 $pPriceandIdforeach[]= array("pid"=>$getInfo['item_id'],
-                                          "pric"=>$getInfo['price']);
+                                          "pric"=>$getInfo['item_price']);
             }
 
             //Multiple productID by Quantity
