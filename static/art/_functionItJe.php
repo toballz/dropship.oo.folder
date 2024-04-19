@@ -20,7 +20,7 @@ class site{
     	if((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') || $_SERVER['SERVER_PORT'] == 443){
     		return "https:";
     	}else{
-    		return "http:";
+    		return "https:";
     	}
     }
     public static function url($vrvi){
@@ -86,10 +86,12 @@ class tools{
 
     const passwordsalt="\u2315?>c#7@&8*`";
     const stripe_Secret_key_API="sk_test_51NFmpULWQbqqSt59gnw0rTcvFeZ6t226bfUAx3do8u3J2f5pFZ5gCcxWIyuZULEYBKl15dE343r7ZuonVeEa563N00yTmQBkiG";
+    const stripe_Signing_Secret='whsec_2GTtOIMkpGJh4IIF54fE1oW62Az92gEK';
 
-    public static function stripe_Create_Dynamic_Link_for_payments($cemail,$pprice){
+    public static function stripe_Create_Dynamic_Link_for_payments($cemail,$pprice,$orderID4){
         if(!isset($cemail) || !isset($pprice)){exit("Payment platform error #2896-2407");}
         if(strlen($cemail) < 4 || !filter_var($cemail, FILTER_VALIDATE_EMAIL) || $pprice < 1){exit("Payment platform error #4890-7455");}
+        if(strlen($orderID4) < 10 ){exit("Payment platform error #4890-7455");}
         $realpprice=$pprice*100;
         //
         require_once dir.'/static/3rdparty/stripe-php-master/init.php';
@@ -109,6 +111,11 @@ class tools{
                         'unit_amount' => $realpprice, // Amount in cents
                     ],
                     'quantity' => 1,
+                ],
+            ],
+            'payment_intent_data' => [
+            'metadata' => [
+                'orderID' => $orderID4, // Include order ID in metadata
                 ],
             ],
             'mode' => 'payment',

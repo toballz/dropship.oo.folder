@@ -131,21 +131,22 @@
 <script type="text/javascript">
     function deletefromcart(th,sa){
         $.post("a/ig/apy.php", {o:"deltecart", cartid:sa, colre: th})
-  .done(function(data) {
-    if(data.code == 301){
-        window.location.href = data.message;
-    }  
-  })
-  .fail(function(jqXHR, textStatus, errorThrown) {
-    console.error("addcart-failed:", textStatus, errorThrown);
-  }); 
+          .done(function(data) {
+            if(data.code == 301){
+                window.location.href = data.message;
+            }  
+          })
+          .fail(function(jqXHR, textStatus, errorThrown) {
+            console.error("addcart-failed:", textStatus, errorThrown);
+          }); 
     }
 
 
 
 //get address page
 $(".nj79r8p").click(function(){
-    $.get("http://dropship.oo/cart/checkout/?getSipiihig=4cxsa", function(data){
+    var bH = document.baseURI;
+    $.get(bH+"cart/checkout/?getSipiihig=4cxsa", function(data){
         $("#cart_address_765u").html(data);
     });
 });

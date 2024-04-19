@@ -106,7 +106,7 @@ if($_POST['o']=="addcart" && isset($_POST['piid']) && isset($_POST['tile']) && $
 
 
          //insert into DB
-        $orderID=rand(1,999999997).rand(1,999999998).rand(1,999999987);
+        $orderID=rand(1,989999997).rand(1,999999998).rand(1,99999987);
         $userID=NULL;
         $shippingAddy=json_encode(session::user()->address);
         $allCart=json_encode($_SESSION['cart']);
@@ -116,7 +116,7 @@ if($_POST['o']=="addcart" && isset($_POST['piid']) && isset($_POST['tile']) && $
         $_SESSION['processingOrderID']=$orderID;
 
         //stripe paynow
-        $payLink=tools::stripe_Create_Dynamic_Link_for_payments($vemail,$totalPrice);
+        $payLink=tools::stripe_Create_Dynamic_Link_for_payments($vemail,$totalPrice,$orderID);
 
         //return;;;
         $return["code"]= 301;
