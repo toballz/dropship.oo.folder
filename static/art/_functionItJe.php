@@ -2,7 +2,9 @@
 
 $reloadStatic="as.as,ssdn".rand();
 //$_SESSION['usera01']
-//isset($_SESSION['cart'])
+//$_SESSION['cart']
+//$_SESSION['shippingPrice']
+//$_SESSION['processingOrderID']
 
 if(!isset($_SESSION['cart'])){
     $_SESSION['cart']=array();
@@ -62,6 +64,8 @@ class session{
                                                 "shippingPhonel"=>"",
                                             );
         }
+
+
         if(self::userLoggedIn()){
             //get address from DB::user_profile
             //$_SESSION['usera01']['address']=(object)json_decode();
@@ -70,6 +74,7 @@ class session{
         return (object)array(
             'id'=> (self::userLoggedIn())?trim($_SESSION['usera01']):false,
             'address'=> $_SESSION['usera01']['address'],
+            'shippingPrice'=> (!isset($_SESSION['shippingPrice']))?0:$_SESSION['shippingPrice']
         );
   
     }

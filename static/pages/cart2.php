@@ -7,15 +7,15 @@
  
     <style type="text/css">
     .cart_container{
-        display:flex;padding:12px 0;m ax-width:1200px;letter-spacing: 1px;
+        display:flex;letter-spacing: 1px;
     }
 
-    .cartv1{width:55%;display: flex;justify-content:end;}
-    .cartv1>.cartv1_inner{max-width:800px;padding:12px}
+    .cartv1{width:55%;display: flex;justify-content:end;background: var(--grey);}
+    .cartv1>.cartv1_inner{max-width:800px;padding:12px;margin-top:29px}
 
     .cartv1>.cartv1_inner>ul{padding:12px; width:100%;display: grid;    column-gap: 16px;margin-bottom:12px;
     grid-template-columns: repeat(16,calc(6.25% - 16px + 1px));
-    row-gap: 16px; border: 1px solid var(--grey);}
+    row-gap: 16px; border-bottom: 1px solid #fff;}
     .cartv1>.cartv1_inner>ul>li:nth-child(1){grid-area: 1/1/span 1/span 3;}
     .cartv1>.cartv1_inner>ul>li:nth-child(2){grid-area: 1/4/span 1/span 11;}
     .cartv1>.cartv1_inner>ul>li:nth-child(3){grid-area: 1/15/span 1/span 2;display: flex;flex-direction: column;justify-content: space-between;align-items: center;}
@@ -26,13 +26,13 @@
     .cartv1 select:focus-visible,.cartv1 select:focus{border:0 !important;outline:none;}
 
     .cartv2{width:45%;position:relative;}
-    .cartv2>.cartv2_inner{position: sticky;top: 2px;padding:12px}
+    .cartv2>.cartv2_inner{position: sticky;top: 2px;padding:12px;margin-top:39px}
     .cartv2>.cartv2_inner>ul{padding:12px;border:1px solid var(--grey)}
     .cartv2>.cartv2_inner>ul>li{display:flex;justify-content: space-between;margin-bottom:9px}
     .cartv2>.cartv2_inner>ul>li.cartv2_shippaddressfoo{justify-content:center !important;}
     .cartv2>.cartv2_inner>ul>li>hr{width: 100%}
     .cartv2>.cartv2_inner>ul>li>a{margin-top:10px;background-color:#3665f3;padding:19px;width:100%;text-align:center;border-radius:15px;color: #fff}
-    .cartv2 .subtotall{font-weight:600}
+    .cartv2 .reltoal,.cartv2 .subtotall{font-weight:600}
     .cartv1 h2{margin-bottom:26px;font-size:23px}
     .cartv1 .carttitle a{color:#000;font-weight:600;line-height:18px}
     .cartv2 .loginsespoint>span{margin-bottom:12px}
@@ -80,13 +80,26 @@
     <div class="cartv2_inner">
 
        <ul>
-            <?php $itemSum= array_sum($quantityTpriceArr);?>
+            <?php $itemSum= array_sum($quantityTpriceArr);
+                if($itemSum > 50) {
+                    $shippingPrice="<span style='color:green'>FREE</span>";
+                }else if($itemSum == 0) {
+                    $shippingPrice="<span>$0</span>";
+                }else if($ShippingAdddress->shippingStreet !== ""){
+                    if(!isset($_SESSION['shippingPrice'])){
+                        $va=(rand(5,14))+0.99;
+                        $_SESSION['shippingPrice']=$va;
+                    }
+                    $shippingPrice="<span>{$_SESSION['shippingPrice']}</span>";
+                }else{
+                    $shippingPrice="<span style='color:var(--err-red);font-size:12px'>Enter shipping address</span>";
+                }?>
            <li><span>Items ( <?php echo tools::countQualCart("cartquantity");?> )</span><span>$<?php echo $itemSum;?></span></li>
-           <li><span>Shipping</span><?php echo ($itemSum > 50) ? "<span style='color:green'>FREE</span>" : "<span>".(($itemSum == 0) ? "$0" : "Enter shipping address")."</span>";?></li>
-           <li><hr/></li>
+           <li><span>Shipping</span><?php echo $shippingPrice;?></li>
+           <li style="border-bottom:1px solid var(--grey);"></li>
            <li class="loginsespoint"><?php if(!isset($_SESSION['usera01'])){?><span><a href="">Login</a> to use your points</span><?php }?></li>
-           <li class="subtotall"><span>SubTotal</span><span>$<?php echo $itemSum;?></span></li>
-           <li><hr/><span>.</span><hr/></li>
+           <li class="subtotall"><span>SubTotal</span><span>$<?php echo $itemSum+session::user()->shippingPrice;?></span></li>
+           <li><hr/><span> SHIPPING </span><hr/></li>
            <li class="cartv2_shippaddressfoo">
                 <div id="cart_address_765u">
                     <div class="cart_address_u213">
@@ -104,10 +117,10 @@
             </li>
 
            <br/>
-           <li class="subtotall"><span>Total</span><span>$<?php echo $itemSum;?></span></li>
+           <li class="reltoal"><span>Total</span><span>$<?php echo $itemSum+session::user()->shippingPrice;;?></span></li>
            <li><hr/></li>
 
-           <li><a href="<?php echo ($itemSum == 0)?'javascript:void(0)':'cart/checkout/';?>">Go to Checkout</a></li>
+           <li><a id="<?php echo ($itemSum == 0)?'':'flam42';?>" href="javascript:void(0);">Go to Checkout</a></li>
        </ul>
     </div>
    </div>
@@ -138,11 +151,11 @@ $(".nj79r8p").click(function(){
 });
 
 
-
-$().click(function(){
+//go checkout page
+$("#flam42").click(function(){
     $.post("a/ig/apy.php", {
                     o:"paynow", 
-                    price:14.44,
+                    price:$(".cartv2 .reltoal>span:nth-child(2)").html(),
                     colre: "red"
 
                 }).done(function(data) {

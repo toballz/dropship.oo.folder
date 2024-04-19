@@ -78,39 +78,50 @@ if($_POST['o']=="addcart" && isset($_POST['piid']) && isset($_POST['tile']) && $
         }
     }
     //&&&&&&&&&&&&
-}else if($_POST['o'] == "paynow" && isset($_POST['wemail'])){
+}else if($_POST['o'] == "paynow"){
     //pay now process
-    $vemail = trim($_POST['wemail']);
+
+    $err=false;
+    $vemail = trim(session::user()->address->shippingEmail);
     //validate email
     if(!filter_var($vemail, FILTER_VALIDATE_EMAIL)){
         $return["code"]= 404;
         $return["message"]= "Email error! #5743-3554";
-        return;
+        $err=true;
+    }
+    if(session::user()->address->shippingStreet == ""){
+        $return["code"]= 404;
+        $return["message"]= "Enter your shipping address! #5743-3554";
+        $err=true;
+         
     }
 
 
-    //if user loggedin save address n email
-    if(isset($_SESSION['usera01'])){
-
-    } 
-
-
-
-
+    //if no errors
+    if(!$err){
+        $quantityNprice=tools::countQualCart("quantityprice");
+        $shipping=session::user()->shippingPrice;
+        $tax=0.0;
+        $totalPrice=array_sum($quantityNprice)+$shipping+$tax;
 
 
-    $quantityNprice=tools::countQualCart("quantityprice");
-    $shipping=0.0;
-    $tax=0.0;
-    $totalPrice=array_sum($quantityNprice)+$shipping+$tax;
+         //insert into DB
+        $orderID=rand(1,999999997).rand(1,999999998).rand(1,999999987);
+        $userID=NULL;
+        $shippingAddy=json_encode(session::user()->address);
+        $allCart=json_encode($_SESSION['cart']);
+        $isnta=db::stmt("INSERT INTO `orders_made` 
+            (`order_id`, `order_user_id`, `order_email`, `order_shipping_address`, `payment_card`, `order_haspayed`, `order_cart_items`, `order_howmuchpaid`, `order_dateAdded`) VALUES 
+            ('$orderID', NULLIF('$userID',false), '$vemail', '$shippingAddy', NULL, '0', '$allCart', '$totalPrice', current_timestamp());");
+        $_SESSION['processingOrderID']=$orderID;
 
-    //paynow
-    $payLink=tools::stripe_Create_Dynamic_Link_for_payments($vemail,$totalPrice);
+        //stripe paynow
+        $payLink=tools::stripe_Create_Dynamic_Link_for_payments($vemail,$totalPrice);
 
-    //return;;;
-    $return["code"]= 301;
-    $return["message"]= "{$payLink}";
-
+        //return;;;
+        $return["code"]= 301;
+        $return["message"]= "{$payLink}";
+    }
     //&&&&&&&&&&&&
 }else if($_POST['o'] == "saveshippingaddress" && isset($_POST['avi'])){
    
