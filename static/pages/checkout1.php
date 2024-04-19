@@ -1,5 +1,5 @@
 <?php include("../../conf.php");?>
-
+<?php if(isset($_GET['getSipiihig']) && $_GET['getSipiihig']=="4cxsa"){?>
 <style type="text/css">
     .checkout_g4356{width: 100%;padding: 16px;display: flex;}
     .checkout_g4356 h2{margin:3lkin4px 0 19px}
@@ -127,4 +127,67 @@
 
     });
 </script>
- 
+<?php }else if(isset($_GET['lke86j']) && $_GET['lke86j']=="e0gay3"){?>
+
+    <style type="text/css">
+        .logina1{position: fixed;top: 0;left: 0; background:rgb(0 0 0 / 66%);height: 100%;width: 100%;
+                display:flex;justify-content: center;align-items: center;}
+        .ban98acv{max-width:400px;border: 1px solid var(--grey);;background:#fff;width: 100%;padding:12px;border-radius:15px}
+        .ban98acv h1{text-align: center;}
+        .ban98acv input{width:100%;padding:16px;margin-bottom:15px;border:1px solid var(--grey);}
+        .ban98acv input[name="submit"]{cursor:pointer;font-weight:600;background:var(--bg-color);color:#fff}
+        #signup{display: none;}
+        .ban98acv::after {content: ""; display: table; clear: both; }
+        .xacn{float: right; background: red; padding: 6px 7px 3px; border-radius: 15px; color: #fff;cursor: pointer;}
+        #clksiup,#clklodg{cursor: pointer;}
+    </style>
+
+    <section class="logina1">
+
+
+        <div class="ban98acv" id="login">
+            <b class="xacn">X</b>
+            <h1>LOGIN</h1>
+            <br/><br/><br/>
+            <div>
+                <input type="email" name="email" placeholder="Email">
+                <input type="password" name="pwsd" placeholder="Password">
+                <input type="button" name="submit" value="LOGIN">
+                <p id="clksiup">Signup</p>
+                <p>Forgot Password</p>
+            </div>
+
+            <br/><br/>
+        </div>
+
+        <div class="ban98acv" id="signup">
+            <b class="xacn">X</b>
+            <h1>SIGNUP</h1>
+            <br/><br/><br/>
+            <div>
+                <input type="email" name="email" placeholder="Email">
+                <input type="password" name="pwsd" placeholder="Password">
+                <input type="password" name="vpwsd" placeholder="Verify Password">
+                <input type="button" name="submit" value="SIGNUP">
+                <p id="clklodg">Login</p>
+            </div>
+            <br/>
+        </div>
+        <script type="text/javascript">
+            $("#clksiup").click(function(){
+                $("#login").css("display","none");
+                $("#signup").css("display","block");
+            });
+            $("#clklodg").click(function(){
+                $("#signup").css("display","none");
+                $("#login").css("display","block");
+            });
+
+            $(".xacn").click(function(){
+                $(".logina1").css("display","none");
+            });
+        </script>
+    </section>
+
+
+<?php }?>

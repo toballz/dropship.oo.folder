@@ -145,7 +145,7 @@
 
 //get address page
 $(".nj79r8p").click(function(){
-    $.get("http://dropship.oo/cart/checkout/", function(data){
+    $.get("http://dropship.oo/cart/checkout/?getSipiihig=4cxsa", function(data){
         $("#cart_address_765u").html(data);
     });
 });
