@@ -131,7 +131,7 @@
 
     <style type="text/css">
         .logina1{position: fixed;top: 0;left: 0; background:rgb(0 0 0 / 66%);height: 100%;width: 100%;
-                display:flex;justify-content: center;align-items: center;}
+                display:flex;justify-content: center;align-items: center;z-index: 1212}
         .ban98acv{max-width:400px;border: 1px solid var(--grey);;background:#fff;width: 100%;padding:12px;border-radius:15px}
         .ban98acv h1{text-align: center;}
         .ban98acv input{width:100%;padding:16px;margin-bottom:15px;border:1px solid var(--grey);}

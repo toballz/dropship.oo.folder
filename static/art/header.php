@@ -47,6 +47,10 @@
 		</b>
 		<script>
 			$(".ldi5").click(function(){
+				if($(".logina1").length>0){
+					$(".logina1").css("display","flex");
+					return;
+				}
 				<?php if(!session::user()->id){
 					echo '$.get("http://dropship.oo/cart/checkout/?lke86j=e0gay3", function(data){
 			        	$("body").append(data);
@@ -54,6 +58,7 @@
 				}else{
 					echo 'window.href.location="/user"';
 				}?>
+
 				//lke86je0gay3
 			});
 		</script>
