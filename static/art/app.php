@@ -82,7 +82,7 @@ if($_POST['o']=="addcart" && isset($_POST['piid']) && isset($_POST['tile']) && $
     //pay now process
 
     $err=false;
-    $vemail = trim(session::user()->address->shippingEmail);
+    $vemail = strtolower(trim(session::user()->address->shippingEmail));
     //validate email
     if(!filter_var($vemail, FILTER_VALIDATE_EMAIL)){
         $return["code"]= 404;
