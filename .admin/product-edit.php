@@ -43,7 +43,7 @@
                         //print_r($ar);
                     }else if(isset($_POST['urlfrom']) && isset($_POST['title']) && isset($_POST['price']) && isset($_POST['description']) && isset($_POST['pictures']) && isset($_POST['upload'] )){
 
-                        $itemId=rand(999,9999999999);
+                        $itemId=rand(9,99999).rand(99,999999);
                         $titler=mysqli_escape_string(db::conn(),trim($_POST['title']));
                         $descri=mysqli_escape_string(db::conn(),trim($_POST['description']));
                         $imagee=trim($_POST['pictures']);

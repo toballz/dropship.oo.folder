@@ -106,7 +106,7 @@ if($_POST['o']=="addcart" && isset($_POST['piid']) && isset($_POST['tile']) && $
 
 
          //insert into DB
-        $orderID=rand(1,989999997).rand(1,999999998).rand(1,99999987);
+        $orderID=rand(1,98999996).rand(1,99999997).rand(1,9999998);
         $userID=NULL;
         $shippingAddy=json_encode(session::user()->address);
         $allCart=json_encode($_SESSION['cart']);

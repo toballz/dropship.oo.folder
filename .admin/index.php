@@ -133,6 +133,15 @@
                                         <h2 class="text-right no-margin">$<?php echo number_format($totalIncome - $taxPercentg,2);?></h2>
                                     </div>
                                 </div>
+                                <div class="row vertical-center-box vertical-center-box-tablet">
+                                    <p class="hj64243">Expected Paid Tax Paid orders</p>
+                                    <div class="text-left col-xs-3 mar-bot-15">
+                                        <label class="label bg-red">7% <i class="fa fa-level-down" aria-hidden="true"></i></label>
+                                    </div>
+                                    <div class="col-xs-9 cus-gh-hd-pro">
+                                        <h2 class="text-right no-margin">$<?php echo number_format($totalIncome-($totalIncome - $taxPercentg),2);?></h2>
+                                    </div>
+                                </div>
                                 <div class="progress progress-mini">
                                     <div style="width: 38%;" class="progress-bar progress-bar-danger bg-red"></div>
                                 </div>
