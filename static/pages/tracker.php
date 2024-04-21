@@ -1,14 +1,35 @@
 <?php include("../../conf.php");?>
 <?php
-if(isset($_SESSION['processingOrderID'])){
-    $processingOrderID=trim($_SESSION['processingOrderID'] );
+if(isset($_GET['oid'])){
+    $processingOrderID=trim($_GET['oid']);
     $traccker=db::stmt("SELECT * FROM `orders_made` WHERE `order_id` = '$processingOrderID' AND `order_haspayed` = '1';");
     //echo "SELECT * FROM `orders_made` WHERE `order_id` = '$processingOrderID' AND `order_haspayed` = '1';";
     if(mysqli_num_rows($traccker)==1){
         $trackerIsValid=true;
+
         //empty carts
-        $_SESSION['cart']=[];
-        unset($_SESSION['shippingPrice']);
+        if($_SESSION['processingOrderID'] == $_GET['oid']){
+            $_SESSION['cart']=[];
+            unset($_SESSION['shippingPrice']);
+
+            $to = "noreply@".site::url("servername");
+            $subject = site::url("servername")." Your Order Has Been Received";
+
+            $headers = "From: Custom Name <noreply@".site::url("servername").">" . "\r\n";
+            //$headers .= "Reply-To: custom@example.com" . "\r\n";
+            $headers .= "MIME-Version: 1.0" . "\r\n";
+            $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+
+            $receiptMessage = "This is a test email.";
+            // Send email
+            // if (mail($to, $subject, $receiptMessage, $headers)) {
+            //     echo "Email sent successfully.";
+            // } else {
+            //     echo "Email sending failed.";
+            // }
+
+        }
+
         while ($getTracckerInfo=mysqli_fetch_assoc($traccker)){ 
             $shippingAddress= $getTracckerInfo['order_shipping_address']; 
             $cartItems= $getTracckerInfo['order_cart_items'];
@@ -66,12 +87,17 @@ if(isset($_SESSION['processingOrderID'])){
         
     </style>
     <div style="">
-        <div class="tracker_container" style="background:#3bb028;padding:15px;">
-            <br/><br/><br/>
+        <div style="background:#3bb028;padding:15px;
+    position: relative;
+    box-shadow: 0px 6px 5px 0px #3bb028;">
+            <div class="tracker_container" >
+                <br/><br/><br/>
+            </div>
         </div>
-        <div class="tracker_container" style="background:#2c831c;padding:15px;">
+        <div class="" style="background:#2c831c;padding:15px;
+    box-shadow: 0px 6px 5px 0px #2c831c;">
             <br/>
-             <ul class="trackercoolr">
+             <ul class="trackercoolr tracker_container">
                 <li>
                     <div></div>
                     <div>Order Placed</div>

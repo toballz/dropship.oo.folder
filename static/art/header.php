@@ -77,7 +77,7 @@
 
 	<form action="/search">
 		<div class="header_a3g_g5">
-			<input name="ia" type="text" />
+			<input name="ia" type="text" placeholder="SEARCH PRODUCTS" />
 			<button>Search</button>
 		</div>
 	</form>

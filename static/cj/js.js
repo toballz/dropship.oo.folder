@@ -170,6 +170,7 @@ $.post("a/ig/apy.php", {o:"addcart", piid: pid, qunt: qui,color:col,tile:til })
   });
 
 },500);
+    loader.stop();
 });
 
 //share product

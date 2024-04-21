@@ -1,5 +1,4 @@
 <?php
-
 $reloadStatic="as.as,ssdn".rand();
 //$_SESSION['usera01']
 //$_SESSION['cart']
@@ -15,6 +14,8 @@ if(!isset($_SESSION['cart'])){
 
 
 class site{
+
+    const appIsLive=false;
     const name="Dropship";
     static function isSecure(){
     	if((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') || $_SERVER['SERVER_PORT'] == 443){
@@ -84,8 +85,22 @@ class session{
 class tools{ 
 
     const passwordsalt="\u2315?>c#7@&8*`";
-    const stripe_Secret_key_API="sk_test_51NFmpULWQbqqSt59gnw0rTcvFeZ6t226bfUAx3do8u3J2f5pFZ5gCcxWIyuZULEYBKl15dE343r7ZuonVeEa563N00yTmQBkiG";
-    const stripe_Signing_Secret='whsec_2GTtOIMkpGJh4IIF54fE1oW62Az92gEK';
+    public static function stripe_Secret_key_API(){
+        if(site::appIsLive){
+            return "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";
+        }else{
+            //test api
+            return "sk_test_51K35sFFccEYIDCwADI0uqY5sUkNX18tNt2Hk4dzZ589UKY42yDdXCdJi070mklB8PVvzTCz3kLCAPC0Tkip5DBlo00eaaBIvrE";
+        }
+    }
+    public static function stripe_Signing_Secret(){
+        if(site::appIsLive){
+            return "whsec_26dFBYpqShU78UNstISQOW27gteD77JZ";
+        }else{
+            //test api
+            return "whsec_Za5Uue0BAausncPr7Y1QXxPIWFWBwa4N";
+        }
+    }
 
     public static function stripe_Create_Dynamic_Link_for_payments($cemail,$pprice,$orderID4){
         if(!isset($cemail) || !isset($pprice)){exit("Payment platform error #2896-2407");}
@@ -95,7 +110,7 @@ class tools{
         //
         require_once dir.'/static/3rdparty/stripe-php-master/init.php';
         //
-        \Stripe\Stripe::setApiKey(self::stripe_Secret_key_API);
+        \Stripe\Stripe::setApiKey(self::stripe_Secret_key_API());
         //
         // Create a new Checkout Session
         $session = \Stripe\Checkout\Session::create([
@@ -119,7 +134,7 @@ class tools{
             ],
             'mode' => 'payment',
             'success_url' => site::url("domain").'/g/tracker/'.$orderID4,
-            'cancel_url' => site::url("domain").'/cart',
+            'cancel_url' => site::url("domain").'/cart/',
             'customer_email' => $cemail, // Customer email
             //'customer_phone' => '+1234567890',
         ]);
