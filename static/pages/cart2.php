@@ -2,8 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <?php $headTitle=site::name." | Home"; include(tools::dir()->php."/head.php");?>
-    <meta name="adventure" content="<?php echo $itemId;?>"/>
+    <?php $headTitle=site::name." | Home"; include(tools::dir()->php."/head.php");?> 
  
     <style type="text/css">
     .cart_container{

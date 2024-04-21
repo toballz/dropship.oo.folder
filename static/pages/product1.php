@@ -33,7 +33,6 @@ $svgStar='<svg height="800px" width="800px" version="1.1" id="Capa_1" xmlns="htt
  
     <style type="text/css">
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-
         .product_container{ 
             width:100%;
             max-width: 1470px;
@@ -48,12 +47,24 @@ $svgStar='<svg height="800px" width="800px" version="1.1" id="Capa_1" xmlns="htt
             -ms-flex-wrap: wrap;
             flex-wrap: wrap;
         }
+        .pspeck{grid-row: 3;display: grid;grid-template-columns: repeat(3, 1fr);grid-gap: 10px;}
+        @media  screen and (max-width: 800px) {
+            .pspeck{grid-template-columns: repeat(2, 1fr);}
+        }
+        @media  screen and (max-width: 700px) {
+            .product_a_e_f{display: block;}
+            .product_a_el{height: 100%;max-height: 400px}
+            .product_a_er,.product_a_el{width: 100% !important;margin-bottom: 12px}
+            .product_a_eldp{height: 400px !important}
+        .product_a_el{ min-height:250px !important;}
+        }
 
         .product_a_el{
-            width:50%;padding: 12px; overflow:hidden;
+            width:50%;padding: 12px; overflow:hidden;min-height: 550px;
         }
-        .product_a_eldp{width:100%;height:100%;position:relative;}
+        .product_a_eldp{width:100%;height:100%;position:relative;overflow:hidden;}
         .product_a_er{
+    background: var(--grey);
             width:50%;padding: 12px;
             font-family: "Poppins", sans-serif;
         }
@@ -61,7 +72,7 @@ $svgStar='<svg height="800px" width="800px" version="1.1" id="Capa_1" xmlns="htt
 
         .al0_2{font-size:10px;}
 
-        .product_sat_title{font-weight: 600;font-size: 24px;margin-bottom: 10px}
+        .product_sat_title{font-weight: 600;font-size: 24px;margin-bottom: 10px;margin-top: 12px}
 
 
         .product_lootrating{display: flex; align-items: center; gap: 2px;margin-bottom:12px;
@@ -76,7 +87,8 @@ $svgStar='<svg height="800px" width="800px" version="1.1" id="Capa_1" xmlns="htt
         .product_sat_quantity_in{font-size:12px}
         .product_sat_quantity{display:flex;margin-bottom:12px}
         .product_sat_quantity>span{font-weight: 600;padding:3px 17px;border: 1px solid #ccc;cursor:pointer;font-size: 18px}
-        .product_sat_quantity>input{-moz-appearance: textfield; appearance: textfield; padding:3px 9px;border-left: 0;border-right: 0;text-align:center;border: 1px solid #ccc;outline: none;} 
+        .product_sat_quantity>input{
+    background: var(--grey);-moz-appearance: textfield; appearance: textfield; padding:3px 9px;border-left: 0;border-right: 0;text-align:center;border: 1px solid #ccc;outline: none;} 
         .product_sat_quantity>input::-webkit-outer-spin-button, .product_sat_quantity>input::-webkit-inner-spin-button {-webkit-appearance: none;margin: 0;}
         .product_sat_addcart{
             letter-spacing: 1.5px;font-size: 14px;font-weight: 600;width: 100%;border-radius: 25px;padding: 14.5px;margin-bottom: 12px;color:#fff;
@@ -85,8 +97,8 @@ $svgStar='<svg height="800px" width="800px" version="1.1" id="Capa_1" xmlns="htt
 
         .product_sat_share{border:0;background: transparent;font-family: "Poppins", sans-serif;font-size: 14px;padding:0; display: flex; min-height: 2.4rem;justify-content: space-around; align-items: center;
         }
-      .product_f3haw>.product_f3haw_q{border:1px solid #000; width: 124px;padding: 14px;border-bottom: 0;font-weight:600}
-      .product_f3haw_n{padding: 14px;border:1px solid #000;display:flex;justify-content: space-around;flex-wrap:wrap; background: var(--grey);}
+      .product_f3haw>.product_f3haw_q{width: 124px;padding: 14px;border-bottom: 0;font-weight:600;background: var(--grey);}
+      .product_f3haw_n{padding: 14px;display:flex;justify-content: space-around;flex-wrap:wrap; background: var(--grey);}
       .product_f3haw_n_haj4{width:252px;font-size:14px;padding:7px}
       .product_f3haw_n_haj4 p{white-space:nowrap;overflow:hidden;text-overflow: ellipsis;width:100%}
 
@@ -111,8 +123,8 @@ $svgStar='<svg height="800px" width="800px" version="1.1" id="Capa_1" xmlns="htt
     .product_sat_color input:checked+label{border: 2px solid #4bff52;}
 
 
-        .product_carosel{position:absolute;left:0;top:0;width:100%;transition:all 0.2s ease}
-        .product_carosel_f5{position:absolute;left: 0;top: 0;height:420px;width: 100%; }
+        .product_carosel{position:absolute;left:0;top:0;width:100%;height:100%;transition:all 0.2s ease}
+        .product_carosel_f5{position:absolute;left: 0;top: 0;height:100%;width: 100%; }
         .product_carosel_f5>img{height: 100%;object-fit: contain;}
         .product_carosel_ga9a{position:absolute;top:40%;height:120px;width:43px;z-index:12;border:0;opacity: 0.4;
     background-color: var(--bg-color);
@@ -131,12 +143,6 @@ $svgStar='<svg height="800px" width="800px" version="1.1" id="Capa_1" xmlns="htt
     
     <?php include(tools::dir()->php."/header.php");?>
      
-    
-
-
-<br><br><br>
- 
-
 
  <section class="product_container">
  
@@ -215,6 +221,7 @@ $svgStar='<svg height="800px" width="800px" version="1.1" id="Capa_1" xmlns="htt
      .decrepaos_boddy{ padding: 12px;min-height:222px}
     .decrepaos_boddy>div{transition:  opacity .15s linear;display: none;}
     #deropto{display: block;}
+    #deropto>ul>li{margin-bottom:12px}
 </style>
 <div class="decrepaos"  >
     <div class="decrepaos_inner">
@@ -225,9 +232,31 @@ $svgStar='<svg height="800px" width="800px" version="1.1" id="Capa_1" xmlns="htt
         </ul>
     </div> 
      <div class="decrepaos_boddy">
-        <div id="deropto"><?php echo $pdescription;?></div> 
+            <?php  $descriptionsNspec = json_decode($pdescription, true);?>
+        <div id="deropto">
+            <b>DESCRIPTION</b><br/><br/>
+            <ul>
+                <?php echo $descriptionsNspec['Description'];?>
+            </ul>
+
+            <br/><br/>
+            <b>SPECIFICATIONS</b><br/><br/>
+            <ul class="pspeck">
+            <?php 
+            $specck="";
+            foreach ($descriptionsNspec['Specifications'] as $key => $value) {
+            $specck .= '<li><b>' . $key . ':</b> <span>' . $value . '</span></li>';
+            }
+            echo $specck;?>
+                
+            </ul>
+
+        </div> 
         <div id="re83vws">review<br><br><br><br></div>
-        <div id="len73nb">dhgjkhjdgkjh sdgfhgh<br><br><br><br></div>
+        <div id="len73nb">
+           asddjghfs<br/><br/>
+            
+        </div>
      </div>
  
 </div>

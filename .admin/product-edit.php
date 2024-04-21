@@ -41,7 +41,7 @@
                     if (isset($_POST['ak'])) {
                         $ar=json_decode($_POST['ak']);
                         //print_r($ar);
-                    }else if(isset($_POST['urlfrom']) && isset($_POST['title']) && isset($_POST['price']) && isset($_POST['description']) && isset($_POST['pictures']) && isset($_POST['upload'] )){
+                    }else if(isset($_POST['urlfrom']) && isset($_POST['title']) && isset($_POST['price']) && isset($_POST['description']) && isset($_POST['tagss']) && isset($_POST['pictures']) && isset($_POST['upload'] )){
 
                         $itemId=rand(9,99999).rand(99,999999);
                         $titler=mysqli_escape_string(db::conn(),trim($_POST['title']));
@@ -49,11 +49,12 @@
                         $imagee=trim($_POST['pictures']);
                         $pricce=mysqli_escape_string(db::conn(),trim($_POST['price']));
                         $coolor=isset($_POST['colors'])?$_POST['colors']:false;
+                        $tagsss=trim($_POST['tagss']);
                         $frmsto=mysqli_escape_string(db::conn(),trim($_POST['urlfrom']));
 
                         $rr="INSERT INTO 
                         `items_products` (`item_id`, `item_title`, `item_description`, `item_images`, `item_price`, `item_on_sale`, `size`, `item_colors`, `item_tags`, `item_fromstore`, `item_dateadded`) 
-                        VALUES ('$itemId', '$titler', '$descri',  '$imagee', '$pricce', '[]', NULL, NULLIF('$coolor',false), 'b', '$frmsto', current_timestamp());";
+                        VALUES ('$itemId', '$titler', '$descri',  '$imagee', '$pricce', '[]', NULL, NULLIF('$coolor',false), '$tagsss', '$frmsto', current_timestamp());";
                         if( db::stmt($rr))
                         {
                             exit("<script>window.open('".site::url("domain")."/product/$itemId','_blank');window.close();</script>");
@@ -140,7 +141,7 @@
                                                     </div>
                                                     <div class="input-group mg-b-pro-edt">
                                                         <span class="input-group-addon"><i class="icon nalika-like" aria-hidden="true"></i></span>
-                                                        <input type="text" class="form-control" placeholder="TAGS/Category" name="tags">
+                                                        <input type="text" class="form-control" placeholder="TAGS/Category" name="tagss">
                                                     </div>
                                                 </div> 
                                             </div>

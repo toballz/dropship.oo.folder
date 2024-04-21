@@ -7,11 +7,29 @@ if(isset($_GET['oid'])){
     if(mysqli_num_rows($traccker)==1){
         $trackerIsValid=true;
 
+
+        while ($getTracckerInfo=mysqli_fetch_assoc($traccker)){ 
+            $shippingAddress= $getTracckerInfo['order_shipping_address']; 
+            $cartItems= $getTracckerInfo['order_cart_items']; 
+        }
+
+
+
+
         //empty carts
-        if($_SESSION['processingOrderID'] == $_GET['oid']){
+        if(isset($_SESSION['processingOrderID']) && ($_SESSION['processingOrderID'] == $_GET['oid'])){
             $_SESSION['cart']=[];
             unset($_SESSION['shippingPrice']);
+            unset($_SESSION['processingOrderID']);
+            //increase howmany sold by 1
+            $orderItemId = json_decode($cartItems, true);
 
+            foreach ($orderItemId as $item) { 
+                db::stmt("UPDATE `items_products` SET `item_howmanysold` = (`item_howmanysold` + 1) WHERE `item_id` = '".$item['productid']."'");
+            } 
+
+
+            //mail receipt
             $to = "noreply@".site::url("servername");
             $subject = site::url("servername")." Your Order Has Been Received";
 
@@ -30,10 +48,6 @@ if(isset($_GET['oid'])){
 
         }
 
-        while ($getTracckerInfo=mysqli_fetch_assoc($traccker)){ 
-            $shippingAddress= $getTracckerInfo['order_shipping_address']; 
-            $cartItems= $getTracckerInfo['order_cart_items'];
-        }
     }else{ 
         $trackerIsValid=false;
     }
