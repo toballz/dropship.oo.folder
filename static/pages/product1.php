@@ -39,6 +39,7 @@ $svgStar='<svg height="800px" width="800px" version="1.1" id="Capa_1" xmlns="htt
             max-width: 1470px;
             margin: auto;
             padding:0 6px ;
+    color: var(--bg-color);
         } 
         .product_a_e_f{
             display: -webkit-box;
@@ -85,7 +86,7 @@ $svgStar='<svg height="800px" width="800px" version="1.1" id="Capa_1" xmlns="htt
         .product_sat_share{border:0;background: transparent;font-family: "Poppins", sans-serif;font-size: 14px;padding:0; display: flex; min-height: 2.4rem;justify-content: space-around; align-items: center;
         }
       .product_f3haw>.product_f3haw_q{border:1px solid #000; width: 124px;padding: 14px;border-bottom: 0;font-weight:600}
-      .product_f3haw_n{padding: 14px;border:1px solid #000;display:flex;justify-content: space-around;flex-wrap:wrap;}
+      .product_f3haw_n{padding: 14px;border:1px solid #000;display:flex;justify-content: space-around;flex-wrap:wrap; background: var(--grey);}
       .product_f3haw_n_haj4{width:252px;font-size:14px;padding:7px}
       .product_f3haw_n_haj4 p{white-space:nowrap;overflow:hidden;text-overflow: ellipsis;width:100%}
 
@@ -111,7 +112,7 @@ $svgStar='<svg height="800px" width="800px" version="1.1" id="Capa_1" xmlns="htt
 
 
         .product_carosel{position:absolute;left:0;top:0;width:100%;transition:all 0.2s ease}
-        .product_carosel_f5{position:absolute;left: 0;top: 0;height:540px;width: 100%; }
+        .product_carosel_f5{position:absolute;left: 0;top: 0;height:420px;width: 100%; }
         .product_carosel_f5>img{height: 100%;object-fit: contain;}
         .product_carosel_ga9a{position:absolute;top:40%;height:120px;width:43px;z-index:12;border:0;opacity: 0.4;
     background-color: var(--bg-color);
@@ -218,17 +219,15 @@ $svgStar='<svg height="800px" width="800px" version="1.1" id="Capa_1" xmlns="htt
 <div class="decrepaos"  >
     <div class="decrepaos_inner">
         <ul class="decrepaos_header" >
-            <li data-plupla="#deropto"><div>description</div></li>
-            <li data-plupla="#re83vws"><div><div><?php echo $svgStar;?></div><span> reviews (1) </span><div style="width:12px"><?php echo $svgStar;?></div></div></li>
-            <li data-plupla="#len73nb"><div>INFORMATION</div></li>
+            <li data-plupla="#deropto"><div>DESCRIPTION</div></li>
+            <li data-plupla="#re83vws"><div><div><?php echo $svgStar;?></div><span> REVIEWS ( 1 ) </span><div style="width:12px"><?php echo $svgStar;?></div></div></li>
+            <li data-plupla="#len73nb"><div>SPECIFICATIONS</div></li>
         </ul>
     </div> 
      <div class="decrepaos_boddy">
         <div id="deropto"><?php echo $pdescription;?></div> 
         <div id="re83vws">review<br><br><br><br></div>
         <div id="len73nb">dhgjkhjdgkjh sdgfhgh<br><br><br><br></div>
- 
- 
      </div>
  
 </div>
@@ -298,118 +297,7 @@ $svgStar='<svg height="800px" width="800px" version="1.1" id="Capa_1" xmlns="htt
 <footer>
 <?php include(tools::dir()->php."/footer.php");?>
 
-<script>
-//carosel
-        var t=$(".product_carosel"),atk=0,clen=$(".product_carosel>li").length -1;
-    $(".pa9h").html("1/"+Math.abs(clen+1));
-    $(".product_carosel_ga9a.r").click(function(){
-        if(atk > -(clen*100)){
-            atk=atk-100;
-            t.css("left",atk+"%");
-            $(".pa9h").html((Math.abs(atk/100)+1)+"/"+Math.abs(clen+1));
-        }
-    });
-    $(".product_carosel_ga9a.l").click(function(){
-        if(atk < 0){
-            atk=atk+100;
-            t.css("left",atk+"%");
-            $(".pa9h").html((Math.abs(atk/100)+1)+"/"+Math.abs(clen+1));
-        }
-    });
-
-
-        //descript/specific
-        $(".product_sat_dispec_f").click(function(){
-            // $(".product_sat_dispec_f").next().removeClass("o_display");
-            if($(this).next().hasClass("o_display")){
-                $(this).next().removeClass("o_display");
-            }else{
-                $(this).next().addClass("o_display");
-            }
-
-        });
-
-
-
-
-    //add sub product quantity
-    $(".product_d_m,.product_d_p").click(function(){
-        var n=$(".product_d_n"),e=n.val(),k=parseInt(e)-1,g=parseInt(e)+1; 
-             if($(this).attr("class") == "product_d_m"){
-                if( e>1){n.val(k);}else{n.val(1);};
-                if( e>10){n.val(10);}
-             }else if($(this).attr("class") == "product_d_p"){
-                if( e<10){n.val(g);}else{n.val(10);}
-                if( e<1){n.val(1);}
-             } 
-    });
-
-
-//discription displar review
-    $("[data-plupla]").click(function(){
-        $(".decrepaos_boddy>div").css({"opacity":0});
-        setTimeout(function(){
-            $(".decrepaos_boddy>div").css({"display":"none"});
-        },100);
-
-        var d=$(this);
-        setTimeout(function(){
-            $(d.attr("data-plupla")).css({"display":"block"});
-            setTimeout(function(){
-                $(d.attr("data-plupla")).css({"opacity":1});
-            },50);
-        },102);
-    });
-
-
-
-
-
-//product add cart
-$(".product_sat_addcart").click(function(){
-
-    if($('input[name="product_color"]').length >0 && $('input[name="product_color"]:checked').length <= 0) {
-        alert("select a color");
-        return;
-    }
-    if($('.product_sat_quantity>input').val()>10){
-        alert('Contact us for orders over 10 per item.');return;
-    }
-    if($('.product_sat_quantity>input').val()<1){
-        alert('You must have more than 1 item');return;
-    }
-
-    var pid= document.querySelector('meta[name="adventure"]').getAttribute('content'),
-    qui=$(".product_d_n").val(),
-    colS=$('.product_sat_color input[name="product_color"]:checked'),
-    col=(colS.length > 0)?colS.next("label").find("img").attr("src"):$(".product_carosel_f5:first-child>img").attr("src"),
-    til=$(".product_sat_title").html();
-
-
-$.post("a/ig/apy.php", {o:"addcart", piid: pid, qunt: qui,color:col,tile:til })
-  .done(function(data) {
-    if(data.code == 200){
-        reloadStatic();
-        $(".addedtocart_kej75_heaader").html($(".product_d_n").val()+" Item(s) Added to Cart");
-        $(".addedtocart_kej75_1btitle").html($(".product_sat_title").html());
-        var tt=$('.product_sat_color [name="product_color"]:checked');
-        if(tt.length > 0){
-            $(".addedtocart_kej75_1bbdyimg>img").attr("src",tt.next("label").find("img").attr("src") );
-         }else{
-            $(".addedtocart_kej75_1bbdyimg>img").attr("src",$(".product_carosel_f5:first-child>img").attr("src") );
-         }
-        $(".addedtocart_6f75").css("display","flex");
-    }  
-  })
-  .fail(function(jqXHR, textStatus, errorThrown) {
-    console.error("addcart-failed:", textStatus, errorThrown);
-  });
-});
-
-
-//share product
-   $(".product_sat_share").click(async function(){ await navigator.share({ title: document.title, text: document.title, url: window.location.href,});});
-</script>
+ 
 </footer>
 
 

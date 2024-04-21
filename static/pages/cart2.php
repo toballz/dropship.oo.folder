@@ -8,9 +8,10 @@
     <style type="text/css">
     .cart_container{
         display:flex;letter-spacing: 1px;
+    color: var(--bg-color) !important;
     }
 
-    .cartv1{width:55%;display: flex;justify-content:end;background: var(--grey);}
+    .cartv1{width:55%;display: flex;justify-content:end;background: var(--body);}
     .cartv1>.cartv1_inner{max-width:800px;padding:12px;margin-top:29px}
 
     .cartv1>.cartv1_inner>ul{padding:12px; width:100%;display: grid;    column-gap: 16px;margin-bottom:12px;
@@ -25,7 +26,7 @@
     .cartv1>.cartv1_inner>ul>li:nth-child(3)>div>select{border:0;width:100%;padding:6px 0; background-image: url('<?php echo tools::dir()->img."/da.svg?".$reloadStatic;?>');background-size: 16px;background-position: right center; background-repeat: no-repeat; padding-right: 1.5em;}
     .cartv1 select:focus-visible,.cartv1 select:focus{border:0 !important;outline:none;}
 
-    .cartv2{width:45%;position:relative;}
+    .cartv2{width:45%;position:relative;background-color:#ffff}
     .cartv2>.cartv2_inner{position: sticky;top: 2px;padding:12px;margin-top:39px}
     .cartv2>.cartv2_inner>ul{padding:12px;border:1px solid var(--grey)}
     .cartv2>.cartv2_inner>ul>li{display:flex;justify-content: space-between;margin-bottom:9px}
@@ -128,51 +129,7 @@
 </section>
 
 <footer><?php include(tools::dir()->php."/footer.php");?></footer>
-<script type="text/javascript">
-    function deletefromcart(th,sa){
-        $.post("a/ig/apy.php", {o:"deltecart", cartid:sa, colre: th})
-          .done(function(data) {
-            if(data.code == 301){
-                window.location.href = data.message;
-            }  
-          })
-          .fail(function(jqXHR, textStatus, errorThrown) {
-            console.error("addcart-failed:", textStatus, errorThrown);
-          }); 
-    }
 
-
-
-//get address page
-$(".nj79r8p").click(function(){
-    var bH = document.baseURI;
-    $.get(bH+"cart/checkout/?getSipiihig=4cxsa", function(data){
-        $("#cart_address_765u").html(data);
-    });
-});
-
-
-//go checkout page
-$("#flam42").click(function(){
-    $.post("a/ig/apy.php", {
-                    o:"paynow", 
-                    price:$(".cartv2 .reltoal>span:nth-child(2)").html(),
-                    colre: "red"
-
-                }).done(function(data) {
-                    if(data.code == 301){
-                        window.location.href = data.message;
-                    }else{
-                        alert(data.message);
-                    }
-                  })
-                  .fail(function(jqXHR, textStatus, errorThrown) {
-                    console.error("addcart-failed:", textStatus, errorThrown);
-                  }); 
-});
-
-
-</script>
 
 </body>
 </html>

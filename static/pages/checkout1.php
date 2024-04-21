@@ -52,12 +52,15 @@
 </div> 
 
 <script type="text/javascript">
+    //save address input valid
      $('.checkout_g4356_inner input').on('input', function() {
-        // Your code to handle value change goes here
         $(this).css("border","1px solid var(--grey)");
     });
 
+//save address
     $(".savenow_m47864now").click(function(){
+        loader.start();
+setTimeout(function(){        
         var ee=$('[name="email"]'),
         fn=$('[name="fname"]'),
         ln=$('[name="lname"]'),
@@ -85,7 +88,7 @@
         if(ct.val().trim().length < 4){
             ct.css("border","1.8px solid var(--err-red)");err=true;
         }
-        if(st.val().trim().length < 4){
+        if(st.val().trim().length < 2){
             st.css("border","1.8px solid var(--err-red)");err=true;
         }
         if(zp.val().trim().length < 5){
@@ -94,12 +97,13 @@
 
         if(err){
             $('html, body').animate({ scrollTop: 0 }, 'slow');
+            loader.stop();
             return;
         }else{
             var tt = {
-                 "shippingEmail":ee.val().trim(),
-                 "shippingFname":fn.val().trim(),
-                 "shippingLname":ln.val().trim(),
+                 "shippingEmail":ee.val().trim().toLowerCase(),
+                 "shippingFname":fn.val().trim().toLowerCase(),
+                 "shippingLname":ln.val().trim().toLowerCase(),
                  "shippingStreet":sa.val().trim(),
                  "shippingApt":ap.val().trim(),
                  "shippingCity":ct.val().trim(),
@@ -122,9 +126,11 @@
                   })
                   .fail(function(jqXHR, textStatus, errorThrown) {
                     console.error("addcart-failed:", textStatus, errorThrown);
-                  }); 
+                  });
+            loader.stop();
         }
 
+},1000);
     });
 </script>
 <?php }else if(isset($_GET['lke86j']) && $_GET['lke86j']=="e0gay3"){?>

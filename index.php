@@ -69,7 +69,7 @@
 
 <div> 
     <div class="indexhome_collection">
-        <?php $gttw=db::stmt("SELECT * FROM `items_products` WHERE `item_id`='1111116543213' OR `item_id`='11111200690' OR `item_id`='6366601348' OR `item_id`='7562225743' ORDER BY `item_id` ASC");
+        <?php $gttw=db::stmt("SELECT * FROM `items_products` WHERE `item_id`='2627948511' OR `item_id`='11111200690' OR `item_id`='4165511427' OR `item_id`='1714836465' ORDER BY `item_id` ASC");
 
         function flexs($f3l2){ 
             switch ($f3l2) {

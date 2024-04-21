@@ -41,7 +41,6 @@ class site{
 
 
 class session{
-
     public static function userLoggedIn() {
         if(isset($_SESSION['usera01']['id']) && strlen($_SESSION['usera01']['id'])>4 ){
             return true;
@@ -119,12 +118,24 @@ class tools{
                 ],
             ],
             'mode' => 'payment',
-            'success_url' => 'https://example.com/success',
-            'cancel_url' => 'https://example.com/cancel',
+            'success_url' => site::url("domain").'/g/tracker/'.$orderID4,
+            'cancel_url' => site::url("domain").'/cart',
             'customer_email' => $cemail, // Customer email
             //'customer_phone' => '+1234567890',
         ]);
         return $session->url;
+    }
+
+
+    public static function add_dashtoOrderID($orderId, $incre){
+        $pOrderID_withdash="";
+        for ($i = 0; $i < strlen($orderId); $i++) { 
+            $pOrderID_withdash .= $orderId[$i]; 
+            if (($i + 1) % $incre == 0 && $i != strlen($orderId) - 1) { 
+                $pOrderID_withdash .= ' - ';
+            }
+        }
+        return $pOrderID_withdash;
     }
 
     public static function dir() {

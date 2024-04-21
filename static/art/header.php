@@ -2,7 +2,15 @@
 	header{background:var(--bg-color);}
 	.headerlogo{width:87px}
 	.header_rft7ik{display: flex;align-items: center;}
-.header_a3g{padding: 10px 31px}
+.header_a3g{padding: 10px 31px;position: relative;}
+.header_a3g:after{content: '';
+    display: table;
+    width: 100%;
+    height: 20px;
+    background: linear-gradient(to bottom, #15194b,var(--body) ,var(--body));
+    position: absolute;
+    left: 0;
+    bottom: 0px;}
 .header_r5jj{display: flex;justify-content: space-between;}
 .header_shopingbag{color: #ccc;font-size:14px;display: flex;align-items: center;}
 .header_shopingbag.acc{margin-right:19px;margin-bottom:5px;}
