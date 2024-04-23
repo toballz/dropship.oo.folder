@@ -22,13 +22,13 @@
 <div class="index_f_1">
     
     <div>
-        <div><img src="<?php echo tools::dir()->img;?>/gpugpu.jpg"/></div>
+        <div><img data-srcimg="<?php echo tools::dir()->img;?>/gpugpu.jpg"/></div>
     </div>
     <div>
-        <div><img src="<?php echo tools::dir()->img;?>/gpugpu.jpg"/></div>
+        <div><img data-srcimg="<?php echo tools::dir()->img;?>/gpugpu.jpg"/></div>
     </div>
     <div>
-        <div><img src="<?php echo tools::dir()->img;?>/gpugpu.jpg"/></div>
+        <div><img data-srcimg="<?php echo tools::dir()->img;?>/gpugpu.jpg"/></div>
     </div>
 
 
@@ -43,19 +43,19 @@
 <div>
     <div class="indexhome_collection">
         <div style="flex: 1.5;">
-            <div class="index_emg_c"><img src="<?php echo tools::dir()->img;?>/programmer_code.png"/></div>
+            <div class="index_emg_c"><img data-srcimg="<?php echo tools::dir()->img;?>/programmer_code.png"/></div>
             <p>programmer</p>
         </div> 
         <div style="flex: 2;">
-            <div class="index_emg_c"><img src="<?php echo tools::dir()->img;?>/gammers_setup.jpg"/></div>
+            <div class="index_emg_c"><img data-srcimg="<?php echo tools::dir()->img;?>/gammers_setup.jpg"/></div>
             <p>Gamers</p>
         </div>
         <div style="flex: 1.2;">
-            <div class="index_emg_c"><img src="<?php echo tools::dir()->img;?>/crypto_bitcoin.jpg"/></div>
+            <div class="index_emg_c"><img data-srcimg="<?php echo tools::dir()->img;?>/crypto_bitcoin.jpg"/></div>
             <p>Crypto/blockchain</p>
         </div>
         <div style="flex: 1.4;">
-            <div class="index_emg_c"><img src="<?php echo tools::dir()->img;?>/cool_gadgets.jpg"/></div>
+            <div class="index_emg_c"><img data-srcimg="<?php echo tools::dir()->img;?>/cool_gadgets.jpg"/></div>
             <p>Cool Gadgets</p>
         </div>
     </div>
@@ -81,7 +81,7 @@
         }
         $i=0;
         while ($getInfo=mysqli_fetch_assoc($gttw)){
-            echo '<a href="/product/'.$getInfo["item_id"].'" style="flex: '.flexs($i).';"><div style=" height:292px " ><img src="'.json_decode($getInfo["item_images"])[0].'" style="height:100%;object-fit: contain;" /></div><p>'.$getInfo["item_title"].'</p></a>';
+            echo '<a href="/product/'.$getInfo["item_id"].'" style="flex: '.flexs($i).';"><div style=" height:292px " ><img data-srcimg="'.json_decode($getInfo["item_images"])[0].'" style="height:100%;object-fit: contain;" /></div><p>'.$getInfo["item_title"].'</p></a>';
         $i++;} ?>
     </div> 
 </div>

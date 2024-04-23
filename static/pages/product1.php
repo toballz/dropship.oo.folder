@@ -153,7 +153,7 @@ $svgStar='<svg height="800px" width="800px" version="1.1" id="Capa_1" xmlns="htt
             <div class="product_a_eldp">
                 <button class="product_carosel_ga9a l"><</button>
                 <ul class="product_carosel">
-                    <?php $productcarosel=0;foreach(json_decode($pimages) as $ai){echo '<li class="product_carosel_f5" style="left:'.($productcarosel*100).'%"><img src="'.$ai.'"/></li>';$productcarosel++;}?>
+                    <?php $productcarosel=0;foreach(json_decode($pimages) as $ai){echo '<li class="product_carosel_f5" style="left:'.($productcarosel*100).'%"><img data-srcimg="'.$ai.'"/></li>';$productcarosel++;}?>
                 </ul>
                 <button class="product_carosel_ga9a r">></button>
  
@@ -185,7 +185,7 @@ $svgStar='<svg height="800px" width="800px" version="1.1" id="Capa_1" xmlns="htt
             <span class="product_sat_quantity_in">Color</span>
             <div class="product_sat_color"><?php $colorIndex=0;foreach(json_decode($pcolor) as $ac){?>
                 <input type="radio" id="colorid<?php echo $colorIndex;?>" name="product_color"/>
-                <label for="colorid<?php echo $colorIndex;?>"><img src="<?php echo $ac;?>"/></label> 
+                <label for="colorid<?php echo $colorIndex;?>"><img data-srcimg="<?php echo $ac;?>"/></label> 
             <?php $colorIndex++;}?></div>
             <?php }?>
 
@@ -271,7 +271,7 @@ $svgStar='<svg height="800px" width="800px" version="1.1" id="Capa_1" xmlns="htt
         <div class="product_f3haw_n">
             <?php $gttw=db::stmt("SELECT * FROM `items_products` WHERE `item_id` != '$itemId' ORDER BY `item_id` ASC LIMIT 5");
             while ($getInfo=mysqli_fetch_assoc($gttw)){
-                echo '<a href="/product/'.$getInfo["item_id"].'" class="product_f3haw_n_haj4"><div style=" height:292px " ><img src="'.json_decode($getInfo["item_images"])[0].'" style="height:100%;object-fit: contain;" /></div><p>'.$getInfo["item_title"].'</p></a>';
+                echo '<a href="/product/'.$getInfo["item_id"].'" class="product_f3haw_n_haj4"><div style=" height:292px " ><img data-srcimg="'.json_decode($getInfo["item_images"])[0].'" style="height:100%;object-fit: contain;" /></div><p>'.$getInfo["item_title"].'</p></a>';
             } ?>
         </div>
     </div>
@@ -283,7 +283,7 @@ $svgStar='<svg height="800px" width="800px" version="1.1" id="Capa_1" xmlns="htt
             while ($getInfo=mysqli_fetch_assoc($gttq)){ 
 
                 echo '<a href="/product/'.$getInfo["item_id"].'" class="product_f3haw_n_haj4">
-                        <div style=" height:292px; " ><img src="'.json_decode($getInfo["item_images"])[0].'" style="height:100%;object-fit: contain;" /></div>
+                        <div style=" height:292px; " ><img data-srcimg="'.json_decode($getInfo["item_images"])[0].'" style="height:100%;object-fit: contain;" /></div>
                         <p>'.$getInfo["item_title"].'</p>
                     </a>';
             } ?>

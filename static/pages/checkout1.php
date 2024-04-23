@@ -1,17 +1,6 @@
 <?php include("../../conf.php");?>
 <?php if(isset($_GET['getSipiihig']) && $_GET['getSipiihig']=="4cxsa"){?>
-<style type="text/css">
-    .checkout_g4356{width: 100%;padding: 16px;display: flex;}
-    .checkout_g4356 h2{margin:3lkin4px 0 19px}
-    .checkout_g4356 input,.checkout_g4356 select{width: 100%;margin-bottom:12px;padding:16px 12px;border-radius: 6px;border: 1px solid var(--grey)}
-    .checkout_createaccount{display: flex;font-size:12px;padding:5px 0;margin-bottom:17px;align-items: center;}
-    .checkout_createaccount>label>input{display:none;}
-    .checkout_createaccount>label>.checkout_checkker{width:20px;border:1px solid #ccc;height: 20px;margin-right:9px;cursor: pointer;transition:0.21s all linear;border-radius:5px}
-    .checkout_createaccount>label>input:checked + .checkout_checkker{box-shadow: 0 0 0 0.7142857142857143em rgb(230,172,185) inset;} 
-    .savenow_m47864now{cursor: pointer;background:var(--bg-color);color:#fff}
-</style>
 
- 
     <?php $quantityTpriceArr=tools::countQualCart("quantityprice");
         $addresss=session::user()->address;
     ?>
@@ -156,8 +145,8 @@ setTimeout(function(){
             <h1>LOGIN</h1>
             <br/><br/><br/>
             <div>
-                <input type="email" name="email" placeholder="Email">
-                <input type="password" name="pwsd" placeholder="Password">
+                <input type="email" name="email" placeholder="Email" autocomplete="on" >
+                <input type="password" name="pwsd" placeholder="Password" autocomplete="on" >
                 <input type="button" name="submit" value="LOGIN" id="uk5ek">
                 <p id="clksiup">Signup</p>
                 <p>Forgot Password</p>
@@ -171,7 +160,7 @@ setTimeout(function(){
             <h1>SIGNUP</h1>
             <br/><br/><br/>
             <div>
-                <input type="email" name="email" placeholder="Email">
+                <input type="email" name="email" placeholder="Email" autocomplete="on" >
                 <input type="password" name="pwsd" placeholder="Password">
                 <input type="password" name="vpwsd" placeholder="Verify Password">
                 <input type="button" name="submit" value="SIGNUP">

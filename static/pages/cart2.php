@@ -17,10 +17,16 @@
     grid-template-columns: repeat(16,calc(6.25% - 16px + 1px));
     row-gap: 16px; border-bottom: 1px solid #fff;}
     .cartv1>.cartv1_inner>ul>li:nth-child(1){grid-area: 1/1/span 1/span 3;}
-    .cartv1>.cartv1_inner>ul>li:nth-child(2){grid-area: 1/4/span 1/span 11;}
-    .cartv1>.cartv1_inner>ul>li:nth-child(3){grid-area: 1/15/span 1/span 2;display: flex;flex-direction: column;justify-content: space-between;align-items: center;}
-    .cartv1>.cartv1_inner>ul>li:nth-child(3)>.pscaa{font-weight:600;font-size:19px}
-    .cartv1>.cartv1_inner>ul>li:nth-child(3)>.sees{width: 100%;border:1px solid #ccc;padding:3px 4px;cursor:pointer;outline:none;}
+    .cartv1>.cartv1_inner>ul>li:nth-child(2){grid-area: 1/4/span 1/span 10;}
+    .cartv1>.cartv1_inner>ul>li:nth-child(3){grid-area: 1/15/span 1/span 1;display: flex;flex-direction: column;justify-content: space-between;align-items: center;}
+    .cartv1>.cartv1_inner>ul>li:nth-child(3)>.pscaa{font-weight:600;font-size:19px} 
+    .cartv1>.cartv1_inner>ul>li:nth-child(3)>.sees{display:flex;width: 100%; padding:3px 4px;justify-content: space-around;
+    align-items: center;cursor:pointer;outline:none;}
+    .cartv1>.cartv1_inner>ul>li:nth-child(3)>.sees>span{
+    padding: 7px 9px;
+    background: #fff}
+    .cartv1>.cartv1_inner>ul>li:nth-child(3)>.sees>input{border:0;text-align:center;
+    height: 100%;}
     .cartv1>.cartv1_inner>ul>li:nth-child(3)>.delt{cursor:pointer;font-size: 12px}
     .cartv1>.cartv1_inner>ul>li:nth-child(3)>div>select{border:0;width:100%;padding:6px 0; background-image: url('<?php echo tools::dir()->img."/da.svg?".$reloadStatic;?>');background-size: 16px;background-position: right center; background-repeat: no-repeat; padding-right: 1.5em;}
     .cartv1 select:focus-visible,.cartv1 select:focus{border:0 !important;outline:none;}
@@ -37,12 +43,13 @@
     .cartv1 .carttitle a{color:#000;font-weight:600;line-height:18px}
     .cartv2 .loginsespoint>span{margin-bottom:12px}
     .cartv2 .loginsespoint>span>a{display:inline;color:blue;}
-
+.termsCcheck{margin-bottom:0 !important;}
+.termsCcheck>div{margin-bottom:0 !important;margin-top:15px}
 .cartv2_shippaddressfoo{border:1px solid #ccc;padding:12px;font-size:11px}
 #cart_address_765u{width: 100%;transition:1s linear all} 
 .cart_address_editshipping>div{margin-bottom:8px;}
-.nj79r8p{text-align: right;cursor: pointer;color:#2c78ff}
-.cart_address_u213>p{font-weight: 600;margin-top:0;font-size:16px}
+.nj79r8p_parn{text-align: right;color:#2c78ff;margin:0;display:flex;justify-content:end;margin-bottom:0 !important;}
+.nj79r8p{cursor: pointer;}
     </style>
 
 </head>
@@ -62,17 +69,17 @@
                 $io=0;
                 foreach($_SESSION['cart'] as $re){?>
                    <ul>
-                       <li><div class=""><img src="<?php echo $re['productcolor'];?>"/></div></li>
+                       <li><div class=""><img data-srcimg="<?php echo $re['productcolor'];?>"/></div></li>
                        <li><div class="carttitle"><u><a href="<?php echo site::url("domain")."/product/".$re['productid'];?>"><?php echo $re['producttitle'];?></a></u></div></li>
                        <li>
                             <div class="pscaa">$<?php echo $quantityTpriceArr[$io];?></div>
-                            <div class="sees"><select class="changequnt"><?php for($i=1;$i<=10;$i++){echo "<option value='".$i."' ".(($re['productquantity'] == $i)?"selected='true'":'').">Qty ".$i."</option>";}?></select></div>
+                            <div class="sees"><span class="cart_d_m">-</span><input type="number" min="1" max="10" value="1" class="product_d_n"><span class="cart_d_p">+</span></div>
                             <div class="delt" onclick="deletefromcart('<?php echo $re['productcolor'];?>',<?php echo $re['productid'];?>);">remove</div>
                         </li>
                         
                    </ul>
                 <?php $io++;}
-           }else{echo "<p>Your cart is empty.</p><div style='width:50%;margin:auto'><img src='".tools::dir()->img."/emptycart.png?".$reloadStatic."' /></div>";}?>
+           }else{echo "<p>Your cart is empty.</p><div style='width:50%;margin:auto'><img data-srcimg='".tools::dir()->img."/emptycart.png?".$reloadStatic."' /></div>";}?>
         </div>
    </div>
 
@@ -84,6 +91,7 @@
                 if($itemSum > 50) {
                     $shippingPrice="<span style='color:green'>FREE</span>";
                 }else if($itemSum == 0) {
+                    $_SESSION['shippingPrice']=0;
                     $shippingPrice="<span>$0</span>";
                 }else if($ShippingAdddress->shippingStreet !== ""){
                     if(!isset($_SESSION['shippingPrice'])){
@@ -102,15 +110,14 @@
            <li><hr/><span> SHIPPING </span><hr/></li>
            <li class="cartv2_shippaddressfoo">
                 <div id="cart_address_765u">
-                    <div class="cart_address_u213">
-                        <p>Shipping Address</p>
+                    <div class="cart_address_u213"> 
                         <div class="cart_address_editshipping">
                             <div><b>Street Address:</b> <?php echo $ShippingAdddress->shippingStreet;?></div>
                             <div><b>APT:</b> <?php echo $ShippingAdddress->shippingApt;?></div>
                             <div><b>City:</b> <?php echo $ShippingAdddress->shippingCity;?></div>
                             <div><b>State:</b> <?php echo $ShippingAdddress->shippingState;?></div>
                             <div><b>Zip/Postal:</b> <?php echo $ShippingAdddress->shippingZipPostal;?></div>
-                            <div class="nj79r8p">EDIT ADDRESS?</div>
+                            <div class="nj79r8p_parn"><div class="nj79r8p">EDIT ADDRESS?</div></div>
                         </div>
                     </div>
                 </div>
@@ -124,7 +131,8 @@
                 echo "<span>Login to use Your Points</span>";
             }?></li>
            <li class="reltoal"><span>Total</span><span>$<?php echo $itemSum+session::user()->shippingPrice;;?></span></li>
-
+           
+           <li class="termsCcheck"><div class="checkout_createaccount"><label><input type="checkbox" name="readtnc"/><div class="checkout_checkker"></div></label> <span>You have read and agreed to our terms & conditions.</span></div></li>
            <li><a id="<?php echo ($itemSum == 0)?'':'flam42';?>" href="javascript:void(0);">Go to Checkout</a></li>
        </ul>
     </div>

@@ -37,6 +37,10 @@ $(".nj79r8p").click(function(){
 
 //go checkout page
 $("#flam42").click(function(){
+    if($('[name="readtnc"]:checked').length == 0){
+        alert("Please read our terms anad conditions");
+        return false;
+    }
     loader.start();
 
   setTimeout(function() {
@@ -176,6 +180,14 @@ $.post("a/ig/apy.php", {o:"addcart", piid: pid, qunt: qui,color:col,tile:til })
 //share product
    $(".product_sat_share").click(async function(){ await navigator.share({ title: document.title, text: document.title, url: window.location.href,});});
 
+   //img lazyload
+    $("[data-srcimg]").each(function(){
+        var ts=$(this);
+        setTimeout(function(){
+            ts.attr("src",ts.attr("data-srcimg"));
+            ts.attr("data-srcimg","");
+        },600);
+    });
 
 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 //end
