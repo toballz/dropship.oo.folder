@@ -16,4 +16,4 @@
 
 	<footer><?php include(tools::dir()->php."/footer.php");?></footer>
 </body>
-</html>
+</html> 

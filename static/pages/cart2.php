@@ -117,8 +117,13 @@
             </li>
 
            <br/>
+           <li><hr/><b>TOTAL</b><hr/></li>
+           <li><b>Points</b><?php if(session::user()->id){
+                echo "<span>Use Your Points</span>";
+            }else{
+                echo "<span>Login to use Your Points</span>";
+            }?></li>
            <li class="reltoal"><span>Total</span><span>$<?php echo $itemSum+session::user()->shippingPrice;;?></span></li>
-           <li><hr/></li>
 
            <li><a id="<?php echo ($itemSum == 0)?'':'flam42';?>" href="javascript:void(0);">Go to Checkout</a></li>
        </ul>

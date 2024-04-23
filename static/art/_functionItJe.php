@@ -1,5 +1,5 @@
 <?php
-$reloadStatic="as.as,ssdn".rand();
+$reloadStatic="as.dn".rand(1,11);
 //$_SESSION['usera01']
 //$_SESSION['cart']
 //$_SESSION['shippingPrice']
@@ -40,19 +40,28 @@ class site{
 }
 
 
-
+/**
+ * get array from $_SESSION[]
+*/
 class session{
-    public static function userLoggedIn() {
-        if(isset($_SESSION['usera01']['id']) && strlen($_SESSION['usera01']['id'])>4 ){
-            return true;
-        }
-        return false;
-    }
+    const userArrayNameKey="usera01";
 
+    /**
+     * get user info from $_SESSION[self::userArrayNameKey]
+     * 
+     * returns: -> {
+     * 
+     *              id: int|false
+     *              address: { shippingEmail, shippingFname, shippingLname,
+     *                          shippingStreet, shippingApt, shippingCity, 
+     *                      shippingState, shippingZipPostal, shippingPhonel
+     *              shippingPrice: double
+     *  }
+    */
     public static function user(){
 
-        if(!isset($_SESSION['usera01']['address'])){
-            $_SESSION['usera01']['address']=(object)array(
+        if(!isset($_SESSION[self::userArrayNameKey]['address'])){
+            $_SESSION[self::userArrayNameKey]['address']=(object)array(
                                                 "shippingStreet"=>"",
                                                 "shippingApt"=>"",
                                                 "shippingCity"=>"",
@@ -64,16 +73,18 @@ class session{
                                                 "shippingPhonel"=>"",
                                             );
         }
-
-
-        if(self::userLoggedIn()){
+        
+        //if user is loggedin
+        $ifUserIsLoggedin=false;
+        if(isset($_SESSION[self::userArrayNameKey]['id']) && strlen($_SESSION[self::userArrayNameKey]['id'])>4 ){
+            $ifUserIsLoggedin=true;
             //get address from DB::user_profile
-            //$_SESSION['usera01']['address']=(object)json_decode();
+            //$_SESSION[self::userArrayNameKey]['address']=(object)json_decode();
         }
 
         return (object)array(
-            'id'=> (self::userLoggedIn())?trim($_SESSION['usera01']):false,
-            'address'=> $_SESSION['usera01']['address'],
+            'id'=> ($ifUserIsLoggedin)?trim($_SESSION[self::userArrayNameKey]['id']):false,
+            'address'=> $_SESSION[self::userArrayNameKey]['address'],
             'shippingPrice'=> (!isset($_SESSION['shippingPrice']))?0:$_SESSION['shippingPrice']
         );
   

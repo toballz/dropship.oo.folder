@@ -158,7 +158,7 @@ setTimeout(function(){
             <div>
                 <input type="email" name="email" placeholder="Email">
                 <input type="password" name="pwsd" placeholder="Password">
-                <input type="button" name="submit" value="LOGIN">
+                <input type="button" name="submit" value="LOGIN" id="uk5ek">
                 <p id="clksiup">Signup</p>
                 <p>Forgot Password</p>
             </div>
@@ -192,6 +192,48 @@ setTimeout(function(){
             $(".xacn").click(function(){
                 $(".logina1").css("display","none");
             });
+
+            
+
+
+            
+//login 
+$("#uk5ek").click(function(){
+    loader.start();
+    setTimeout(function(){ 
+        var emai= $('[name="email"]').val(),
+        pssa=$('[name="pwsd"]').val();
+
+        if(emai.length < 6) {
+            alert("type a valid email");
+            return;
+        }else if( pssa.length < 5){
+            alert('type a valid password.');return;
+        }else{
+            function ga(g332){
+               return btoa(g332);
+            }
+            var appe=ga(emai),ryjj=ga(pssa),sdsf=ga(JSON.stringify({ap:appe,py:ryjj}));
+
+            $.post("a/ig/apy.php", {o:"login", qav: sdsf, re: window.location.href})
+            .done(function(data) {
+                if(data.code == 301){
+                    window.location.href=data.message;
+                }else{
+                    alert(data.message);
+                }
+            }).fail(function(jqXHR, textStatus, errorThrown) {
+                console.error("addcart-failed:", textStatus, errorThrown);
+            }).always(function() {
+                loader.stop();
+            });
+        }
+    },500);
+    loader.stop();
+});
+
+
+
         </script>
     </section>
 

@@ -129,6 +129,29 @@ if($_POST['o']=="addcart" && isset($_POST['piid']) && isset($_POST['tile']) && $
     $return["code"]= 301;
     $return["message"]= site::url("domain")."/cart/";
 
+}else if($_POST['o'] == "login" && isset($_POST['qav']) && (strlen($_POST['qav']) > 6) && isset($_POST['re'])){
+    
+    $bsh=json_decode(base64_decode(trim($_POST['qav'])));
+     
+    $useremailf=strtolower(base64_decode($bsh->ap));
+    $passwordf=md5(tools::passwordsalt.base64_decode($bsh->py));
+
+    if(!filter_var($useremailf, FILTER_VALIDATE_EMAIL) || (strlen($useremailf) < 6)){
+        $return["code"]= 404;
+        $return["message"]= "Wrong Email";
+    
+    }else{
+        $hth=db::stmt("SELECT * FROM `users_info` WHERE `user_email` = '$useremailf' AND `user_password` = '$passwordf' LIMIT 1");
+        if(mysqli_num_rows($hth) == 1){
+            $ys=mysqli_fetch_assoc($hth);
+            $_SESSION[session::userArrayNameKey]['id']=$ys['user_id'];
+            $return["code"]= 301;
+            $return["message"]= trim($_POST['re']);
+        }else{
+            $return["code"]= 404;
+            $return["message"]= "Invalid Username Or Password!";
+        }
+    }
 }
 
 

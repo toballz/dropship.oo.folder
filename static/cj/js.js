@@ -177,10 +177,6 @@ $.post("a/ig/apy.php", {o:"addcart", piid: pid, qunt: qui,color:col,tile:til })
    $(".product_sat_share").click(async function(){ await navigator.share({ title: document.title, text: document.title, url: window.location.href,});});
 
 
-
-
-
-
 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 //end
 }());  

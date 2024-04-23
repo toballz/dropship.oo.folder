@@ -295,7 +295,7 @@ $svgStar='<svg height="800px" width="800px" version="1.1" id="Capa_1" xmlns="htt
 <div class="addedtocart_6f75">
     <style>
         .addedtocart_6f75{display:none;position:fixed;font-size:13px;top:0;left:0;width: 100%;height: 100%;z-index: 1212;background: rgb(15 16 27 / 68%); align-items: center;justify-content: center;}
-        .addedtocart_kej75{width:100%;max-width: 416px; min-width: 400px;background:#fff;height: 124px;border-radius:20px;min-height: 300px;overflow:hidden;}
+        .addedtocart_kej75{width:100%;max-width: 416px; min-width:500px;background:#fff;height:100%;border-radius:20px;max-height:302px;overflow:hidden;}
         .addedtocart_kej75_heaader{background:var(--bg-color);color:#fff;text-align: center;font-size:21px;font-weight:600;padding:14px;}
         .addedtocart_kej75_1b{padding:12px;}
         .addedtocart_kej75_2b{display:flex;justify-content: space-between;padding:12px}

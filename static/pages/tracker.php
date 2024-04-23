@@ -66,7 +66,7 @@ if(isset($_GET['oid'])){
         .trackknum input{width:100%;padding:15px 11px;font-size:15px;margin-bottom:15px}
         .trackknum input:first-child{width:70%;}
         .trackknum input:last-child{cursor: pointer;width:30%;}
-        .tracker_container{
+        .tracker_container{padding:12px;
             width:100%;
             max-width: 1100px;
             margin: auto;
@@ -101,15 +101,12 @@ if(isset($_GET['oid'])){
         
     </style>
     <div style="">
-        <div style="background:#3bb028;padding:15px;
-    position: relative;
-    box-shadow: 0px 6px 5px 0px #3bb028;">
+        <div style="background:#3bb028;position: relative; box-shadow: 0px 6px 5px 0px #3bb028;">
             <div class="tracker_container" >
                 <br/><br/><br/>
             </div>
         </div>
-        <div class="" style="background:#2c831c;padding:15px;
-    box-shadow: 0px 6px 5px 0px #2c831c;">
+        <div class="" style="background:#2c831c; box-shadow: 0px 6px 5px 0px #2c831c;">
             <br/>
              <ul class="trackercoolr tracker_container">
                 <li>
