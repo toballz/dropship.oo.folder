@@ -152,7 +152,12 @@ if($_POST['o']=="addcart" && isset($_POST['piid']) && isset($_POST['tile']) && $
             $return["message"]= "Invalid Username Or Password!";
         }
     }
+}else if($_POST['o'] == "justlogout" ){
+     $_SESSION[session::userArrayNameKey]['id']=[];
+     unset($_SESSION[session::userArrayNameKey]['id']);
+     unset($_SESSION[session::userArrayNameKey]['updateaddresstoDB']);
 }
+
 
 
 

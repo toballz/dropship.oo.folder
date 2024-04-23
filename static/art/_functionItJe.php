@@ -78,8 +78,43 @@ class session{
         $ifUserIsLoggedin=false;
         if(isset($_SESSION[self::userArrayNameKey]['id']) && strlen($_SESSION[self::userArrayNameKey]['id'])>4 ){
             $ifUserIsLoggedin=true;
-            //get address from DB::user_profile
-            //$_SESSION[self::userArrayNameKey]['address']=(object)json_decode();
+
+            $u=$_SESSION[self::userArrayNameKey]['id'];
+            //if user loggedin get address from DB::user_profile
+
+            $getAddressFromDb=db::stmt("SELECT `user_firstlastname_phone`, `user_address` FROM `users_info` WHERE `user_id`='$u' LIMIT 1;");
+
+            if($_SESSION[self::userArrayNameKey]['address']->shippingStreet == ""){
+                $getAddressFromDb=db::stmt("SELECT `user_firstlastname_phone`, `user_address` FROM `users_info` WHERE `user_id`='$u' LIMIT 1;");
+                if(mysqli_num_rows($getAddressFromDb) == 1){
+                    $s=mysqli_fetch_assoc($getAddressFromDb);
+                    $addy4rmDB=(object)json_decode($s['user_address']);
+                    $contact4rmDB=(object)json_decode($s['user_firstlastname_phone']);
+
+                    $addy4rmDB->shippingFname=$contact4rmDB->first;
+                    $addy4rmDB->shippingLname=$contact4rmDB->last;
+                    $addy4rmDB->shippingPhonel=$contact4rmDB->phone;
+
+                    $_SESSION[self::userArrayNameKey]['address']=$addy4rmDB;
+                }
+            }else if(!isset($_SESSION[self::userArrayNameKey]['updateaddresstoDB'])){
+                $conta=[];
+                $addyy=json_decode(json_encode($_SESSION[self::userArrayNameKey]['address'])); 
+                $conta['first']=$addyy->shippingFname;
+                $conta['last']=$addyy->shippingLname;
+                $conta['phone']=$addyy->shippingPhonel;
+
+                unset($addyy->shippingLname);
+                unset($addyy->shippingPhonel);
+                unset($addyy->shippingFname);
+
+                db::stmt("UPDATE `users_info` SET 
+                `user_firstlastname_phone` = '".json_encode($conta)."',
+                `user_address`= '".json_encode($addyy)."'
+                 WHERE `user_id` = '$u';");
+                 $_SESSION[self::userArrayNameKey]['updateaddresstoDB']=1;
+                
+            } 
         }
 
         return (object)array(
