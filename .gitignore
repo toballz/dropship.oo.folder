@@ -1,4 +1,4 @@
-logs-access....log
+#.admin/
 logs-access.log
-logs-error....log
+logs-error.log
 _null.php
