@@ -2,7 +2,7 @@
                        
 //echo(mail("toballz@yahoo.com","dhgfjhgkjhfd dasfd","ytrgthyjkujhdsfdg"));
  
-//echo $_SESSION[session::userArrayNameKey]['id'];
+ // $_SESSION[session::userArrayNameKey]['id']=5462;
 ?>
 
 <pre><?php print_r($_SESSION);?></pre>

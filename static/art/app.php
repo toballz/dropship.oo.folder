@@ -125,7 +125,7 @@ if($_POST['o']=="addcart" && isset($_POST['piid']) && isset($_POST['tile']) && $
     //&&&&&&&&&&&&
 }else if($_POST['o'] == "saveshippingaddress" && isset($_POST['avi'])){
    
-    $_SESSION['usera01']['address'] =  json_decode($_POST['avi']);
+    $_SESSION[session::userArrayNameKey]['address'] =  json_decode($_POST['avi']);
     $return["code"]= 301;
     $return["message"]= site::url("domain")."/cart/";
 

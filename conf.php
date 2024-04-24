@@ -1,5 +1,5 @@
 <?php
-session_name(md5("newsesh();"));
+session_name(md5("ness);"));
 session_start();
 class db{
     const servername = "localhost"; 

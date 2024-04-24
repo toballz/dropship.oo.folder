@@ -1,5 +1,5 @@
 <?php
-$reloadStatic="as.dn".rand(1,11);
+$reloadStatic="a.r".rand(1,11);
 //$_SESSION['usera01']
 //$_SESSION['cart']
 //$_SESSION['shippingPrice']
@@ -21,7 +21,7 @@ class site{
     	if((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') || $_SERVER['SERVER_PORT'] == 443){
     		return "https:";
     	}else{
-    		return "https:";
+    		return "http:";
     	}
     }
     public static function url($vrvi){
