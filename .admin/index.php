@@ -355,7 +355,7 @@
                                     <td><img src="<?php echo json_decode($gg['item_images'])[0];?>" alt="" /></td>
                                     <td style="text-wrap: wrap;"><?php echo $gg['item_title'];?></td>
                                     <td>
-                                        <button class="pd-setting ds-setting ps-setting">Active</button>
+                                        <button class="pd-setting ds-setting ps-setting"><a style="color:#fff" target="blank" href="/product/<?php echo $gg['item_id'];?>">Active</a></button>
                                     </td>
                                     <td><?php echo $gg['item_howmanysold'];?></td>
                                     <td>$<?php echo $gg['item_howmanysold'] * $gg['item_price'];?></td>
