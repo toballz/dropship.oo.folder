@@ -1,4 +1,6 @@
 logs-access.log
-logs-access.log
+./logs-access.log
 logs-error.log
 ./.null.php
+/.null.php
+.null.php
