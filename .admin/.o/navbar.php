@@ -27,7 +27,6 @@
 								</a>
                             <ul class="submenu-angle" aria-expanded="true">
                                 <li><a title="Dashboard v.1" href="index.php"><span class="mini-sub-pro">Dashboard v.1</span></a></li> 
-                                <li><a title="Product List" href="product-list.html"><span class="mini-sub-pro">Product List</span></a></li>
                                 <li><a title="Product Edit" href="product-edit.php"><span class="mini-sub-pro">Product Edit</span></a></li>
                                 <li><a title="Product Detail" href="product-detail.html"><span class="mini-sub-pro">Product Detail</span></a></li>
                                 <li><a title="Product Cart" href="product-cart.html"><span class="mini-sub-pro">Product Cart</span></a></li>
@@ -85,7 +84,6 @@
                                         <li><a data-toggle="collapse" data-target="#Charts" href="#">Home <span class="admin-project-icon nalika-icon nalika-down-arrow"></span></a>
                                             <ul class="collapse dropdown-header-top">
                                                 <li><a href="index.php">Dashboard v.1</a></li>
-                                                <li><a href="product-list.html">Product List</a></li>
                                                 <li><a href="product-edit.php">Product Edit</a></li>
                                                 <li><a href="product-detail.html">Product Detail</a></li>
                                                 <li><a href="product-cart.html">Product Cart</a></li>

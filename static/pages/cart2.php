@@ -73,7 +73,7 @@
                        <li><div class="carttitle"><u><a href="<?php echo site::url("domain")."/product/".$re['productid'];?>"><?php echo $re['producttitle'];?></a></u></div></li>
                        <li>
                             <div class="pscaa">$<?php echo $quantityTpriceArr[$io];?></div>
-                            <div class="sees"><span class="cart_d_m">-</span><input type="number" min="1" max="10" value="1" class="product_d_n"><span class="cart_d_p">+</span></div>
+                            <div class="sees"><span class="cart_d_m">-</span><input type="number" min="1" max="10" value="<?php echo $re['productquantity'];?>" class="product_d_n"><span class="cart_d_p">+</span></div>
                             <div class="delt" onclick="deletefromcart('<?php echo $re['productcolor'];?>',<?php echo $re['productid'];?>);">remove</div>
                         </li>
                         
@@ -88,18 +88,17 @@
 
        <ul>
             <?php $itemSum= array_sum($quantityTpriceArr);
-                if($itemSum > 50) {
+                if($itemSum > 60) {
                     $shippingPrice="<span style='color:green'>FREE</span>";
                 }else if($itemSum == 0) {
                     $_SESSION['shippingPrice']=0;
                     $shippingPrice="<span>$0</span>";
                 }else if($ShippingAdddress->shippingStreet !== ""){
                     if(!isset($_SESSION['shippingPrice'])){
-                        $va=(rand(5,14))+0.99;
-                        $_SESSION['shippingPrice']=$va;
+                         $_SESSION['shippingPrice']=(rand(8,10))+0.99;
                     }
                     $shippingPrice="<span>{$_SESSION['shippingPrice']}</span>";
-                }else{
+                 }else{
                     $shippingPrice="<span style='color:var(--err-red);font-size:12px'>Enter shipping address</span>";
                 }?>
            <li><span>Items ( <?php echo tools::countQualCart("cartquantity");?> )</span><span>$<?php echo $itemSum;?></span></li>

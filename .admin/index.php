@@ -11,6 +11,8 @@
                 orders_made;");
     $Orders=mysqli_fetch_assoc($Orders1);
 ?>
+<?php $highestProducts=db::stmt("SELECT * FROM `items_products` ORDER BY `item_howmanysold` DESC LIMIT 7;");
+        ?>
 <!doctype html>
 <html class="no-js" lang="en">
 <head> 
@@ -24,7 +26,8 @@
 <body>
     <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
+        https://colorlib.com/polygon/nalika/index.html#
+    <![endif]-->
 
     <?php include(".o/navbar.php");?>
     <!-- Start Welcome area -->
@@ -329,165 +332,51 @@
                 </div>
             </div>
         </div>
-        <div class="product-new-list-area">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                        <div class="single-new-trend mg-t-30">
-                            <a href="#"><img src="img/new-product/5.png" alt=""></a>
-                            <div class="overlay-content">
-                                <a href="#">
-                                    <h2>$280</h2>
-                                </a>
-                                <a href="#" class="btn-small">Now</a>
-                                <div class="product-action">
-                                    <ul>
-                                        <li>
-                                            <a data-toggle="tooltip" title="Shopping" href="#"><i class="fa fa-shopping-bag" aria-hidden="true"></i></a>
-                                        </li>
-                                        <li>
-                                            <a data-toggle="tooltip" title="Quick view" href="#"><i class="fa fa-heart" aria-hidden="true"></i></a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <a href="#">
-                                    <h4>Princes Diamond</h4>
-                                </a>
-                                <div class="pro-rating">
-                                    <i class="fa fa-star color"></i>
-                                    <i class="fa fa-star color"></i>
-                                    <i class="fa fa-star color"></i>
-                                    <i class="fa fa-star color"></i>
-                                    <i class="fa fa-star"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                        <div class="single-new-trend mg-t-30">
-                            <a href="#"><img src="img/new-product/5.png" alt=""></a>
-                            <div class="overlay-content">
-                                <a href="#">
-                                    <h2>$280</h2>
-                                </a>
-                                <a href="#" class="btn-small">Now</a>
-                                <div class="product-action">
-                                    <ul>
-                                        <li>
-                                            <a data-toggle="tooltip" title="Shopping" href="#"><i class="fa fa-shopping-bag" aria-hidden="true"></i></a>
-                                        </li>
-                                        <li>
-                                            <a data-toggle="tooltip" title="Quick view" href="#"><i class="fa fa-heart" aria-hidden="true"></i></a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <a href="#">
-                                    <h4>Princes Diamond</h4>
-                                </a>
-                                <div class="pro-rating">
-                                    <i class="fa fa-star color"></i>
-                                    <i class="fa fa-star color"></i>
-                                    <i class="fa fa-star color"></i>
-                                    <i class="fa fa-star color"></i>
-                                    <i class="fa fa-star"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                        <div class="single-new-trend mg-t-30">
-                            <a href="#"><img src="img/new-product/5.png" alt=""></a>
-                            <div class="overlay-content">
-                                <a href="#">
-                                    <h2>$280</h2>
-                                </a>
-                                <a href="#" class="btn-small">Now</a>
-                                <div class="product-action">
-                                    <ul>
-                                        <li>
-                                            <a data-toggle="tooltip" title="Shopping" href="#"><i class="fa fa-shopping-bag" aria-hidden="true"></i></a>
-                                        </li>
-                                        <li>
-                                            <a data-toggle="tooltip" title="Quick view" href="#"><i class="fa fa-heart" aria-hidden="true"></i></a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <a href="#">
-                                    <h4>Princes Diamond</h4>
-                                </a>
-                                <div class="pro-rating">
-                                    <i class="fa fa-star color"></i>
-                                    <i class="fa fa-star color"></i>
-                                    <i class="fa fa-star color"></i>
-                                    <i class="fa fa-star color"></i>
-                                    <i class="fa fa-star"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                        <div class="single-new-trend mg-t-30">
-                            <a href="#"><img src="img/new-product/5.png" alt=""></a>
-                            <div class="overlay-content">
-                                <a href="#">
-                                    <h2>$280</h2>
-                                </a>
-                                <a href="#" class="btn-small">Now</a>
-                                <div class="product-action">
-                                    <ul>
-                                        <li>
-                                            <a data-toggle="tooltip" title="Shopping" href="#"><i class="fa fa-shopping-bag" aria-hidden="true"></i></a>
-                                        </li>
-                                        <li>
-                                            <a data-toggle="tooltip" title="Quick view" href="#"><i class="fa fa-heart" aria-hidden="true"></i></a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <a href="#">
-                                    <h4>Princes Diamond</h4>
-                                </a>
-                                <div class="pro-rating">
-                                    <i class="fa fa-star color"></i>
-                                    <i class="fa fa-star color"></i>
-                                    <i class="fa fa-star color"></i>
-                                    <i class="fa fa-star color"></i>
-                                    <i class="fa fa-star"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        
         <div class="product-sales-area mg-tb-30">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                        <div class="product-sales-chart">
-                            <div class="portlet-title">
-                                <div class="row">
-                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                        <div class="caption pro-sl-hd">
-                                            <span class="caption-subject text-uppercase"><b>Order Statistic</b></span>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                        <div class="actions graph-rp">
-                                            <a href="#" class="btn btn-dark-blue btn-circle active tip-top" data-toggle="tooltip" title="Upload">
-													<i class="fa fa-cloud-download" aria-hidden="true"></i>
-												</a>
-                                            <a href="#" class="btn btn-dark btn-circle active tip-top" data-toggle="tooltip" title="Refresh">
-													<i class="fa fa-reply" aria-hidden="true"></i>
-												</a>
-                                            <a href="#" class="btn btn-blue-grey btn-circle active tip-top" data-toggle="tooltip" title="Delete">
-													<i class="fa fa-trash-o" aria-hidden="true"></i>
-												</a>
-                                        </div>
-                                    </div>
-                                </div>
+                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12"> 
+                           
+                        <div class="product-status-wrap">
+                            <h4>Highest Products List</h4>
+                            <div class="add-product"> <a> </a> </div>
+                            <table>
+                                <tr>
+                                    <th>Image</th>
+                                    <th>Product Title</th>
+                                    <th>Status</th>
+                                    <th>sold#</th>
+                                    <th>Sold$</th>
+                                    <th>Price</th>
+                                </tr>
+                                <?php while($gg = mysqli_fetch_assoc($highestProducts)){?>
+                                <tr style="white-space: nowrap;">
+                                    <td><img src="<?php echo json_decode($gg['item_images'])[0];?>" alt="" /></td>
+                                    <td style="text-wrap: wrap;"><?php echo $gg['item_title'];?></td>
+                                    <td>
+                                        <button class="pd-setting ds-setting ps-setting">Active</button>
+                                    </td>
+                                    <td><?php echo $gg['item_howmanysold'];?></td>
+                                    <td>$<?php echo $gg['item_howmanysold'] * $gg['item_price'];?></td>
+                                    <td>$<?php echo $gg['item_price'];?></td>
+                                    <td>
+                                        <button data-toggle="tooltip" title="Edit" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                                        <button data-toggle="tooltip" title="Trash" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                                    </td>
+                                </tr>
+                                <?php }?>
+                            </table>
+                            <div class="custom-pagination">
+                                <ul class="pagination">
+                                    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                                </ul>
                             </div>
-                            <div id="line-chart" class="flot-chart flot-chart-sts line-chart-statistic"></div>
-                        </div>
+                        </div>                        
                     </div>
                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                         <div class="analytics-rounded mg-b-30 res-mg-t-30">
@@ -592,12 +481,16 @@
                 </div>
             </div>
         </div>
+
+
+
+        
         <div class="calender-area mg-tb-30">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="calender-inner">
-                            <div id='calendar'></div>
+                      
                         </div>
                     </div>
                 </div>

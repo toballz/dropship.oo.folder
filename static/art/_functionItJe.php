@@ -150,7 +150,7 @@ class tools{
 
     public static function stripe_Create_Dynamic_Link_for_payments($cemail,$pprice,$orderID4){
         if(!isset($cemail) || !isset($pprice)){exit("Payment platform error #2896-2407");}
-        if(strlen($cemail) < 4 || !filter_var($cemail, FILTER_VALIDATE_EMAIL) || $pprice < 1){exit("Payment platform error #4890-7455");}
+        if(strlen($cemail) < 4 || !filter_var($cemail, FILTER_VALIDATE_EMAIL) || $pprice < 1){exit("Payment platform error #1352-3745");}
         if(strlen($orderID4) < 10 ){exit("Payment platform error #4890-7455");}
         $realpprice=$pprice*100;
         //
