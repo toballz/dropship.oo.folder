@@ -24,6 +24,15 @@ class site{
     		return "http:";
     	}
     }
+    /**
+     * domain http(s)://ddd.oo
+     * 
+     * servername ddd.oo
+     * 
+     * uri /page1.html
+     * 
+     * full http(s)://ddd.oo/page1.html
+     */
     public static function url($vrvi){
         if ($vrvi=="domain"){
             return self::isSecure()."//".$_SERVER['SERVER_NAME'];
@@ -56,6 +65,7 @@ class session{
      *                          shippingStreet, shippingApt, shippingCity, 
      *                      shippingState, shippingZipPostal, shippingPhonel
      *              shippingPrice: double
+     *              ifnewuser: 0, 1
      *  }
     */
     public static function user(){
@@ -120,7 +130,8 @@ class session{
         return (object)array(
             'id'=> ($ifUserIsLoggedin)?trim($_SESSION[self::userArrayNameKey]['id']):false,
             'address'=> $_SESSION[self::userArrayNameKey]['address'],
-            'shippingPrice'=> (!isset($_SESSION['shippingPrice']))?0:$_SESSION['shippingPrice']
+            'shippingPrice'=> (!isset($_SESSION['shippingPrice']))?0:$_SESSION['shippingPrice'],
+            'ifnewuser'=>(isset($_SESSION[self::userArrayNameKey]['ifNewUser']))?$_SESSION[self::userArrayNameKey]['ifNewUser']:false
         );
   
     }

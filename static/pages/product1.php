@@ -192,13 +192,13 @@ $svgStar='<svg height="800px" width="800px" version="1.1" id="Capa_1" xmlns="htt
             <span class="product_sat_quantity_in">Quantity</span>
             <div class="product_sat_quantity"><span class="product_d_m">-</span><input type="number" min="1" max="10" value="1" class="product_d_n" /><span class="product_d_p">+</span></div>
 
-            <?php if(!session::user()->id){?>
+            <?php if(!session::user()->id || session::user()->ifnewuser){?>
                 <div class="" style=";padding:13px;background: linear-gradient(90deg, rgb(221, 230, 254) 0%, rgb(247 249 254 / 0%) 100%);">
                     <div class=" "><b>10% off for new users</b></div>
                 </div>
             <?php }?>
             <div class="" style="margin:10px 0;padding:13px;background: linear-gradient(90deg, rgb(222, 254, 221) 1%, rgb(247 249 254 / 0%) 100%);">
-                    <div class=" "><b>20% cash back for <?php echo site::name;?>+ users</b></div>
+                    <div class=" "><b>20% cash back for <?php echo site::name;?>+ accounts</b></div>
             </div>
 
             <button class="product_sat_addcart">ADD TO CART • $<?php echo $pprice;?> USD</button>

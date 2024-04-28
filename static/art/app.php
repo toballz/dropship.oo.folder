@@ -144,6 +144,7 @@ if($_POST['o']=="addcart" && isset($_POST['piid']) && isset($_POST['tile']) && $
         $hth=db::stmt("SELECT * FROM `users_info` WHERE `user_email` = '$useremailf' AND `user_password` = '$passwordf' LIMIT 1");
         if(mysqli_num_rows($hth) == 1){
             $ys=mysqli_fetch_assoc($hth);
+            $_SESSION[session::userArrayNameKey]['ifNewUser']=(($ys['user_points'] == 0)?true:false);
             $_SESSION[session::userArrayNameKey]['id']=$ys['user_id'];
             $return["code"]= 301;
             $return["message"]= trim($_POST['re']);
