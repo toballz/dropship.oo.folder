@@ -1,6 +1,6 @@
 <style>
-	.footer_hw9{
-		background-color:var(--bg-color);
+	.footer_hw9{background:rgb(46, 50, 69);
+		background-color-:var(--bg-color);
 		padding:20px;display: flex;color: #ccc;justify-content: space-evenly;
 
 		width: 100%;
@@ -85,79 +85,7 @@ box-shadow: 0 0 250px 20px #473C78;
 
 to {box-shadow: 0 0 100px 15px #F72A3B; }
 }
-
-.footer_hw9 .ft_two
-{
-	width: 90%;
-	/*animation*/
-	-webkit-animation: two 4s ease-in-out infinite alternate;
-	-moz-animation: two 4s ease-in-out infinite alternate;
-	-ms-animation: two 4s ease-in-out infinite alternate;
-	-o-animation: two 4s ease-in-out infinite alternate;
-	animation: two 4s ease-in-out infinite alternate;
-}
-@-webkit-keyframes 
-two { from {
--webkit-box-shadow: 0 0 250px 20px #18C499;
-}
-
-to { -webkit-box-shadow: 0 0 100px 15px #D8F05E; }
-}
-@-moz-keyframes 
-two { from {
--moz-box-shadow: 0 0 250px 20px #18C499;
-}
-
-to { -moz-box-shadow: 0 0 100px 15px #D8F05E; }
-}
-@-o-keyframes 
-two { from {
--o-box-shadow: 0 0 250px 20px #18C499;
-}
-
-to { -o-box-shadow: 0 0 100px 15px #D8F05E; }
-}
-
-@keyframes 
-two { from {
-box-shadow: 0 0 250px 20px #18C499;
-}
-
-to { box-shadow: 0 0 100px 15px #D8F05E; }
-}
-
-.footer_hw9 .ft_three
-{
-	width: 80%;
-	/*animation*/
-	-webkit-animation: three 3s ease-in-out infinite alternate;
-	-moz-animation: three 3s ease-in-out infinite alternate;
-	-ms-animation: three 3s ease-in-out infinite alternate;
-	-o-animation: three 3s ease-in-out infinite alternate;
-	animation: three 3s ease-in-out infinite alternate;
-}
-@-webkit-keyframes 
-three { from {
--webkit-box-shadow: 0 0 250px 20px #FFDD00;
-}
-
-to { -webkit-box-shadow: 0 0 100px 15px #3E33FF; }
-}
-@-moz-keyframes 
-three { from {
--moz-box-shadow: 0 0 250px 20px #FFDD00;
-}
-
-to { -moz-box-shadow: 0 0 100px 15px #3E33FF }
-}
-@-o-keyframes 
-three { from {
--o-box-shadow: 0 0 250px 20px #FFDD00;
-}
-
-to { -o-box-shadow: 0 0 100px 15px #3E33FF }
-}
-
+ 
 @keyframes 
 three { from {
 box-shadow: 0 0 250px 20px #FFDD00;

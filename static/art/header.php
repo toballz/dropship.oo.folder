@@ -44,7 +44,7 @@ $accountSVG='<svg viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/
 		</b>
 		<script>
 			$(".searchbtn").click(function(){
-				$("#searchnavbar").toggle();
+				$("#searchnavbar").css("display","flex");
 			});
 		</script>
 
@@ -70,7 +70,7 @@ $accountSVG='<svg viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/
 					return;
 				}
 				<?php if(!session::user()->id){
-					echo '$.get("http://dropship.oo/cart/checkout/?lke86j=e0gay3", function(data){
+					echo '$.get("'.site::url('domain').'/cart/checkout/?lke86j=e0gay3", function(data){
 			        	$("body").append(data);
 			    	});';
 				}else{
@@ -90,12 +90,25 @@ $accountSVG='<svg viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/
 </header >
 <style>
 	#searchnavbar{
-		position:fixed;display:none;
-		top:0;right:0;width:100%;height:100%;background:#da1;z-index: 1234;
+		position:fixed;display:none;justify-content: right;
+		top:0;right:0;width:100%;height:100%;z-index: 1234;
 	}
+	#searchnavbar>.searchnavbar_voidlef{width:100%;background:rgb(21 25 75 / 51%);}
+	#searchnavbar>.searchnavbar_inner{width:590px;background:red;height: 100%;padding:12px;}
 </style>
 <nav id="searchnavbar">
-	<div sys_get_temp_dir>
-
+	<div class="searchnavbar_voidlef"></div>
+	
+	<div class="searchnavbar_inner">
+		<div style="display:flex;justify-content:right;">
+			<b>X</b>
+		</div>
 	</div>
 </nav>
+
+
+<script>
+	$(".searchnavbar_voidlef").click(function(){
+		$("#searchnavbar").toggle();
+	});
+</script>

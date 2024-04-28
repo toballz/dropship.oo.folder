@@ -25,4 +25,4 @@
 <!-- t -->
 <style type="text/css"> </style>
 <script>;</script> 
- 
+<?php echo isset($_SERVER['HTTP_REFERER'])?'<meta name="reft" content="'.$_SERVER['HTTP_REFERER'].'" />':'';?>

@@ -78,7 +78,7 @@ $svgStar='<svg height="800px" width="800px" version="1.1" id="Capa_1" xmlns="htt
         .product_lootrating{display: flex; align-items: center; gap: 2px;margin-bottom:12px;
             flex-direction: row-reverse;justify-content: start;}
         .product_lootrating>label>svg,.product_lootrating>label{width: 19px; height: 19px;cursor:pointer;}
-        .product_lootrating>label>svg>path{fill:#ccc; }
+        .product_lootrating>label>svg>path{fill:#ebebeb; }
         .product_lootrating > input { display: none; }
         .product_lootrating > input:checked ~ label>svg>path {fill:#ffc107 !important; }
         .product_lootrating > input:hover ~ label>svg>path{fill:#d19e03 !important; }
@@ -86,9 +86,9 @@ $svgStar='<svg height="800px" width="800px" version="1.1" id="Capa_1" xmlns="htt
 
         .product_sat_quantity_in{font-size:12px}
         .product_sat_quantity{display:flex;margin-bottom:12px}
-        .product_sat_quantity>span{font-weight: 600;padding:3px 17px;border: 1px solid #ccc;cursor:pointer;font-size: 18px}
+        .product_sat_quantity>span{font-weight: 600;padding:3px 17px;border: 1px solid #ebebeb;cursor:pointer;font-size: 18px}
         .product_sat_quantity>input{
-    background: var(--grey);-moz-appearance: textfield; appearance: textfield; padding:3px 9px;border-left: 0;border-right: 0;text-align:center;border: 1px solid #ccc;outline: none;} 
+    background: var(--grey);-moz-appearance: textfield; appearance: textfield; padding:3px 9px;border-left: 0;border-right: 0;text-align:center;border: 1px solid #ebebeb;outline: none;} 
         .product_sat_quantity>input::-webkit-outer-spin-button, .product_sat_quantity>input::-webkit-inner-spin-button {-webkit-appearance: none;margin: 0;}
         .product_sat_addcart{
             letter-spacing: 1.5px;font-size: 14px;font-weight: 600;width: 100%;border-radius: 25px;padding: 14.5px;margin-bottom: 12px;color:#fff;
@@ -105,7 +105,7 @@ $svgStar='<svg height="800px" width="800px" version="1.1" id="Capa_1" xmlns="htt
 
         .product_sat_dispec{ }
         .product_sat_dispec_f{
-            padding:8px 12px;font-size: 16px;cursor: pointer;background: #ccc;
+            padding:8px 12px;font-size: 16px;cursor: pointer;background: #ebebeb;
             display: flex;align-items: center;font-weight: 600;margin-bottom:1px; 
         }
         .product_sat_dispec_o{overflow: hidden;
@@ -192,6 +192,15 @@ $svgStar='<svg height="800px" width="800px" version="1.1" id="Capa_1" xmlns="htt
             <span class="product_sat_quantity_in">Quantity</span>
             <div class="product_sat_quantity"><span class="product_d_m">-</span><input type="number" min="1" max="10" value="1" class="product_d_n" /><span class="product_d_p">+</span></div>
 
+            <?php if(!session::user()->id){?>
+                <div class="" style=";padding:13px;background: linear-gradient(90deg, rgb(221, 230, 254) 0%, rgb(247 249 254 / 0%) 100%);">
+                    <div class=" "><b>10% off for new users</b></div>
+                </div>
+            <?php }?>
+            <div class="" style="margin:10px 0;padding:13px;background: linear-gradient(90deg, rgb(222, 254, 221) 1%, rgb(247 249 254 / 0%) 100%);">
+                    <div class=" "><b>20% cash back for <?php echo site::name;?>+ users</b></div>
+            </div>
+
             <button class="product_sat_addcart">ADD TO CART • $<?php echo $pprice;?> USD</button>
             <span class="al0_2">Earn <b><?php echo explode(".",($pprice/3))[0];?></b> points with this item</span>
 
@@ -199,7 +208,7 @@ $svgStar='<svg height="800px" width="800px" version="1.1" id="Capa_1" xmlns="htt
             <button class="product_sat_share"><svg width="21" height="12" viewBox="0 1 13 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><path d="M1.625 8.125V10.2917C1.625 10.579 1.73914 10.8545 1.9423 11.0577C2.14547 11.2609 2.42102 11.375 2.70833 11.375H10.2917C10.579 11.375 10.8545 11.2609 11.0577 11.0577C11.2609 10.8545 11.375 10.579 11.375 10.2917V8.125" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path> <path fill-rule="evenodd" clip-rule="evenodd" d="M6.14775 1.27137C6.34301 1.0761 6.65959 1.0761 6.85485 1.27137L9.56319 3.9797C9.75845 4.17496 9.75845 4.49154 9.56319 4.6868C9.36793 4.88207 9.05135 4.88207 8.85609 4.6868L6.5013 2.33203L4.14652 4.6868C3.95126 4.88207 3.63468 4.88207 3.43942 4.6868C3.24415 4.49154 3.24415 4.17496 3.43942 3.9797L6.14775 1.27137Z" fill="currentColor"></path> <path fill-rule="evenodd" clip-rule="evenodd" d="M6.5 1.125C6.77614 1.125 7 1.34886 7 1.625V8.125C7 8.40114 6.77614 8.625 6.5 8.625C6.22386 8.625 6 8.40114 6 8.125V1.625C6 1.34886 6.22386 1.125 6.5 1.125Z" fill="currentColor"></path></svg>   Share   </button>
 
             <div class="product_sat_dispec">
-                <div class="product_sat_dispec_f"><svg fill="#000000" height="18" width="30" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 -15 380 330" xml:space="preserve"> <path id="XMLID_225_" d="M325.607,79.393c-5.857-5.857-15.355-5.858-21.213,0.001l-139.39,139.393L25.607,79.393 c-5.857-5.857-15.355-5.858-21.213,0.001c-5.858,5.858-5.858,15.355,0,21.213l150.004,150c2.813,2.813,6.628,4.393,10.606,4.393 s7.794-1.581,10.606-4.394l149.996-150C331.465,94.749,331.465,85.251,325.607,79.393z"/></svg>Free Shipping</div>
+                <div class="product_sat_dispec_f"><svg fill="#000000" height="18" width="30" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 -15 380 330" xml:space="preserve"> <path id="XMLID_225_" d="M325.607,79.393c-5.857-5.857-15.355-5.858-21.213,0.001l-139.39,139.393L25.607,79.393 c-5.857-5.857-15.355-5.858-21.213,0.001c-5.858,5.858-5.858,15.355,0,21.213l150.004,150c2.813,2.813,6.628,4.393,10.606,4.393 s7.794-1.581,10.606-4.394l149.996-150C331.465,94.749,331.465,85.251,325.607,79.393z"/></svg>Free Shipping / Return Policy</div>
                 <ul class="product_sat_dispec_o">
                     <li><b>✓</b> Free Shipping on orders <strong>above</strong> $60</li>
                 </ul>
@@ -212,7 +221,9 @@ $svgStar='<svg height="800px" width="800px" version="1.1" id="Capa_1" xmlns="htt
 <style type="text/css">
     .decrepaos{background: var(--grey);margin-top: 24px;padding: 12px;}
     .decrepaos_inner{}
-    .decrepaos_header{background: #ccc;margin-bottom:12px}
+    .decrepaos_header{background: #ebebeb;margin-bottom:12px;
+    display: flex;
+    justify-content: space-around;}
     .decrepaos_header>li{display: inline-block;padding:20px 12px;cursor: pointer;margin:0 5px}
     .decrepaos_header>li svg{width:100%;height: 100%;}
      .decrepaos_header>li>div>span{padding: 0 8px}
@@ -228,7 +239,6 @@ $svgStar='<svg height="800px" width="800px" version="1.1" id="Capa_1" xmlns="htt
         <ul class="decrepaos_header" >
             <li data-plupla="#deropto"><div>DESCRIPTION</div></li>
             <li data-plupla="#re83vws"><div><div><?php echo $svgStar;?></div><span> REVIEWS ( 1 ) </span><div style="width:12px"><?php echo $svgStar;?></div></div></li>
-            <li data-plupla="#len73nb"><div>SPECIFICATIONS</div></li>
         </ul>
     </div> 
      <div class="decrepaos_boddy">
@@ -253,10 +263,7 @@ $svgStar='<svg height="800px" width="800px" version="1.1" id="Capa_1" xmlns="htt
 
         </div> 
         <div id="re83vws">review<br><br><br><br></div>
-        <div id="len73nb">
-           asddjghfs<br/><br/>
-            
-        </div>
+ 
      </div>
  
 </div>
@@ -299,7 +306,7 @@ $svgStar='<svg height="800px" width="800px" version="1.1" id="Capa_1" xmlns="htt
         .addedtocart_kej75_heaader{background:var(--bg-color);color:#fff;text-align: center;font-size:21px;font-weight:600;padding:14px;}
         .addedtocart_kej75_1b{padding:12px;}
         .addedtocart_kej75_2b{display:flex;justify-content: space-between;padding:12px}
-        .addedtocart_kej75_2b>div,.addedtocart_kej75_2b>a{border-radius:15px;text-align:center;min-width: 187px;padding:14px 10px;font-size:13px;background:#ccc;margin:2px;cursor:pointer;}
+        .addedtocart_kej75_2b>div,.addedtocart_kej75_2b>a{border-radius:15px;text-align:center;min-width: 187px;padding:14px 10px;font-size:13px;background:#ebebeb;margin:2px;cursor:pointer;}
         .addedtocart_kej75_2b>div{background-color:var(--bg-color);color: #fff}
         .addedtocart_kej75_2b>a{background-color:#ba2;color: #fff}
         .addedtocart_kej75_1btitle{font-size: 16px;width:60%}
