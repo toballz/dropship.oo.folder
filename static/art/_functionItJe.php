@@ -1,5 +1,5 @@
 <?php
-$reloadStatic="a.r".rand(1,11);
+$reloadStatic="a.".rand(1,91)."s".rand(1,11);
 //$_SESSION['usera01']
 //$_SESSION['cart']
 //$_SESSION['shippingPrice']
@@ -63,7 +63,7 @@ class session{
      *              id: int|false
      *              address: { shippingEmail, shippingFname, shippingLname,
      *                          shippingStreet, shippingApt, shippingCity, 
-     *                      shippingState, shippingZipPostal, shippingPhonel
+     *                      shippingState, shippingZipPostal, shippingPhonel, shippingCountry
      *              shippingPrice: double
      *              ifnewuser: 0, 1
      *  }
@@ -77,6 +77,7 @@ class session{
                                                 "shippingCity"=>"",
                                                 "shippingState"=>"",
                                                 "shippingZipPostal"=>"",
+                                                "shippingCountry"=>"",
                                                 "shippingEmail"=>"",
                                                 "shippingFname"=>"",
                                                 "shippingLname"=>"",

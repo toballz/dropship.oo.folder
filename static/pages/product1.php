@@ -32,8 +32,7 @@ $svgStar='<svg height="800px" width="800px" version="1.1" id="Capa_1" xmlns="htt
     <meta name="adventure" content="<?php echo $itemId;?>"/>
  
     <style type="text/css">
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-        .product_container{ 
+         .product_container{ 
             width:100%;
             max-width: 1470px;
             margin: auto;
@@ -66,7 +65,7 @@ $svgStar='<svg height="800px" width="800px" version="1.1" id="Capa_1" xmlns="htt
         .product_a_er{
     background: var(--grey);
             width:50%;padding: 12px;
-            font-family: "Poppins", sans-serif;
+            font-family: "Inter", sans-serif;
         }
 
 
@@ -95,8 +94,7 @@ $svgStar='<svg height="800px" width="800px" version="1.1" id="Capa_1" xmlns="htt
                     background-color:var(--bg-color);border:1px solid;transition:all 0.3s ease}
         .product_sat_addcart:hover{background-color:#fff;border:1px solid var(--bg-color);color:#000;}
 
-        .product_sat_share{border:0;background: transparent;font-family: "Poppins", sans-serif;font-size: 14px;padding:0; display: flex; min-height: 2.4rem;justify-content: space-around; align-items: center;
-        }
+        .product_sat_share{border:0;background: transparent;font-size: 14px;padding:0; display: flex; min-height: 2.4rem;justify-content: space-around; align-items: center;}
       .product_f3haw>.product_f3haw_q{width: 124px;padding: 14px;border-bottom: 0;font-weight:600;background: var(--grey);}
       .product_f3haw_n{padding: 14px;display:flex;justify-content: space-around;flex-wrap:wrap; background: var(--grey);}
       .product_f3haw_n_haj4{width:252px;font-size:14px;padding:7px}

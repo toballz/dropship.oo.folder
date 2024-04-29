@@ -58,6 +58,7 @@ setTimeout(function(){
         ct=$('[name="city"]'),
         st=$('[name="state"]'),
         zp=$('[name="zippostal"]'),err=false,emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
+        cc=$('[name="countryCode"]'),
         ph=$('[name="phone"]');
   
 
@@ -82,6 +83,8 @@ setTimeout(function(){
         }
         if(zp.val().trim().length < 5){
             zp.css("border","1.8px solid var(--err-red)");err=true;
+        }if(cc.val().trim().length < 2){
+            cc.css("border","1.8px solid var(--err-red)");err=true;
         }
 
         if(err){
@@ -98,6 +101,7 @@ setTimeout(function(){
                  "shippingCity":ct.val().trim(),
                  "shippingState":st.val().trim(),
                  "shippingZipPostal":zp.val().trim(),
+                 "shippingCountry":cc.val().trim(),
                  "shippingPhonel":ph.val().trim(),
             }
 
