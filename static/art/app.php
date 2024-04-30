@@ -156,7 +156,11 @@ if($_POST['o']=="addcart" && isset($_POST['piid']) && isset($_POST['tile']) && $
 }else if($_POST['o'] == "justlogout" ){
      $_SESSION[session::userArrayNameKey]['id']=[];
      unset($_SESSION[session::userArrayNameKey]['id']);
+     unset($_SESSION[session::userArrayNameKey]['ifNewUser']);
      unset($_SESSION[session::userArrayNameKey]['updateaddresstoDB']);
+     
+     $return["code"]= 301;
+     $return["message"]= "reload";
 }
 
 

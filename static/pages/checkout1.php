@@ -1,5 +1,5 @@
 <?php include("../../conf.php");?>
-<?php if(isset($_GET['getSipiihig']) && $_GET['getSipiihig']=="4cxsa"){?>
+<?php if(isset($_GET['getSipiihig']) && $_GET['getSipiihig']=="732"){?>
 
     <?php $quantityTpriceArr=tools::countQualCart("quantityprice");
         $addresss=session::user()->address;
@@ -137,15 +137,15 @@ setTimeout(function(){
         .ban98acv input[name="submit"]{cursor:pointer;font-weight:600;background:var(--bg-color);color:#fff}
         #signup{display: none;}
         .ban98acv::after {content: ""; display: table; clear: both; }
-        .xacn{float: right; background: red; padding: 6px 7px 3px; border-radius: 15px; color: #fff;cursor: pointer;}
-        #clksiup,#clklodg{cursor: pointer;}
+        .xacn{float: right; background: red; padding:4px 3px 1px; border-radius: 15px; color: #fff;cursor: pointer;}
+        #clksiup,#clklodg{cursor: pointer;color:#3182ce;}
     </style>
 
     <section class="logina1">
 
 
         <div class="ban98acv" id="login">
-            <b class="xacn">X</b>
+            <b class="xacn"><span class="material-symbols-outlined">close</span></b>
             <h1>LOGIN</h1>
             <br/><br/><br/>
             <div>
@@ -160,7 +160,7 @@ setTimeout(function(){
         </div>
 
         <div class="ban98acv" id="signup">
-            <b class="xacn">X</b>
+            <b class="xacn"><span class="material-symbols-outlined">close</span></b>
             <h1>SIGNUP</h1>
             <br/><br/><br/>
             <div>
@@ -230,5 +230,16 @@ $("#uk5ek").click(function(){
         </script>
     </section>
 
+<?php }else if(isset($_GET['orderhistory']) && $_GET['orderhistory']=="732"){?>
+
+    order history;
+
+<?php }else if(isset($_GET['tracker']) && $_GET['tracker']=="732"){?>
+
+        tracker  ;
+
+<?php }else if(isset($_GET['addresshistory']) && $_GET['addresshistory']=="732"){?>
+
+    addresshistory history; 
 
 <?php }?>

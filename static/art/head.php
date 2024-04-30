@@ -22,6 +22,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <script type="text/javascript" src="/<?php echo tools::dir()->cssjs;?>/jq.js"></script>
 <link rel="stylesheet" href="/<?php echo tools::dir()->cssjs;?>/css.css?<?php echo $reloadStatic;?>">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 <!-- t -->
 <style type="text/css"> </style>
 <script>;</script> 

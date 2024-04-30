@@ -7,7 +7,8 @@ RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
 #
 RewriteRule ^product/(.*)$ /static/pages/product1.php?i=$1 
 RewriteRule ^cart/$ /static/pages/cart2.php 
-RewriteRule ^cart/checkout/$ /static/pages/checkout1.php 
+RewriteRule ^cart/checkout/$ /static/pages/checkout1.php
+RewriteRule ^account/$ /static/pages/account.php 
 RewriteRule ^g/tracker/([0-9]+)$ /static/pages/tracker.php?oid=$1
 RewriteRule ^s/(tnc|privacy)$ /static/pages/tnc.php?spage=$1
 RewriteRule ^a/ig/apy.php$ static/art/app.php

@@ -1,5 +1,5 @@
 <?php
-$reloadStatic="a.".rand(1,91)."s".rand(1,11);
+$reloadStatic="a.oi,".substr(str_shuffle('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'), 0, 10);
 //$_SESSION['usera01']
 //$_SESSION['cart']
 //$_SESSION['shippingPrice']
@@ -95,7 +95,7 @@ class session{
 
             $getAddressFromDb=db::stmt("SELECT `user_firstlastname_phone`, `user_address` FROM `users_info` WHERE `user_id`='$u' LIMIT 1;");
 
-            if($_SESSION[self::userArrayNameKey]['address']->shippingStreet == ""){
+            if($_SESSION[self::userArrayNameKey]['address']->shippingStreet == "" || $_SESSION[self::userArrayNameKey]['address']->shippingCountry == ""){
                 $getAddressFromDb=db::stmt("SELECT `user_firstlastname_phone`, `user_address` FROM `users_info` WHERE `user_id`='$u' LIMIT 1;");
                 if(mysqli_num_rows($getAddressFromDb) == 1){
                     $s=mysqli_fetch_assoc($getAddressFromDb);

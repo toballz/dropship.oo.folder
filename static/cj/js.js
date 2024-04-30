@@ -19,20 +19,19 @@ var bH = document.baseURI;
         // On hover out, remove the 'highlight' class
         $('.index_f_1>div').removeClass('index_f_1_2');
     });
-
-
-
-//get address page
-$(".nj79r8p").click(function(){
-    loader.start();
+ 
+//accoint page from[data-formpage] to[data-formpagereturn]
+$('[data-formpage]').click(function(){
+    loader.start(); var tt=$(this);
     setTimeout(function(){
-        var bH = document.baseURI;
-        $.get(bH+"cart/checkout/?getSipiihig=4cxsa", function(data){
-            $("#cart_address_765u").html(data);
+        var ah=tt.attr("data-formpage"),avb=ah.split("//"),returnPageHtml=$('[data-formpagereturn="'+avb[1]+'"]');
+        $.get(bH+"cart/checkout/?"+avb[0]+"=732", function(data){
+            $(returnPageHtml).html(data);
         });
     },1000);
     loader.stop();
 });
+
 
 
 //go checkout page
@@ -189,10 +188,20 @@ $.post("a/ig/apy.php", {o:"addcart", piid: pid, qunt: qui,color:col,tile:til })
         },600);
     });
 
+
+
 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 //end
 }());  
   
+
+
+
+
+
+////////////////////////////////////
+///////////////////////////////////
+/////////////////////////////////////
 var loader={
     start: function(){$("body").append('<div class="loaderstartstop" style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:1212;background: rgb(0 0 0 / 69%);display:flex;justify-content: center;align-items:center;">'+
     '<div style="height:95px;width:95px"><svg style="width:100%;height:100%" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" width="200" height="200" style="shape-rendering: auto; display: block; background: rgb(255, 255, 255);" xmlns:xlink="http://www.w3.org/1999/xlink"><g><rect x="19" y="19" width="20" height="20" fill="#505378">'+
@@ -219,44 +228,58 @@ var loader={
         },2000);
     }
 }
+var bH = document.baseURI;
 
- function reloadStatic(){
-        var bH = document.baseURI;
-        // cart num
-        $.post(bH+"a/ig/apy.php", {o:"getsession", re1: "cartnum"}).done(function(data) {
-            if(data.code == 200){
-                $("span.hd").html(data.message.cartnum);
-            }else{
-                alert("#3777-4777");
-            }
-        }).fail(function(jqXHR, textStatus, errorThrown) {
-            console.error("session null:", textStatus, errorThrown);
-        });
+//reload cart num
+function reloadStatic(){
+    // cart num
+    $.post(bH+"a/ig/apy.php", {o:"getsession", re1: "cartnum"}).done(function(data) {
+        if(data.code == 200){
+            $("span.hd").html(data.message.cartnum);
+        }else{
+            alert("#3777-4777");
+        }
+    }).fail(function(jqXHR, textStatus, errorThrown) {
+        console.error("session null:", textStatus, errorThrown);
+    });
 
-    }
+}
 
 //delete from cart
 function deletefromcart(th,sa){
-
     loader.start();
     setTimeout(function(){
 
         $.post("a/ig/apy.php", {o:"deltecart", cartid:sa, colre: th})
-          .done(function(data) {
+        .done(function(data) {
             if(data.code == 301){
                 window.location.href = data.message;
             }  
-          })
-          .fail(function(jqXHR, textStatus, errorThrown) {
+        })
+        .fail(function(jqXHR, textStatus, errorThrown) {
             console.error("addcart-failed:", textStatus, errorThrown);
-          }).always(function() {
-             loader.stop();
+        }).always(function() {
+            loader.stop();
         }); 
     },1000);
-
 }
 
+//logout
+function justlogout(){
+    $.post(bH+"a/ig/apy.php", {o:"justlogout"}).done(function(data) {
+        if(data.code == 301){if(data.message == "reload"){location.reload();}} 
+    }).fail(function(jqXHR, textStatus, errorThrown) {
+        console.error("session null:", textStatus, errorThrown);
+    });
+};
+
+
+
+
+
 $(document).ready(function(){
-   
+    
     reloadStatic();
+
+
 });
