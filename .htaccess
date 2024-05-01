@@ -5,13 +5,15 @@ RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
 RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
 
 #
-RewriteRule ^product/(.*)$ /static/pages/product1.php?i=$1 
-RewriteRule ^cart/$ /static/pages/cart2.php 
-RewriteRule ^cart/checkout/$ /static/pages/checkout1.php
-RewriteRule ^account/$ /static/pages/account.php 
-RewriteRule ^g/tracker/([0-9]+)$ /static/pages/tracker.php?oid=$1
-RewriteRule ^s/(tnc|privacy)$ /static/pages/tnc.php?spage=$1
-RewriteRule ^a/ig/apy.php$ static/art/app.php
+RewriteRule ^product/(.*)$ /static/pages/product1.php?i=$1 [QSA,L]
+RewriteRule ^cart/$ /static/pages/cart2.php [L]
+RewriteRule ^cart/checkout/$ /static/pages/checkout1.php [L]
+
+RewriteRule ^account/(tracking\-\-[0-9]{13,26}|account\-\-0)$ /static/pages/account.php?pager=$1 [L] 
+
+RewriteRule ^g/tracker/([0-9]+)$ /static/pages/tracker.php?oid=$1 [QSA,L]
+RewriteRule ^s/(tnc|privacy)$ /static/pages/tnc.php?spage=$1 [QSA,L]
+RewriteRule ^a/ig/apy.php$ static/art/app.php [L]
 
 ErrorDocument 404 /.404.php
 

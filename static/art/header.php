@@ -57,7 +57,7 @@
 			<span><?php echo (session::user()->id)?"(5055)":"";?></span> 
 			 
 			<?php echo (session::user()->id)?'<div class="a64irgsf_droppeer">
-				<a href="/account/" style="padding:12px;background: green;width: 100%;text-align: center;font-size: 16px;font-weight: 800;margin-bottom:15px">Account</a><a href="javascript:void(0);" onclick="justlogout();">Logout</a>
+				<a href="/account/account--0" style="padding:12px;background: green;width: 100%;text-align: center;font-size: 16px;font-weight: 800;margin-bottom:15px">Account</a><a href="javascript:void(0);" onclick="justlogout();">Logout</a>
 			</div>':'';?>
 		</b>
 	</div>

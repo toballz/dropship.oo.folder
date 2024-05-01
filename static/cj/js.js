@@ -24,8 +24,10 @@ var bH = document.baseURI;
 $('[data-formpage]').click(function(){
     loader.start(); var tt=$(this);
     setTimeout(function(){
-        var ah=tt.attr("data-formpage"),avb=ah.split("//"),returnPageHtml=$('[data-formpagereturn="'+avb[1]+'"]');
-        $.get(bH+"cart/checkout/?"+avb[0]+"=732", function(data){
+        var ah=tt.attr("data-formpage"),avb=ah.split("//"),
+        aeh=(avb[0].includes(':'))?avb[0].split(":"):[avb[0],"732"],
+        returnPageHtml=$('[data-formpagereturn="'+avb[1]+'"]');
+        $.get(bH+"cart/checkout/?"+aeh[0]+"="+aeh[1], function(data){
             $(returnPageHtml).html(data);
         });
     },1000);
