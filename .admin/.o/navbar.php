@@ -26,10 +26,10 @@
 								   <span class="mini-click-non">Ecommerce</span>
 								</a>
                             <ul class="submenu-angle" aria-expanded="true">
-                                <li><a title="Dashboard v.1" href="index.php"><span class="mini-sub-pro">Dashboard v.1</span></a></li> 
+                                <li><a title="Home v.1" href="index.php"><span class="mini-sub-pro">Home v.1</span></a></li> 
                                 <li><a title="Product Edit" href="product-edit.php"><span class="mini-sub-pro">Product Edit</span></a></li>
+                                <li><a title="tracking shipping" href="shipping-tracking.php"><span class="mini-sub-pro">Tracking Shipping</span></a></li>
                                 <li><a title="Product Detail" href="product-detail.html"><span class="mini-sub-pro">Product Detail</span></a></li>
-                                <li><a title="Product Cart" href="product-cart.html"><span class="mini-sub-pro">Product Cart</span></a></li>
                                 <li><a title="Analytics" href="analytics.html"><span class="mini-sub-pro">Analytics</span></a></li>
                                 <li><a title="Widgets" href="widgets.html"><span class="mini-sub-pro">Widgets</span></a></li>
                             </ul>
@@ -83,10 +83,10 @@
                                     <ul class="mobile-menu-nav">
                                         <li><a data-toggle="collapse" data-target="#Charts" href="#">Home <span class="admin-project-icon nalika-icon nalika-down-arrow"></span></a>
                                             <ul class="collapse dropdown-header-top">
-                                                <li><a href="index.php">Dashboard v.1</a></li>
+                                                <li><a href="index.php">Home v.1</a></li>
                                                 <li><a href="product-edit.php">Product Edit</a></li>
+                                                <li><a href="shipping-tracking.php">Tracking Shipping</a></li>
                                                 <li><a href="product-detail.html">Product Detail</a></li>
-                                                <li><a href="product-cart.html">Product Cart</a></li>
                                                 <li><a href="analytics.html">Analytics</a></li>
                                                 <li><a href="widgets.html">Widgets</a></li>
                                             </ul>

@@ -191,7 +191,7 @@ class tools{
                 ],
             ],
             'mode' => 'payment',
-            'success_url' => site::url("domain").'/g/tracker/'.$orderID4,
+            'success_url' => site::url("domain").'/account/tracking--'.$orderID4,
             'cancel_url' => site::url("domain").'/cart/',
             'customer_email' => $cemail, // Customer email
             //'customer_phone' => '+1234567890',

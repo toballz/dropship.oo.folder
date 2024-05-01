@@ -25,7 +25,7 @@
             </div>
 
             <div class="g4356_dpiflex" >
-                <div style="flex-grow:5;" ><div class="dyru4span">Street Address</div><input type="text" name="streetaddress" placeholder="Street Address *" value="<?php echo $addresss->shippingStreet;?>" /></div>
+                <div style="flex-grow:10;" ><div class="dyru4span">Street Address</div><input type="text" name="streetaddress" placeholder="Street Address *" value="<?php echo $addresss->shippingStreet;?>" /></div>
                 <div style="flex-grow:1;" ><div class="dyru4span">APT</div><input type="text" name="streetapt" placeholder="Apt" value="<?php echo $addresss->shippingApt;?>"/></div>
             </div>
 
@@ -232,7 +232,7 @@ $("#uk5ek").click(function(){
 
 <?php /***************************** */}else if(isset($_GET['orderhistory']) && $_GET['orderhistory']=="732"){?>
 
-    order history;
+    <p class="ashowerdiv_titlr"> Order History</p>
 
 
 <?php /***************************** */}else if(isset($_GET['tracker']) && ($_GET['tracker'] !=="")){?>
@@ -240,7 +240,7 @@ $("#uk5ek").click(function(){
     $yhd=strlen($_GET['tracker'])>13;
     if($yhd){
         $processingOrderID=trim($_GET['tracker']);
-        $traccker=db::stmt("SELECT * FROM `orders_made` WHERE `order_id` = '$processingOrderID' AND `order_haspayed` = '1';");
+        $traccker=db::stmt("SELECT * FROM `orders_made` WHERE `order_id` = '$processingOrderID' AND `order_haspayed` = '1' LIMIT 1;");
         //echo "SELECT * FROM `orders_made` WHERE `order_id` = '$processingOrderID' AND `order_haspayed` = '1';";
         if(mysqli_num_rows($traccker)==1){
             $trackerIsValid=true;
@@ -337,8 +337,8 @@ $("#uk5ek").click(function(){
             </div>
         </div>
         <?php }?>
-        <p style="wb4u8tds_title"> Tracker an Order Number ##:</p> 
- 
+        <p class="ashowerdiv_titlr"> Tracker an Order Number ##:</p>
+
         <div class=" "> 
             <div class="trackknum">
                 <input type="text" name="st" placeholder="# 12345 - 67890 - 12345 - 67890 - 12345" />
