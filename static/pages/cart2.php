@@ -70,7 +70,7 @@
             }?></li>
            <li style="border-bottom:1px solid var(--grey);"></li>
            <li class="subtotall"><span>SubTotal</span><span>$<?php echo $itemSum+session::user()->shippingPrice;?></span></li>
-           <li style="align-items:center;"><span class="hr"></span><span> SHIPPING </span><span class="hr"></span></li>
+           <li style="align-items:center;"><span class="hr"></span><span>&nbspSHIPPING&nbsp;</span><span class="hr"></span></li>
            <li class="cartv2_shippaddressfoo">
                 <div data-formpagereturn="cart_address_765u">
                     <div class="cart_address_u213"> 
@@ -87,7 +87,7 @@
             </li>
 
            <br/>
-           <li style="align-items:center;"><span class="hr"></span><b>TOTAL</b><span class="hr"></span></li>
+           <li style="align-items:center;"><span class="hr"></span><b>&nbsp;TOTAL&nbsp;</b><span class="hr"></span></li>
            <li><span>Shipping</span><?php echo $shippingPrice;?></li>
            <li class="reltoal"><span>Total</span><span>$<?php echo $itemSum+session::user()->shippingPrice;;?></span></li>
            

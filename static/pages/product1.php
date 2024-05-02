@@ -58,16 +58,15 @@ $svgStar='<svg height="800px" width="800px" version="1.1" id="Capa_1" xmlns="htt
         .product_a_el{ min-height:250px !important;}
         }
 
-        .product_a_el{
-            width:50%;padding: 12px; overflow:hidden;min-height: 550px;
-        }
+        .product_a_el{ width:45%;padding: 12px; overflow:hidden;min-height: 550px; }
         .product_a_eldp{width:100%;height:100%;position:relative;overflow:hidden;}
-        .product_a_er{
-    background: var(--grey);
-            width:50%;padding: 12px;
-            font-family: "Inter", sans-serif;
-        }
+        .product_a_er{ background: var(--grey); width:55%;padding: 12px; font-family: "Inter", sans-serif; }
 
+        @media screen and (max-width: 999px){
+        .product_a_el{ width:55%; }
+        .product_a_er{   width:45%; }
+
+        }
 
         .al0_2{font-size:10px;}
 
@@ -84,10 +83,9 @@ $svgStar='<svg height="800px" width="800px" version="1.1" id="Capa_1" xmlns="htt
 
 
         .product_sat_quantity_in{font-size:12px}
-        .product_sat_quantity{display:flex;margin-bottom:12px}
-        .product_sat_quantity>span{font-weight: 600;padding:3px 17px;border: 1px solid #ebebeb;cursor:pointer;font-size: 18px}
-        .product_sat_quantity>input{
-    background: var(--grey);-moz-appearance: textfield; appearance: textfield; padding:3px 9px;border-left: 0;border-right: 0;text-align:center;border: 1px solid #ebebeb;outline: none;} 
+        .product_sat_quantity{display:flex;margin-bottom:12px;}
+        .product_sat_quantity>span{font-weight: 600;padding:3px 17px;border: 1px solid #ebebeb;cursor:pointer;font-size: 18px;background:#fff;line-height: 30px;}
+        .product_sat_quantity>input{ background:#fff;-moz-appearance: textfield; appearance: textfield; height:40px;width:60px;padding:3px 9px;border-left: 0;border-right: 0;text-align:center;border: 1px solid #ebebeb;outline: none;} 
         .product_sat_quantity>input::-webkit-outer-spin-button, .product_sat_quantity>input::-webkit-inner-spin-button {-webkit-appearance: none;margin: 0;}
         .product_sat_addcart{
             letter-spacing: 1.5px;font-size: 14px;font-weight: 600;width: 100%;border-radius: 25px;padding: 14.5px;margin-bottom: 12px;color:#fff;

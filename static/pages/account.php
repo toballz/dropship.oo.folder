@@ -49,7 +49,7 @@ if(!session::user()->id){
                 <span class="material-symbols-outlined">package_2</span><span>Order history</span>
             </a>
             <a class="accmenuli" href="javascript:void(0);" data-formpag<?php echo (session::user()->id && ($pager0 !="tracking"))?"":"r";?>e="getSipiihig//showher" >
-                <span class="material-symbols-outlined">cottage</span><span>Addresses</span>
+                <span class="material-symbols-outlined">cottage</span><span>Address</span>
             </a>
             <a class="accmenuli <?php if($pager0=="tracking"){echo "accmenuliacv aasbsd";}?>" href="javascript:void(0);" data-formpage="tracker:<?php echo $pager1;?>//showher" >
                 <span class="material-symbols-outlined">local_shipping</span><span>Tracker</span>

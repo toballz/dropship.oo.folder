@@ -1,5 +1,5 @@
 <?php include("../../conf.php");?>
-<?php /***************************** */if(isset($_GET['getSipiihig']) && $_GET['getSipiihig']=="732"){?>
+<?php /**********Edit shipping ADDRESS******** */if(isset($_GET['getSipiihig']) && $_GET['getSipiihig']=="732"){?>
 
     <?php $quantityTpriceArr=tools::countQualCart("quantityprice");
         $addresss=session::user()->address;
@@ -128,7 +128,7 @@
         },1000);
     });
 </script>
-<?php /***************************** */}else if(isset($_GET['lke86j']) && $_GET['lke86j']=="e0gay3"){?>
+<?php /**********Login signup********* */}else if(isset($_GET['lke86j']) && $_GET['lke86j']=="e0gay3"){?>
 
     <style type="text/css">
         .logina1{position: fixed;top: 0;left: 0; background:rgb(0 0 0 / 66%);height: 100%;width: 100%;
@@ -230,12 +230,12 @@ $("#uk5ek").click(function(){
         </script>
     </section>
 
-<?php /***************************** */}else if(isset($_GET['orderhistory']) && $_GET['orderhistory']=="732"){?>
+<?php /********Order history******** */}else if(isset($_GET['orderhistory']) && $_GET['orderhistory']=="732"){?>
 
     <p class="ashowerdiv_titlr"> Order History</p>
 
 
-<?php /***************************** */}else if(isset($_GET['tracker']) && ($_GET['tracker'] !=="")){?>
+<?php /*********tracking progress******* */}else if(isset($_GET['tracker']) && ($_GET['tracker'] !=="")){?>
     <?php $trackerIsValid=false;
     $yhd=strlen($_GET['tracker'])>13;
     if($yhd){
@@ -247,15 +247,18 @@ $("#uk5ek").click(function(){
             //loop
             while ($getTracckerInfo=mysqli_fetch_assoc($traccker)){ 
                 $shippingAddress= $getTracckerInfo['order_shipping_address']; 
+                $trackingProgress= $getTracckerInfo['order_tracker']; 
                 $cartItems= $getTracckerInfo['order_cart_items']; 
             }
-            //empty carts
+            //empty carts when referral from stripe.com /|\ payment successful
             if(isset($_SESSION['processingOrderID']) && ($_SESSION['processingOrderID'] == $_GET['tracker'])){
                 $_SESSION['cart']=[];
                 unset($_SESSION['shippingPrice']);
                 unset($_SESSION['processingOrderID']);
                 //increase howmany sold by 1
                 $orderItemId = json_decode($cartItems, true);
+                //
+                db::stmt("UPDATE `orders_made` SET `order_tracker` = 1 WHERE `order_id` = '".$_GET['tracker']."'");
                 //loop
                 foreach ($orderItemId as $item) { 
                     db::stmt("UPDATE `items_products` SET `item_howmanysold` = (`item_howmanysold` + 1) WHERE `item_id` = '".$item['productid']."'");
@@ -299,14 +302,15 @@ $("#uk5ek").click(function(){
         .trackercoolr>li>div:first-child{z-index: 3;display: flex;justify-content: center;align-items: center;position: relative;padding: 12px 23px;background-color:#fff;color: #fff;width: 29px; text-align: center; line-height: 29px; font-size: 12px; border-radius: 50% }
         .trackercoolr>li>div:last-child{margin-top:12px;font-weight: 600}
 
-    .trackercoolr>li:last-childq{width: auto;}
+    .trackercoolr>li:last-child{width: auto;}
     .trackercoolr>li:last-child:after{width: 0;}
     #trackerpage .header_a3g:after{background: linear-gradient(to bottom, #15194b,#3bb028 ,#3bb028);}
     li.ifu4_acktv>div:first-child,li.ifu4_acktv:after{background:#7ef4ce;}
 
     </style>
     <section>    
-        <?php if($trackerIsValid){?> 
+        <?php if($trackerIsValid){?>
+        <p class="ashowerdiv_titlr"> Track with Order Number</p>
         <div style="">
             <div style="background:#3bb028;position: relative; box-shadow: 0px 6px 5px 0px #3bb028;border-top-right-radius:15px;border-top-left-radius:15px;overflow:hidden;">
                 <div class="tracker_container" >
@@ -316,19 +320,19 @@ $("#uk5ek").click(function(){
             <div style="background:#2c831c; box-shadow: 0px 6px 5px 0px #2c831c;">
                 <br/>
                 <ul class="trackercoolr tracker_container">
-                    <li class="ifu4_acktv">
+                    <li class="<?php echo ($trackingProgress>=1)?'ifu4_acktv':'';?>">
                         <div><span class="material-symbols-outlined">done_all</span></div>
                         <div>Order Placed</div>
                     </li>
-                    <li>
+                    <li class="<?php echo ($trackingProgress>=2)?'ifu4_acktv':'';?>">
                         <div><span class="material-symbols-outlined">done_all</span></div>
                         <div>Processed</div>
                     </li>
-                    <li>
+                    <li class="<?php echo ($trackingProgress>=3)?'ifu4_acktv':'';?>">
                         <div><span class="material-symbols-outlined">done_all</span></div>
                         <div>Shipped</div>
                     </li>
-                    <li>
+                    <li class="<?php echo ($trackingProgress>=4)?'ifu4_acktv':'';?>">
                         <div><span class="material-symbols-outlined">done_all</span></div>
                         <div>Delivered</div>
                     </li>
@@ -337,8 +341,8 @@ $("#uk5ek").click(function(){
             </div>
         </div>
         <?php }?>
-        <p class="ashowerdiv_titlr"> Tracker an Order Number ##:</p>
-
+        
+        <br/>
         <div class=" "> 
             <div class="trackknum">
                 <input type="text" name="st" placeholder="# 12345 - 67890 - 12345 - 67890 - 12345" />
