@@ -26,7 +26,7 @@ if(isset($_POST['v']) && $_POST['v']=="1"){
         }
     }
     if(isset($_POST['getDatesAppointmentsMoreThanDate']) && isset($_POST['dateTo'])){
-        $tg=db::stmt("SELECT `date` FROM schedulee WHERE `date` >= '".trim($_POST['dateTo'])."' LIMIT 13;");
+        $tg=db::stmt("SELECT `date` FROM schedulee WHERE `date` >= '".trim($_POST['dateTo'])."' AND `haspaid`='1' LIMIT 13;");
         $i=0;
         while($rr=mysqli_fetch_assoc($tg)){
             $rd=DateTime::createFromFormat('Ymd', $rr['date']);
@@ -68,13 +68,13 @@ if(isset($_POST['v']) && $_POST['v']=="1"){
         $botm=trim($_POST['beginingOfThisMonth']);$botmbs=$botm+30;
         $bolm=trim($_POST['beginingOfLastMonth']); 
         $tg=db::stmt("SELECT 
-        (SELECT COUNT(*) FROM `schedulee` WHERE `date` >= '$botm' AND `date` < '$botmbs') AS beginingOfThisMonth,
-        (SELECT COUNT(*) FROM schedulee WHERE `date` >= '$bolm' AND `date` < '$botm') AS lastMonth,
-        (SELECT COUNT(*) FROM schedulee) AS allToDate
+        (SELECT COUNT(*) FROM `schedulee` WHERE `date` >= '$botm' AND `date` < '$botmbs' AND `haspaid`='1') AS beginingOfThisMonth,
+        (SELECT COUNT(*) FROM schedulee WHERE `date` >= '$bolm' AND `date` < '$botm' AND `haspaid`='1') AS lastMonth,
+        (SELECT COUNT(*) FROM schedulee WHERE `haspaid`='1') AS allToDate
             FROM schedulee; ");
 
             //
-        $tg2=db::stmt("SELECT `hairstyle`,`image`, COUNT(*) AS appearance_count FROM schedulee GROUP BY `hairstyle` ORDER BY appearance_count DESC LIMIT 5");
+        $tg2=db::stmt("SELECT `hairstyle`,`image`, COUNT(*) AS appearance_count FROM schedulee  WHERE `haspaid`='1' GROUP BY `hairstyle` ORDER BY appearance_count DESC LIMIT 5");
             // 
         while($yts=mysqli_fetch_assoc($tg2)){
             $u['popularHairstyleBooked'][]=$yts; 

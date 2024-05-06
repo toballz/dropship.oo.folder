@@ -39,7 +39,7 @@
 
 
     .pickerdateClassModal_parent{display:none;width: 100%; height: 100%;position: fixed;background:rgb(0 0 0 / 69%); top: 0;z-index:1001;left: 0; justify-content: center; align-items: center;}
-    .pickerdateClassModal{ width:100%;padding:23px;max-width:800px;display:flex; display: flex; justify-content: center;}
+    .pickerdateClassModal{ width:100%;padding:23px;max-width:800px;display:flex; justify-content: center;}
     .pickerdateClassModal>div:first-child{ width: 65%; }
     .pickerdateClassModal>div:last-child{ width: 45%; }
 
@@ -51,7 +51,12 @@
     .contact_cutstomer_vbg>div>label>input{width:100%;padding:15px;}
     .contact_cutstomer_vbg>div>label>p{margin:2px 0 4px;font-weight:600;}
     .close_btnn{ position: absolute; top: 0; right: 0; padding: 2px 11px; background: red;cursor:pointer;color:#fff;}
-
+    @media screen and (max-width:650px){
+        .pickerdateClassModal{display: block;
+    overflow-y: scroll;
+    height: 96%;}
+        .pickerdateClassModal>div{max-width:400px !important;width:100% !important;margin:auto}
+    }
 </style>
 
   

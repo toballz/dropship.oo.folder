@@ -48,7 +48,7 @@
             <div class="col-12 col-md">
                 <div class="text-wrapper">
                     <h1 class="mbr-section-title mbr-fonts-style mb-3 display-1 asas" style="font-size:37px"><strong>Welcome To Coco Hair Signature, LLC</strong></h1>
-                    <div class="mbr-section-btn mt-3"><a class="btn btn-secondary display-4" style="background:#f773c1 !important" href="<?php echo site::url(1);?>/pages/hairlist.php">Book Now</a><a class="btn btn-info display-4" href="http://shop.<?php echo site::url(3);?>">Shop Online</a><a class="btn btn-warning display-4" href="<?php echo site::url(1);?>/classes.php">📚1on1 Classes</a></div>
+                    <div class="mbr-section-btn mt-3"><a class="btn btn-secondary display-4" style="background:#f773c1 !important" href="<?php echo site::url(1);?>/pages/hairlist.php">Book Now</a><a class="btn btn-info display-4" href="http://shop.<?php echo site::url(3);?>">Shop Online</a><a class="btn btn-warning display-4" href="<?php echo site::url(1);?>/pages/classes.php">📚1on1 Classes</a></div>
                 </div>
             </div>
         </div>
