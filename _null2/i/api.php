@@ -11,7 +11,7 @@ if(isset($_POST['v']) && $_POST['v']=="1"){
 
 
     if(isset($_POST['getDatesAppointmentsSpecDate']) && isset($_POST['dateFrom'])){
-        $tg=db::stmt("SELECT `hairstyle`,`image`,`hairstyle`,`rida`,`date`,`time` FROM schedulee WHERE date = '".$_POST['dateFrom']."';");
+        $tg=db::stmt("SELECT `hairstyle`,`image`,`hairstyle`,`rida`,`date`,`time` FROM schedulee WHERE `date` = '".$_POST['dateFrom']."' AND `haspaid`='1';");
  
         $i=0;
         while($rr=mysqli_fetch_assoc($tg)){
@@ -53,7 +53,7 @@ if(isset($_POST['v']) && $_POST['v']=="1"){
     }
     
     if(isset($_POST['receiptIIinfo']) && isset($_POST['j'])){
-        $tg=db::stmt("SELECT `price`,`time`,`hairstyle`,`email`,`phonne`,`customername`,`image`  FROM `schedulee` WHERE `rida`='".$_POST['receiptIIinfo']."' ;");
+        $tg=db::stmt("SELECT `price`,`time`,`hairstyle`,`email`,`phonne`,`customername`,`image`  FROM `schedulee` WHERE `rida`='".$_POST['receiptIIinfo']."' AND `haspaid`='1' ;");
         $u=mysqli_fetch_assoc($tg);
     }
     if(isset($_POST['getOverrideDates']) && isset($_POST['va'])){
@@ -205,7 +205,15 @@ if(isset($_POST['v']) && $_POST['v']=="1"){
     $u['message']="ok";
 
 }
+//delete appointment date haspaid=9
+if(isset($_POST['deleteAppointment']) && isset($_POST['ksy']) && $_POST['ksy'] != ""){
+    $cat4=trim($_POST['ksy']);
+$he=db::stmt("UPDATE `schedulee` SET `haspaid` = '9' WHERE `schedulee`.`rida` = '$cat4';");
 
+$u['code']=200;
+$u['message']="ok";
+
+}
     
     echo json_encode($u);
 }
