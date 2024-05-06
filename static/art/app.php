@@ -48,15 +48,7 @@ if($_POST['o']=="addcart" && isset($_POST['piid']) && isset($_POST['tile']) && $
 
 
     //&&&&&&&&&&&&
-}else if($_POST['o']=="getsession"){
-    //count all cart
-    if(isset($_POST['re1']) && $_POST['re1'] == "cartnum"){
-        $return["message"]["cartnum"]= tools::countQualCart("cartquantity");
-    }
-
-
-    //return;;;
-    $return["code"]=200; 
+}else if($_POST['o']=="getsession"){ // null
 
 
     //&&&&&&&&&&&&

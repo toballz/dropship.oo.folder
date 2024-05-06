@@ -47,7 +47,7 @@
 		<a class="header_shopingbag acc" href="<?php echo site::url("domain");?>/cart/">
 			<span class="material-symbols-outlined" style="font-size:41px;color:#fff"> shopping_bag </span>
 			<div>
-				<span class="hd">0</span>
+				<span class="hd"><?php echo tools::countQualCart("cartquantity")?></span>
 				<span class="h_n">Cart</span>
 			</div>
 		</a>
@@ -57,7 +57,7 @@
 			<span><?php echo (session::user()->id)?"(5055)":"";?></span> 
 			 
 			<?php echo (session::user()->id)?'<div class="a64irgsf_droppeer">
-				<a href="/account/account--0" style="padding:12px;background: green;width: 100%;text-align: center;font-size: 16px;font-weight: 800;margin-bottom:15px">Account</a><a href="javascript:void(0);" onclick="justlogout();">Logout</a>
+				<a href="/account/account--0" style="padding:12px;background: green;width: 100%;text-align: center;font-size: 16px;font-weight: 800;margin-bottom:15px">Account</a><a href="javascript:void(0);" id="justlogout">Logout</a>
 			</div>':'';?>
 		</b>
 	</div>

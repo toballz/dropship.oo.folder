@@ -1,0 +1,8 @@
+RewriteEngine On
+RewriteRule ^page1.html$ page1.php [L]
+RewriteRule ^pyment.html$ pyment.php [L]
+RewriteRule ^schdl/order/(.*)$ schdl/receiphair.php?ids=$1 [L]
+
+RewriteBase /
+RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+RewriteRule ^(.*)$ https://%1/$1 [R=301,L]

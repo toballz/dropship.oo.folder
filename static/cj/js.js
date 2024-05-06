@@ -157,7 +157,6 @@ setTimeout(function(){
 $.post("a/ig/apy.php", {o:"addcart", piid: pid, qunt: qui,color:col,tile:til })
   .done(function(data) {
     if(data.code == 200){
-        reloadStatic();
         $(".addedtocart_kej75_heaader").html($(".product_d_n").val()+" Item(s) Added to Cart");
         $(".addedtocart_kej75_1btitle").html($(".product_sat_title").html());
         var tt=$('.product_sat_color [name="product_color"]:checked');
@@ -191,6 +190,36 @@ $.post("a/ig/apy.php", {o:"addcart", piid: pid, qunt: qui,color:col,tile:til })
     });
 
 
+//logout
+$("#justlogout").click(function(){
+    $.post(bH+"a/ig/apy.php", {o:"justlogout"}).done(function(data) {
+        if(data.code == 301){if(data.message == "reload"){location.reload();}} 
+    }).fail(function(jqXHR, textStatus, errorThrown) {
+        console.error("session null:", textStatus, errorThrown);
+    });
+});
+
+
+//reload cart num nulllllll null
+function reloadStatics(){
+    // cart num
+    $.post(bH+"a/ig/apy.php", {o:"getsession", re1: "cartnum"}).done(function(data) {
+        if(data.code == 200){
+            $("span.hd").html(data.message.cartnum);
+        }else{
+            alert("#3777-4777");
+        }
+    }).fail(function(jqXHR, textStatus, errorThrown) {
+        console.error("session null:", textStatus, errorThrown);
+    });
+
+}
+$(document).ready(function(){
+
+//
+
+
+});
 
 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 //end
@@ -229,23 +258,8 @@ var loader={
             $(".loaderstartstop").remove();
         },2000);
     }
-}
-var bH = document.baseURI;
+} 
 
-//reload cart num
-function reloadStatic(){
-    // cart num
-    $.post(bH+"a/ig/apy.php", {o:"getsession", re1: "cartnum"}).done(function(data) {
-        if(data.code == 200){
-            $("span.hd").html(data.message.cartnum);
-        }else{
-            alert("#3777-4777");
-        }
-    }).fail(function(jqXHR, textStatus, errorThrown) {
-        console.error("session null:", textStatus, errorThrown);
-    });
-
-}
 
 //delete from cart
 function deletefromcart(th,sa){
@@ -266,22 +280,5 @@ function deletefromcart(th,sa){
     },1000);
 }
 
-//logout
-function justlogout(){
-    $.post(bH+"a/ig/apy.php", {o:"justlogout"}).done(function(data) {
-        if(data.code == 301){if(data.message == "reload"){location.reload();}} 
-    }).fail(function(jqXHR, textStatus, errorThrown) {
-        console.error("session null:", textStatus, errorThrown);
-    });
-};
 
 
-
-
-
-$(document).ready(function(){
-    
-    reloadStatic();
-
-
-});

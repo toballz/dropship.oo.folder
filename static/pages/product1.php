@@ -194,7 +194,7 @@ $svgStar='<svg height="800px" width="800px" version="1.1" id="Capa_1" xmlns="htt
                 </div>
             <?php }?>
             <div class="" style="margin:10px 0;padding:13px;background: linear-gradient(90deg, rgb(222, 254, 221) 1%, rgb(247 249 254 / 0%) 100%);">
-                    <div class=" "><b>20% cash back for <?php echo site::name;?>+ accounts</b></div>
+                    <div class=" "><b>9% cash back for <?php echo site::name;?>+ accounts</b></div>
             </div>
 
             <button class="product_sat_addcart">ADD TO CART • $<?php echo $pprice;?> USD</button>
@@ -324,7 +324,7 @@ $svgStar='<svg height="800px" width="800px" version="1.1" id="Capa_1" xmlns="htt
                 </div>
             </div>
             <div class="addedtocart_kej75_2b">
-                <div class="" onclick="$('.addedtocart_6f75').toggle();">Continue Shopping</div>
+                <div class="" onclick="location.reload();">Continue Shopping</div>
                 <a href="<?php echo site::url("domain");?>/cart/">Go to Cart</a>
             </div>
     </div>

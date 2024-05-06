@@ -29,7 +29,6 @@
                                 <li><a title="Home v.1" href="index.php"><span class="mini-sub-pro">Home v.1</span></a></li> 
                                 <li><a title="Product Edit" href="product-edit.php"><span class="mini-sub-pro">Product Edit</span></a></li>
                                 <li><a title="tracking shipping" href="shipping-tracking.php"><span class="mini-sub-pro">Tracking Shipping</span></a></li>
-                                <li><a title="Product Detail" href="product-detail.html"><span class="mini-sub-pro">Product Detail</span></a></li>
                                 <li><a title="Analytics" href="analytics.html"><span class="mini-sub-pro">Analytics</span></a></li>
                                 <li><a title="Widgets" href="widgets.html"><span class="mini-sub-pro">Widgets</span></a></li>
                             </ul>
@@ -46,13 +45,7 @@
                             <ul class="submenu-angle" aria-expanded="false">
                                 <li><a title="Blog" href="blog.html"><span class="mini-sub-pro">Blog</span></a></li>
                             </ul>
-                        </li>
-                        <li>
-                            <a class="has-arrow" href="mailbox.html" aria-expanded="false"><i class="icon nalika-table icon-wrap"></i> <span class="mini-click-non">Data Tables</span></a>
-                            <ul class="submenu-angle" aria-expanded="false">
-                                <li><a title="Data Table" href="data-table.html"><span class="mini-sub-pro">Data Table</span></a></li>
-                            </ul>
-                        </li>
+                        </li> 
                         <li>
                             <a class="has-arrow" href="mailbox.html" aria-expanded="false"><i class="icon nalika-forms icon-wrap"></i> <span class="mini-click-non">Forms Elements</span></a>
                             <ul class="submenu-angle" aria-expanded="false">
@@ -86,7 +79,6 @@
                                                 <li><a href="index.php">Home v.1</a></li>
                                                 <li><a href="product-edit.php">Product Edit</a></li>
                                                 <li><a href="shipping-tracking.php">Tracking Shipping</a></li>
-                                                <li><a href="product-detail.html">Product Detail</a></li>
                                                 <li><a href="analytics.html">Analytics</a></li>
                                                 <li><a href="widgets.html">Widgets</a></li>
                                             </ul>
@@ -103,13 +95,7 @@
                                             <ul id="others" class="collapse dropdown-header-top">
                                                 <li><a href="blog.html">Blog</a></li>
                                             </ul>
-                                        </li>
-                                        <li><a data-toggle="collapse" data-target="#Tablesmob" href="#">Tables <span class="admin-project-icon nalika-icon nalika-down-arrow"></span></a>
-                                            <ul id="Tablesmob" class="collapse dropdown-header-top">
-                                                <li><a href="data-table.html">Data Table</a>
-                                                </li>
-                                            </ul>
-                                        </li>
+                                        </li> 
                                         <li><a data-toggle="collapse" data-target="#formsmob" href="#">Forms <span class="admin-project-icon nalika-icon nalika-down-arrow"></span></a>
                                             <ul id="formsmob" class="collapse dropdown-header-top">
                                                 <li><a href="advance-form-element.html">Advanced Form Elements</a>
