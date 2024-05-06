@@ -196,7 +196,15 @@ if(isset($_POST['v']) && $_POST['v']=="1"){
 
     }
 
+ //set override dates [{},{}]
+ if(isset($_POST['updateOverrided']) && isset($_POST['cat']) && $_POST['cat'] != ""){
+        $cat4=trim($_POST['cat']);
+    $he=db::stmt("UPDATE `availability` SET `description` = '$cat4' WHERE `id` = '3' AND `namer`='override';");
+    
+    $u['code']=200;
+    $u['message']="ok";
 
+}
 
     
     echo json_encode($u);
