@@ -2,6 +2,7 @@
 class site{
 	const name = "CocoHairSignature, LLC";
 	const address = "2835 Belvidere Road Suite 314, Waukegan Illinois 60085";
+	const phone = "+1(224) 440-1819";
 	///
 	///1=http(s)://oo.o/ 2=http(s)://oo.o/${request_URI} 3=oo.o 
 	public static function url($type=1,$crop=false){

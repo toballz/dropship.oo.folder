@@ -1,12 +1,12 @@
-<?php include_once("./co.php");
+<?php include_once("../co.php");
 
 
 ?><!DOCTYPE html>
 <html>
 <head>
-    <?php include_once("i/var__function.php");?>
+    <?php include_once(dirr."/i/var__function.php");?>
     
-  <?php include(dirr."./i/head.php");?>
+  <?php include(dirr."/i/head.php");?>
   
   <style type="text/css">.btn{margin:0 !important;}.jkwj4n5{display:flex;padding:12px 2px;}.jkwj4n5-1{width:304px;}.jkwj4n5-2{width:100%;padding:13px;}.jkwj4n5-2 input[type="radio"]{margin:1px 9px 0 0;-webkit-transform:scale(1.5);transform: scale(1.5)}.jkwj4n5-2 label{cursor:pointer;}
     @media(max-width:489px){.jkwj4n5{display:block;}.jkwj4n5-1,.jkwj4n5-2{width:100%;}}
@@ -18,7 +18,7 @@
   
 </head>
 <body>
-<?php include("i/header.php");?>
+<?php include(dirr."/i/header.php");?>
 <section data-bs-version="5.1" class="content5 cid-sRCtHKvscz" id="content5-q">
     
     <div class="container">
@@ -31,7 +31,7 @@
                  <li class="mbr-text mbr-fonts-style display-4" style="padding-left:14px;">Once your appointment is booked, I will contact you within a few days before your appt date (typically a week) to inquire about color choice and your desired length. Please note after picking your color, no modifications are allowed.<br></li>
                  <li class="mbr-text mbr-fonts-style display-4" style="padding-left:14px;">I can only accomodate two colors per style at this time. However, if you would like to get three colors or more it will be an additional $15. After 3 days of being serviced, I am no longer responsible for any misfortunes. Clients are responsible for the upkeep and maintenance of their hair.<br></li>
 
-                 <p class="mbr-text mbr-fonts-style display-7">Make sure your hair is free of texturized sores. If you have any sores or open wounds on your scalp <b>YOU WILL NOT BE SERVICED!</b><br><li>If you are unsure about edges, undercut, soft hair, etc, please email me at <a target="_blank" href="mailto:cocohairsignature@gmail.com"><b>cocohairsignature@gmail.com</b></a> regarding a consulting to ensure that you receive the best services for your hair. My consultations are free and typically take no less than 15 minutes.</li><br><li>Have a blunt/pixie cut? No problem. I will try my best to hide your ends using my skill and products. But keep in mind that style may not come out as neat.<br><strong>PLEASE COME CHEMICAL/OIL FREE, WASHED, BLOW DRIED AND DETANGLED. IF YOUR HAIR HAS TO BE BLOW DRIED AND DETANGLED THERE WILL BE A $25 SURCHARGE.</strong><br><b>HERE IS THE PERFECT EXAMPLE OF HOW YOUR HAIR SHOULD BE BLOWN OUT FOR YOUR APPOINTMENT.</b><div style="width:100%;max-width:234px;"><img src="<?php echo site::url(1);?>/img/ettj.png"></div><br><li>CASH IS DUE WHEN PAYING THE REMAINDER BALANCE. </strong>You’ll have 10 minutes grace period. After 10 minutes you will be charged a $35 late fee. After 20 minutes your appointment will be considered a NO SHOW.<br></li><li>You must cancel 24 hours in advance or you’ll be charged 75% of service fee.<br>NO SHOW appointments are charged 100% and you can no longer book anymore IF YOU REFUSE TO PAY FOR SERVICES.</li><li><u>Emergency / Squeeze In / Day off Appointment:</u> $150 and up depending on hairstyle. Please note that this is an additional fee.</li><li>PLEASE COME WITH A GOOD ATTITUDE.😊</li></p>
+                 <p class="mbr-text mbr-fonts-style display-7">Make sure your hair is free of texturized sores. If you have any sores or open wounds on your scalp <b>YOU WILL NOT BE SERVICED!</b><br><li>If you are unsure about edges, undercut, soft hair, etc, please email me at <a target="_blank" href="mailto:cocohairsignature@gmail.com"><b>cocohairsignature@gmail.com</b></a> regarding a consulting to ensure that you receive the best services for your hair. My consultations are free and typically take no less than 15 minutes.</li><br><li>Have a blunt/pixie cut? No problem. I will try my best to hide your ends using my skill and products. But keep in mind that style may not come out as neat.<br><strong>PLEASE COME CHEMICAL/OIL FREE, WASHED, BLOW DRIED AND DETANGLED. IF YOUR HAIR HAS TO BE BLOW DRIED AND DETANGLED THERE WILL BE A $25 SURCHARGE.</strong><br><b>HERE IS THE PERFECT EXAMPLE OF HOW YOUR HAIR SHOULD BE BLOWN OUT FOR YOUR APPOINTMENT.</b><div style="width:100%;max-width:234px;"><img src="<?php echo site::url(1);?>/img/n/ettj.png"></div><br><li>CASH IS DUE WHEN PAYING THE REMAINDER BALANCE. </strong>You’ll have 10 minutes grace period. After 10 minutes you will be charged a $35 late fee. After 20 minutes your appointment will be considered a NO SHOW.<br></li><li>You must cancel 24 hours in advance or you’ll be charged 75% of service fee.<br>NO SHOW appointments are charged 100% and you can no longer book anymore IF YOU REFUSE TO PAY FOR SERVICES.</li><li><u>Emergency / Squeeze In / Day off Appointment:</u> $150 and up depending on hairstyle. Please note that this is an additional fee.</li><li>PLEASE COME WITH A GOOD ATTITUDE.😊</li></p>
             </div>
         </div>
     </div>
@@ -84,7 +84,7 @@
 </section>
 
 
-<?php include("i/footer.php");?>
+<?php include(dirr."/i/footer.php");?>
 <style>
 
 .pignose-calendar {
@@ -139,186 +139,8 @@
 
   
 <script type="text/javascript" src="<?php echo site::url(1);?>/3rdparty/datepicker4/js/pignose.calendar.full.min.js"></script>
-<script type="text/javascript">
-
-   var dateselected_fromDates=null,hairstyle=null,ttimeesele=null,dateSelecta=null;
-function convertTimeTo12HourFormat(time) {
-  var hour = parseInt(time.substring(0, 2));
-  var minute = time.substring(2);
-  var period = (hour >= 12) ? "pm" : "am";
-
-  // Convert hour to 12-hour format
-  hour = (hour > 12) ? (hour - 12) : hour;
-  
-  // Handle hour = 0 (midnight) and hour = 12 (noon)
-  if (hour === 0) {
-    hour = 12;
-  }
-
-  // Pad minute with leading zero if necessary
-  if (minute.length === 1) {
-    minute = "0" + minute;
-  }
-
-  return hour + ":" + minute + " " + period;
-}
-
-function getTimeSlot(timwssawaewses){
-    $.post("<?php echo site::url(1);?>/i/api.php",{
-                select_time_forDate:0,
-                getDate4Thd:timwssawaewses,
-                v:1
-            },function(dataTimes){ 
-            dateSelecta=timwssawaewses;
-                var timeAvailableList="";
-                if (Object.keys(dataTimes).length === 0) {
-                    timeAvailableList='<li>No timeslot available</li>';
-                } else {
-                    for(var o in dataTimes){
-                        if (dataTimes.hasOwnProperty(o)) {
-                            timeAvailableList += "<li><label><input type='radio' value='"+dataTimes[o]+"' name='selector_timer' class='selector_timer_checked'/><div>"+convertTimeTo12HourFormat(dataTimes[o])+"</div></label></li>"; 
-                        }
-                    }
-                }
-                var $targetClass = $(".time_sel_xewqctorbox");
-                  $targetClass.css("display","block");
-                  $target=$targetClass.html(`<div>Select A Time for<br/>${timwssawaewses.substring(0, 4)+"-"+timwssawaewses.substring(4, 6)+"-"+timwssawaewses.substring(6, 8)}</div> 
-                           <ul> 
-                              ${timeAvailableList} 
-                           </ul>
-                           </br>
-                           <div style="width:100%;" class="btn btn-secondary" onclick="continuetoinfo();">Proceed to Check out!</div>
-                           `)
-            }); 
-}
-
-var today = new Date();
-var year = today.getFullYear();
-var month = (today.getMonth() + 1), day = today.getDate(); 
-var ttodayDatew=year + '' + ((month<10)?('0' + month):month) + '' + ((day < 10)? ('0' + day):day);
+<script type="text/javascript" src="<?php echo site::url(1);?>/assets/js.js"></script>
  
-getTimeSlot(ttodayDatew);
-
-
-    $('.agddhahah').pignoseCalendar({
-      disabledRanges: [ ['2020-01-12', ttodayDatew.substring(0, 4)+"-"+ttodayDatew.substring(4, 6)+"-"+(parseInt(ttodayDatew)-1).toString().substring(6, 8)]  ],
-      //disabledDates: [ '2024-05-07', '2024-05-06' ],   
-      //disabledWeekdays: [0, 6],
-	scheduleOptions: {
-		colors: {
-		    offer: '#2fabb7',
-			ad: '#5c6270'
-		}
-	},
-	schedules: [{
-		name: 'offer',
-	    date: '2024-05-09'
-	}, {
-		name: 'ad',
-	    date: '2024-05-10'
-	} ],
-	select: function(date, context) {
-        dateselected_fromDates=(date[0] === null ? 'null' : date[0].format('YYYYMMDD'));
-        if(dateselected_fromDates !== "null"){
-            getTimeSlot(dateselected_fromDates);
-        }else{ 
-            var $targetClass = $(".time_sel_xewqctorbox"); $targetClass.css("display","block");
-            $target=$targetClass.html(` <ul> <li>No date selected!</li> </ul>`)
-        }
-	}
-});
-
-
-</script>   
-<script type="text/javascript">
-    
-function formatPhoneNumber(input) {
-    let formattedValue = input.value.replace(/\D/g, '');
-    formattedValue = formattedValue.replace(/^(\d{3})(\d{3})(\d{4})$/, '($1) $2-$3');
-    input.value = formattedValue;
-}
-    document.querySelector(".continyeto_pickadate").onclick = function(){
-        var t=0, rados = document.querySelectorAll('[data-hair]');
-        
-        for(var i = 0; i < rados.length; i++) {
-            if(rados[i].type === 'radio' && rados[i].checked) {
-            $.post("<?php echo site::url(1);?>/i/api.php",{
-                    selectdatetime:0,
-                    v:1
-                },function(){
-                    $(".pickerdateClassModal_parent").css("display","flex");
-                    hairstyle=rados[i].getAttribute("data-hair");
-                }); 
-                t=1;break;return;
-            }
-        
-        }
-        if(t==0){alert("Please Select a HairStyle From the Collection.");};
-}
-
- 
-function continuetoinfo(){
-        var j=0, radosq = document.querySelectorAll('input[name="selector_timer"].selector_timer_checked');
-        
-        for(var i = 0; i < radosq.length; i++) {
-            if(radosq[i].type === 'radio' && radosq[i].checked){
-                ttimeesele=radosq[i].value; 
-                $("body").append(`<div class="contact_cutstomer_vbg">
-                    <div></br><h2>Your contact Info</h2></br>
-                        <label><p>FullName</p><input type="text" name="fullname" placeholder="Fullname"/></label>
-                        <label><p>Email</p><input type="email" name="email" placeholder="Email"/></label>
-                        <label><p>Phone Number</p><input type="text" name="phonenumber" placeholder="Phone Number" maxlength="15" oninput="formatPhoneNumber(this);"/></label>
-                        <label><input class="btn btn-secondary" type="button" name="submit" value="Proceed to payment" onclick="saveContactInfo();"/></label>
-                        </br></br></div>
-                </div>`);
-                j=1;break;return;
-            }
-
-        
-        }
-        if(j==0){alert("Please Select a time slot for this date.");}
- 
-}
-
-function saveContactInfo(){
-    var fnm=$('[name="fullname"]'),  eml=$('[name="email"]'), pnb=$('[name="phonenumber"]'),err=false;
-
-    if (fnm.val().indexOf(' ') !== -1) {  } else {err="Please type your First and Last name!"; }
-    if (eml.val().indexOf('@') !== -1) {  } else {err="Please Input a valid Email!"; } 
-    if (/^\(\d{3}\) \d{3}-\d{4}$/.test(pnb.val())) { 
-        console.log("Valid phone number");
-    } else {err="Please Input a valid Phone number!"; }
-
-    if(err){
-        alert(err);
-    }else{
-        if(dateSelecta !== null && ttimeesele !== null && hairstyle !== null){
-            var gg={
-                fullname: fnm.val(),
-                email: eml.val(),
-                phone: pnb.val(),
-                time: ttimeesele,
-                date:dateSelecta
-            };
-
-            $.post("<?php echo site::url(1);?>/i/api.php",{
-                save_contacts_64e:"err",
-                        co: JSON.stringify(gg),
-                    ord:hairstyle,
-                    v:1
-                },function(dare){
-                    if(dare.code == 301){
-                        location.href=dare.link;
-                    }
-                }); 
-        }else{
-            alert("Error please reload this page.");
-        }
-    }
-}
-</script>
-<!--<script src="assets/theme/js/script.js"></script>  -->
-  
   
 </body>
 </html>

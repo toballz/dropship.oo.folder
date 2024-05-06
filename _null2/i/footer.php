@@ -15,4 +15,5 @@
 <a href="https://mobirise.site/p" style="display:block;opacity:0;z-index:-999;"></a>
 
 
-<script src="<?php echo site::url(1);?>/assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="<?php echo site::url(1);?>/assets/bootstrap.bundle.min.js"></script>
+<script src="<?php echo site::url(1);?>/assets/navbar-dropdown.js"></script>

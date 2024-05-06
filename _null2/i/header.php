@@ -15,10 +15,10 @@
                 </div>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true"><li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="<?php echo site::url(1);?>/page1.php"><span class="mobi-mbri mobi-mbri-timer mbr-iconfont mbr-iconfont-btn"></span>Book Now</a></li>
-                    <li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="http://shop.<?php echo site::url(3);?>"><span class="mobi-mbri mobi-mbri-cart-add mbr-iconfont mbr-iconfont-btn"></span>Shop Online</a></li></ul>
-                
-                
+                <ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true">
+                    <li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="<?php echo site::url(1);?>/pages/hairlist.php"><span class="mobi-mbri mobi-mbri-timer mbr-iconfont mbr-iconfont-btn"></span>Book Now</a></li>
+                    <li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="http://shop.<?php echo site::url(3);?>"><span class="mobi-mbri mobi-mbri-cart-add mbr-iconfont mbr-iconfont-btn"></span>Shop Online</a></li>
+                </ul>
             </div>
         </div>
     </nav>
