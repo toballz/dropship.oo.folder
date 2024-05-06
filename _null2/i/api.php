@@ -17,7 +17,7 @@ if(isset($_POST['v']) && $_POST['v']=="1"){
         while($rr=mysqli_fetch_assoc($tg)){
             $rd=DateTime::createFromFormat('Ymd', $rr['date']);
  
-            $u[$i]['imageUrl']=  "https://cocohairsignature.com/img/".$rr['image'].".jpg?93jv"; 
+            $u[$i]['imageUrl']=  site::url(1)."/img/".$rr['image'].".jpg?93jv"; 
             $u[$i]['datetime']= $rd->format('Y F, l jS')." ".$rr['time'];
             $u[$i]['hairname']=$rr['hairstyle'];
             $u[$i]['orderId']=$rr['rida'];

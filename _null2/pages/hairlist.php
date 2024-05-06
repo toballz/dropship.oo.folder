@@ -15,8 +15,51 @@
    
   <link rel="stylesheet" href="<?php echo site::url(1);?>/assets/web/assets/mobirise-icons/mobirise-icons.css"> 
 <link rel="stylesheet" type="text/css" href="<?php echo site::url(1);?>/3rdparty/datepicker4/css/pignose.calendar.min.css"/>
+<style>
+
+.pignose-calendar {
+            font-family: 'Lato', 'Open Sans', sans-serif;
+            font-size: 14px !important;max-width:100% !important;width:100%;
+            } 
+            .time_sel_xewqctorbox{position:relative;text-align: center; max-width: 100% !important; font-weight: 600; padding:20px 1.6em 0; background-color: #fafafa;
+                  border: 1px solid #d8d8d8; box-shadow: 0 4px 12px rgba(0, 0, 0, .25);
+                  -o-box-shadow: 0 4px 12px rgba(0, 0, 0, .25); -moz-box-shadow: 0 4px 12px rgba(0, 0, 0, .25);
+                  -webkit-box-shadow: 0 4px 12px rgba(0, 0, 0, .25); overflow: hidden;
+            }
+
+            .time_sel_xewqctorbox>ul{display:block;padding:0;margin:25px 0 0;; max-height:372px; overflow-y: scroll;}
+            .time_sel_xewqctorbox>ul>li{width:95%;list-style-type: none;}
+            .time_sel_xewqctorbox>ul>li>label{width:100%;}
+            .time_sel_xewqctorbox>ul>li>label>div{width:100%;margin:4px 2px;cursor:pointer;padding:12px;box-shadow:2px 2px 4px rgb(0 0 0 / 51%)}
+            .time_sel_xewqctorbox>ul>li>label>input.selector_timer_checked{display:none;}
+            .time_sel_xewqctorbox>ul>li>label>input.selector_timer_checked:checked+div{background:#94db94;color:#700d0d;}
+      
+
+
+
+
+    .pickerdateClassModal_parent{display:none;width: 100%; height: 100%;position: fixed;background:rgb(0 0 0 / 69%); top: 0;z-index:1001;left: 0; justify-content: center; align-items: center;}
+    .pickerdateClassModal{ width:100%;padding:23px;max-width:800px;display:flex; display: flex; justify-content: center;}
+    .pickerdateClassModal>div:first-child{ width: 65%; }
+    .pickerdateClassModal>div:last-child{ width: 45%; }
+
+    
+    .contact_cutstomer_vbg{position:relative;z-index:123123;display:flex;justify-content:center;align-items:center;position:fixed;top:0;width:100%;left:0;height:100%;background:rgb(0 0 0 / 74%);}
+    .contact_cutstomer_vbg>div{padding:15px;max-width:580px;width:100%;background:#fff;}
+    .contact_cutstomer_vbg>div h2{text-align:center;}
+    .contact_cutstomer_vbg>div>label{width:100%;padding:14px;display:block;font-size:15px}
+    .contact_cutstomer_vbg>div>label>input{width:100%;padding:15px;}
+    .contact_cutstomer_vbg>div>label>p{margin:2px 0 4px;font-weight:600;}
+    .close_btnn{ position: absolute; top: 0; right: 0; padding: 2px 11px; background: red;cursor:pointer;color:#fff;}
+
+</style>
+
   
 </head>
+
+
+
+
 <body>
 <?php include(dirr."/i/header.php");?>
 <section data-bs-version="5.1" class="content5 cid-sRCtHKvscz" id="content5-q">
@@ -85,54 +128,13 @@
 
 
 <?php include(dirr."/i/footer.php");?>
-<style>
-
-.pignose-calendar {
-            font-family: 'Lato', 'Open Sans', sans-serif;
-            font-size: 14px !important;max-width:100% !important;width:100%;
-            } 
-            .time_sel_xewqctorbox { text-align: center; max-width: 100% !important; font-weight: 600; padding:20px 1.6em 0; background-color: #fafafa;
-                  border: 1px solid #d8d8d8; box-shadow: 0 4px 12px rgba(0, 0, 0, .25);
-                  -o-box-shadow: 0 4px 12px rgba(0, 0, 0, .25); -moz-box-shadow: 0 4px 12px rgba(0, 0, 0, .25);
-                  -webkit-box-shadow: 0 4px 12px rgba(0, 0, 0, .25); overflow: hidden;
-            }
-
-            .time_sel_xewqctorbox>ul{display:block;padding:0;margin:25px 0 0;; max-height:372px; overflow-y: scroll;}
-            .time_sel_xewqctorbox>ul>li{width:95%;list-style-type: none;}
-            .time_sel_xewqctorbox>ul>li>label{width:100%;}
-            .time_sel_xewqctorbox>ul>li>label>div{width:100%;margin:4px 2px;cursor:pointer;padding:12px;box-shadow:2px 2px 4px rgb(0 0 0 / 51%)}
-            .time_sel_xewqctorbox>ul>li>label>input.selector_timer_checked{display:none;}
-            .time_sel_xewqctorbox>ul>li>label>input.selector_timer_checked:checked+div{background:#94db94;color:#700d0d;}
-      
-
-
-
-
-    .pickerdateClassModal_parent{display:none; 
-    width: 100%; height: 100%;
-    position: fixed;background:rgb(0 0 0 / 69%); top: 0;z-index: 6246;
-    left: 0; justify-content: center; align-items: center;}
-    .pickerdateClassModal{ width:100%;padding:23px;max-width:800px;display:flex; display: flex; justify-content: center;}
-    .pickerdateClassModal>div:first-child{ width: 65%; }
-    .pickerdateClassModal>div:last-child{ width: 45%; }
-
-    
-    .contact_cutstomer_vbg{z-index:123123;display:flex;justify-content:center;align-items:center;position:fixed;top:0;width:100%;left:0;height:100%;background:rgb(0 0 0 / 74%);}
-    .contact_cutstomer_vbg>div{padding:15px;max-width:580px;width:100%;background:#fff;}
-    .contact_cutstomer_vbg>div h2{text-align:center;}
-    .contact_cutstomer_vbg>div>label{width:100%;padding:14px;display:block;font-size:15px}
-    .contact_cutstomer_vbg>div>label>input{width:100%;padding:15px;}
-    .contact_cutstomer_vbg>div>label>p{margin:2px 0 4px;font-weight:600;}
-
-
-</style>
 
 
 
 
 <div class="pickerdateClassModal_parent">
     <div class="pickerdateClassModal">
-        <div class="agddhahah"></div>
+        <div class="agddhahah" style="position:relative;"></div>
         <div class="time_sel_xewqctorbox"></div>
     </div>
  </div> 

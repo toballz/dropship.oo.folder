@@ -77,7 +77,7 @@ class tools{
                 ],
             ],
             'mode' => 'payment',
-            'success_url' => site::url(1).'?success='.$orderID4,
+            'success_url' => site::url(1).'/pages/receipt.php?ords='.$orderID4,
             'cancel_url' => site::url(1).'/page1.php',
             'customer_email' => $cemail, // Customer email
             //'customer_phone' => '+1234567890',

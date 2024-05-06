@@ -1,8 +1,8 @@
-var bH = document.baseURI;
+var bH = document.baseURI+"";
 
  
 var loader={
-    start: function(){$("body").append('<div class="loaderstartstop" style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:92121;background: rgb(0 0 0 / 69%);display:flex;justify-content: center;align-items:center;">'+
+    start: function(){$("body").append('<div class="loaderstartstop" style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:999999;background: rgb(0 0 0 / 69%);display:flex;justify-content: center;align-items:center;">'+
     '<div style="height:95px;width:95px"><svg style="width:100%;height:100%" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" width="200" height="200" style="shape-rendering: auto; display: block; background: rgb(255, 255, 255);" xmlns:xlink="http://www.w3.org/1999/xlink"><g><rect x="19" y="19" width="20" height="20" fill="#505378">'+
   '<animate attributeName="fill" values="#ffffff;#505378;#505378" keyTimes="0;0.125;1" dur="1s" repeatCount="indefinite" begin="0s" calcMode="discrete"></animate>'+
 '</rect><rect x="40" y="19" width="20" height="20" fill="#505378">'+
@@ -24,15 +24,9 @@ var loader={
     stop:function(){
         setTimeout(function(){
             $(".loaderstartstop").remove();
-        },2000);
+        },1235);
     }
-} 
-
-loader.stop();
- 
- 
- 
-
+}
 
 
 
@@ -77,15 +71,19 @@ function getTimeSlot(timwssawaewses){
                 }
                 var $targetClass = $(".time_sel_xewqctorbox");
                   $targetClass.css("display","block");
-                  $target=$targetClass.html(`<div>Select A Time for<br/>${timwssawaewses.substring(0, 4)+"-"+timwssawaewses.substring(4, 6)+"-"+timwssawaewses.substring(6, 8)}</div> 
+                  $target=$targetClass.html(`<div class="close_btnn" onclick="close_btnnax();"><b>X</b></div><div>Select A Time for<br/>${timwssawaewses.substring(0, 4)+"-"+timwssawaewses.substring(4, 6)+"-"+timwssawaewses.substring(6, 8)}</div> 
                            <ul> 
                               ${timeAvailableList} 
                            </ul>
                            </br>
-                           <div style="width:100%;" class="btn btn-secondary" onclick="continuetoinfo();">Proceed to Check out!</div>
+                           <div style="width:100%;" class="btn btn-secondary" onclick="continuetoinfo();">Proceed to Checkout!</div>
                            `)
             }); 
 }
+function close_btnnax(){
+    $(".pickerdateClassModal_parent").css("display","none");
+    $(".contact_cutstomer_vbg").css("display","none");
+};
 
 var today = new Date();
 var year = today.getFullYear();
@@ -126,11 +124,13 @@ getTimeSlot(ttodayDatew);
   
     
 function formatPhoneNumber(input) {
-    let formattedValue = input.value.replace(/\D/g, '');
-    formattedValue = formattedValue.replace(/^(\d{3})(\d{3})(\d{4})$/, '($1) $2-$3');
+    let formattedValue = input.value.replace(/\D/g, ''); 
     input.value = formattedValue;
 }
     document.querySelector(".continyeto_pickadate").onclick = function(){
+        $(".agddhahah").append('<div class="close_btnn" onclick="close_btnnax();"><b>X</b></div>');
+    loader.start();
+    setTimeout(function(){
         var t=0, rados = document.querySelectorAll('[data-hair]');
         
         for(var i = 0; i < rados.length; i++) {
@@ -147,17 +147,22 @@ function formatPhoneNumber(input) {
         
         }
         if(t==0){alert("Please Select a HairStyle From the Collection.");};
+
+        loader.stop();
+    },1000);
+    
 }
 
  
 function continuetoinfo(){
+    loader.start();
+    setTimeout(function(){
         var j=0, radosq = document.querySelectorAll('input[name="selector_timer"].selector_timer_checked');
-        
         for(var i = 0; i < radosq.length; i++) {
             if(radosq[i].type === 'radio' && radosq[i].checked){
                 ttimeesele=radosq[i].value; 
                 $("body").append(`<div class="contact_cutstomer_vbg">
-                    <div></br><h2>Your contact Info</h2></br>
+                    <div style="position:relative;"><div class="close_btnn" onclick="close_btnnax();"><b>X</b></div></br><h2>Your contact Info</h2></br>
                         <label><p>FullName</p><input type="text" name="fullname" placeholder="Fullname"/></label>
                         <label><p>Email</p><input type="email" name="email" placeholder="Email"/></label>
                         <label><p>Phone Number</p><input type="text" name="phonenumber" placeholder="Phone Number" maxlength="15" oninput="formatPhoneNumber(this);"/></label>
@@ -170,42 +175,45 @@ function continuetoinfo(){
         
         }
         if(j==0){alert("Please Select a time slot for this date.");}
- 
+    },1000);
+    loader.stop();
 }
 
 function saveContactInfo(){
-    var fnm=$('[name="fullname"]'),  eml=$('[name="email"]'), pnb=$('[name="phonenumber"]'),err=false;
+    loader.start();
+    setTimeout(function(){
+        var fnm=$('[name="fullname"]'),  eml=$('[name="email"]'), pnb=$('[name="phonenumber"]'),err=false;
 
-    if (fnm.val().indexOf(' ') !== -1) {  } else {err="Please type your First and Last name!"; }
-    if (eml.val().indexOf('@') !== -1) {  } else {err="Please Input a valid Email!"; } 
-    if (/^\(\d{3}\) \d{3}-\d{4}$/.test(pnb.val())) { 
-        console.log("Valid phone number");
-    } else {err="Please Input a valid Phone number!"; }
+        if (fnm.val().indexOf(' ') !== -1) {  } else {err="Please type your First and Last name!"; }
+        if (eml.val().indexOf('@') !== -1) {  } else {err="Please Input a valid Email!"; } 
+        if (pnb.val().length < 13 && pnb.val().length > 4) { } else {err="Please Input a valid Phone number!"; }
 
-    if(err){
-        alert(err);
-    }else{
-        if(dateSelecta !== null && ttimeesele !== null && hairstyle !== null){
-            var gg={
-                fullname: fnm.val(),
-                email: eml.val(),
-                phone: pnb.val(),
-                time: ttimeesele,
-                date:dateSelecta
-            };
-
-            $.post(bH+"/i/api.php",{
-                save_contacts_64e:"err",
-                        co: JSON.stringify(gg),
-                    ord:hairstyle,
-                    v:1
-                },function(dare){
-                    if(dare.code == 301){
-                        location.href=dare.link;
-                    }
-                }); 
+        if(err){
+            alert(err);
         }else{
-            alert("Error please reload this page.");
+            if(dateSelecta !== null && ttimeesele !== null && hairstyle !== null){
+                var gg={
+                    fullname: fnm.val(),
+                    email: eml.val(),
+                    phone: pnb.val(),
+                    time: ttimeesele,
+                    date:dateSelecta
+                };
+
+                $.post(bH+"/i/api.php",{
+                    save_contacts_64e:"err",
+                            co: JSON.stringify(gg),
+                        ord:hairstyle,
+                        v:1
+                    },function(dare){
+                        if(dare.code == 301){
+                            location.href=dare.link;
+                        }
+                    }); 
+            }else{
+                alert("Error please reload this page.");
+            }
         }
-    }
+    },1000);
+    loader.stop();
 }

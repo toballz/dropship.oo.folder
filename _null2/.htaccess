@@ -1,7 +1,5 @@
-RewriteEngine On
-RewriteRule ^page1.html$ page1.php [L]
-RewriteRule ^pyment.html$ pyment.php [L]
-RewriteRule ^schdl/order/(.*)$ schdl/receiphair.php?ids=$1 [L]
+Options -Indexes
+
 
 RewriteBase /
 RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
