@@ -1,4 +1,4 @@
-<?php include_once("../../conf.php");
+<?php include_once("../co.php");
 require_once('./stripe-php-master/init.php');
 
 //secret Stripe API key
@@ -27,7 +27,7 @@ switch ($event->type) {
 		//file_put_contents("./akd.txt", $Order_Id);
 
         //update if has paid to 1
-        db::stmt("UPDATE `orders_made` SET `order_haspayed` = '1' WHERE `orders_made`.`order_id` = '$Order_Id'");
+        db::stmt("UPDATE `schedulee` SET `haspaid` = '1' WHERE `schedulee`.`rida` = '$Order_Id';");
 
         break;
     // Handle other event types as needed

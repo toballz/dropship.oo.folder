@@ -189,6 +189,11 @@ if(isset($_POST['v']) && $_POST['v']=="1"){
          '$hairFromJsonDb_img', '$hairFromJsonDb_price', '$hairFromJsonDb_timeRange', '$hairFromJsonDb_title', '0');";
         //echo $yhd;
          $js = db::stmt($yhd);
+
+        $payLink=tools::stripe_Create_Dynamic_Link_for_payments($contactInfo->email, 50.00, $ridaa);
+        $u['code']=301;
+        $u['link']=$payLink;
+
     }
 
 

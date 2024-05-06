@@ -14,7 +14,7 @@
   <title>Set Appointment | CocoHairSignature</title>
    
   <link rel="stylesheet" href="<?php echo site::url(1);?>/assets/web/assets/mobirise-icons/mobirise-icons.css"> 
-<link rel="stylesheet" type="text/css" href="<?php echo site::url(1);?>/datepicker4/css/pignose.calendar.min.css"/>
+<link rel="stylesheet" type="text/css" href="<?php echo site::url(1);?>/3rdparty/datepicker4/css/pignose.calendar.min.css"/>
   
 </head>
 <body>
@@ -138,7 +138,7 @@
  </div> 
 
   
-<script type="text/javascript" src="<?php echo site::url(1);?>/datepicker4/js/pignose.calendar.full.min.js"></script>
+<script type="text/javascript" src="<?php echo site::url(1);?>/3rdparty/datepicker4/js/pignose.calendar.full.min.js"></script>
 <script type="text/javascript">
 
    var dateselected_fromDates=null,hairstyle=null,ttimeesele=null,dateSelecta=null;
@@ -306,8 +306,10 @@ function saveContactInfo(){
                         co: JSON.stringify(gg),
                     ord:hairstyle,
                     v:1
-                },function(){
-                    $(".pickerdateClassModal_parent").css("display","flex");
+                },function(dare){
+                    if(dare.code == 301){
+                        location.href=dare.link;
+                    }
                 }); 
         }else{
             alert("Error please reload this page.");

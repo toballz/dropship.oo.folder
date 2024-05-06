@@ -164,15 +164,15 @@
                             <h5 class="card-title mbr-fonts-style m-0 mb-3 display-5">
                                 <strong>SERVICE</strong></h5>
                             <p class="mbr-text mbr-fonts-style display-7">I provide the following braiding services: BoxBraids, Knotless Braids, Goddess Locs, Passion Twists, Lemonade Braids, Tribal Braids, Feed-in Braids, Crotchet Braids, Cornrows and more.<br><br>Deposit is required to secure appointment.<br><strong>3hrs or Less</strong><br>Follow Us @cocohairsignature.</p>
-                            <div class="social-row display-7">
-                                <div class="soc-item">
-                                    <a href="https://www.facebook.com/cocohairsignature/" target="_blank">
-                                        <span class="mbr-iconfont socicon-facebook socicon" style="color: rgb(68, 121, 217); fill: rgb(68, 121, 217);"></span>
+                            <div class="social-row display-7" style="display: flex;">
+                                <div style="margin-right: 12px;" class="soc-item">
+                                    <a href="https://www.facebook.com/cocohairsignature/" target="_blank" style="width:30px;display: block;">
+                                    <img src="<?php echo site::url(1);?>/img/n/facebooklogo.png?-695x704.jpg" style="width:100%"/>  
                                     </a>
                                 </div>
                                 <div class="soc-item">
-                                    <a href="https://instagram.com/cocohairsignature" target="_blank">
-                                        <span class="mbr-iconfont socicon-instagram socicon" style="color: rgb(228, 63, 63); fill: rgb(228, 63, 63);"></span>
+                                    <a href="https://instagram.com/cocohairsignature" target="_blank" style="width:30px;display: block;">
+                                        <img src="<?php echo site::url(1);?>/img/n/instagramlogo.png?-695x704.jpg" style="width:100%"/>
                                     </a>
                                 </div>
                             </div>

@@ -16,7 +16,3 @@
 
 
 <script src="<?php echo site::url(1);?>/assets/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="<?php echo site::url(1);?>/assets/smoothscroll/smooth-scroll.js"></script>
-<script src="<?php echo site::url(1);?>/assets/ytplayer/index.js"></script>
-<script src="<?php echo site::url(1);?>/assets/mbr-switch-arrow/mbr-switch-arrow.js"></script>
-<script src="<?php echo site::url(1);?>/assets/dropdown/js/navbar-dropdown.js"></script>

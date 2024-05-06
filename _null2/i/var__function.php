@@ -27,6 +27,62 @@ class tools{
 		}
 		return $randomString;
 	}
+
+	public static function stripe_Secret_key_API(){
+        if(islive){
+            return "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";
+        }else{
+            //test api
+            return "sk_test_51PDP2eKn3pr6WNDaHNlxDQD1Rz1vuVwTSgcsoX5UpmP4bOSdtJKGasADIsEyr2AZGqETA0AhHVuQRPqxLzDoOTPn00Eu3BbfCp";
+        }
+    }
+    public static function stripe_Signing_Secret(){
+        if(islive){
+            return "whsec_26dFBYpqShU78UNstISQOW27gteD77JZ";
+        }else{
+            //test api
+            return "whsec_QnSSwAa23jpRn2rIrNkOZZs2AIYhbjG7";
+        }
+    }
+
+    public static function stripe_Create_Dynamic_Link_for_payments($cemail,$pprice,$orderID4){
+        if(!isset($cemail) || !isset($pprice)){exit("Payment platform error #2896-2407");}
+        if(strlen($cemail) < 4 || !filter_var($cemail, FILTER_VALIDATE_EMAIL) || $pprice < 1){exit("Payment platform error #1352-3745");}
+        if(strlen($orderID4) < 2 ){exit("Payment platform error #4890-7455");}
+        $realpprice=$pprice*100;
+        //
+        require_once dirr.'/3rdparty/stripe-php-master/init.php';
+        //
+        \Stripe\Stripe::setApiKey(self::stripe_Secret_key_API());
+        //
+        // Create a new Checkout Session
+        $session = \Stripe\Checkout\Session::create([
+            'payment_method_types' => ['card'],
+            'line_items' => [
+                [
+                    'price_data' => [
+                        'currency' => 'usd',
+                        'product_data' => [
+                            'name' => site::name,
+                        ],
+                        'unit_amount' => $realpprice, // Amount in cents
+                    ],
+                    'quantity' => 1,
+                ],
+            ],
+            'payment_intent_data' => [
+            'metadata' => [
+                'orderID' => $orderID4, // Include order ID in metadata
+                ],
+            ],
+            'mode' => 'payment',
+            'success_url' => site::url(1).'?success='.$orderID4,
+            'cancel_url' => site::url(1).'/page1.php',
+            'customer_email' => $cemail, // Customer email
+            //'customer_phone' => '+1234567890',
+        ]);
+        return $session->url;
+    }
 }
 
 
