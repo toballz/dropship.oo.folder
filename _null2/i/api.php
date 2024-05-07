@@ -205,15 +205,29 @@ if(isset($_POST['v']) && $_POST['v']=="1"){
     $u['message']="ok";
 
 }
-//delete appointment date haspaid=9
-if(isset($_POST['deleteAppointment']) && isset($_POST['ksy']) && $_POST['ksy'] != ""){
-    $cat4=trim($_POST['ksy']);
-$he=db::stmt("UPDATE `schedulee` SET `haspaid` = '9' WHERE `schedulee`.`rida` = '$cat4';");
+    //delete appointment date haspaid=9
+    if(isset($_POST['deleteAppointment']) && isset($_POST['ksy']) && $_POST['ksy'] != ""){
+        $cat4=trim($_POST['ksy']);
+    $he=db::stmt("UPDATE `schedulee` SET `haspaid` = '9' WHERE `schedulee`.`rida` = '$cat4';");
 
-$u['code']=200;
-$u['message']="ok";
+    $u['code']=200;
+    $u['message']="ok";
 
+    }
+    
+
+
+//get message notification
+if(isset($_POST['get_messageNotifiy']) && isset($_POST['a'])){
+    $afa=db::stmt("SELECT `description` FROM `availability` WHERE `id` = '4' AND `namer`='message_notification';");
+
+        $u=json_decode(mysqli_fetch_assoc($afa)['description']);
 }
+
+
+
+
+
     
     echo json_encode($u);
 }
