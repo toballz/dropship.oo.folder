@@ -17,49 +17,58 @@
  
 
 
- <section class="main_container">
+ <section class="indexhome_container">
 
-<div class="index_f_1">
-    
-    <div>
-        <div><img data-srcimg="<?php echo tools::dir()->img;?>/gpugpu.jpg"/></div>
+<style>
+    .index_f_container{width:100%;height:340px;display:flex;gap:10px }
+    .index_f_card{ overflow: hidden; min-width: 70px;height:100%;border-radius:30px;display:flex;align-items:flex-end;flex-grow:1;position:relative;transition:flex-grow 0.5s ease;}
+     .index_f_card:hover{flex-grow:7;}
+
+     .index_f_card > .index_f_img {
+  position: absolute;
+  inset: 0;height: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: brightness(0.4);
+  z-index: -1;
+  transition: var(--transition-timing) ease;
+}
+.index_f_card:hover > .index_f_img {
+  filter: brightness(1);
+}
+</style>
+
+<div class="index_f_container">
+     
+    <div class="index_f_card">
+         <img class="index_f_img" data-srcimg="<?php echo tools::dir()->img;?>/gpugpu.jpg"/>
+         <div></div>
     </div>
-    <div>
-        <div><img data-srcimg="<?php echo tools::dir()->img;?>/gpugpu.jpg"/></div>
+    <div class="index_f_card">
+         <img class="index_f_img" data-srcimg="<?php echo tools::dir()->img;?>/gpugpu.jpg"/>
+         <div></div>
     </div>
-    <div>
-        <div><img data-srcimg="<?php echo tools::dir()->img;?>/gpugpu.jpg"/></div>
+    <div class="index_f_card">
+         <img class="index_f_img" data-srcimg="<?php echo tools::dir()->img;?>/gpugpu.jpg"/>
+         <div></div>
+    </div>
+    <div class="index_f_card">
+         <img class="index_f_img" data-srcimg="<?php echo tools::dir()->img;?>/gpugpu.jpg"/>
+         <div></div>
+    </div>
+    <div class="index_f_card">
+         <img class="index_f_img" data-srcimg="<?php echo tools::dir()->img;?>/gpugpu.jpg"/>
+         <div></div>
     </div>
 
 
 
-    <br> <br> <br> <br> <br>
+    <br>
 </div>
  <br> <br>
 
 
 
-
-<div>
-    <div class="indexhome_collection">
-        <div style="flex: 1.5;">
-            <div class="index_emg_c"><img data-srcimg="<?php echo tools::dir()->img;?>/programmer_code.png"/></div>
-            <p>programmer</p>
-        </div> 
-        <div style="flex: 2;">
-            <div class="index_emg_c"><img data-srcimg="<?php echo tools::dir()->img;?>/gammers_setup.jpg"/></div>
-            <p>Gamers</p>
-        </div>
-        <div style="flex: 1.2;">
-            <div class="index_emg_c"><img data-srcimg="<?php echo tools::dir()->img;?>/crypto_bitcoin.jpg"/></div>
-            <p>Crypto/blockchain</p>
-        </div>
-        <div style="flex: 1.4;">
-            <div class="index_emg_c"><img data-srcimg="<?php echo tools::dir()->img;?>/cool_gadgets.jpg"/></div>
-            <p>Cool Gadgets</p>
-        </div>
-    </div>
-</div>
 
 
 <style type="text/css">

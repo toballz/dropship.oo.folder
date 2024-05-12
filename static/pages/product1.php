@@ -34,7 +34,7 @@ $svgStar='<svg height="800px" width="800px" version="1.1" id="Capa_1" xmlns="htt
     <style type="text/css">
          .product_container{ 
             width:100%;
-            max-width: 1470px;
+            max-width: 1300px;
             margin: auto;
             padding:0 6px ;
     color: var(--bg-color);
@@ -219,10 +219,10 @@ $svgStar='<svg height="800px" width="800px" version="1.1" id="Capa_1" xmlns="htt
 <style type="text/css">
     .decrepaos{background: var(--grey);margin-top: 24px;padding: 12px;}
     .decrepaos_inner{}
-    .decrepaos_header{background: #ebebeb;margin-bottom:12px;
+    .product_a_description_header{margin-bottom:12px;
     display: flex;
     justify-content: space-around;}
-    .decrepaos_header>li{ padding:20px 12px;cursor: pointer;margin:0 5px}  
+    .product_a_description_header>li{background: #ebebeb; padding:20px 12px;cursor: pointer;margin:0 5px;width:100%}  
      [data-plupla="#re83vws"]{ display:flex;align-items:center}
      [data-plupla="#re83vws"]>span{margin:0 4px; }
 
@@ -230,59 +230,80 @@ $svgStar='<svg height="800px" width="800px" version="1.1" id="Capa_1" xmlns="htt
     .decrepaos_boddy>div{transition:  opacity .15s linear;display: none;}
     #deropto{display: block;}
     #deropto>ul>li{margin-bottom:12px}
+
+
+
+
+    .product_a_afterdisplay{display:flex;}
+    .product_a_related{max-width: 33.3333333%;width:100%;}
+    .product_a_description{max-width: 66.6666666%;width:100%;padding-right:30px;}
 </style>
-<div class="decrepaos"  >
-    <div class="decrepaos_inner">
-        <ul class="decrepaos_header" >
-            <li data-plupla="#deropto"><div>DESCRIPTION</div></li>
-            <li data-plupla="#re83vws">
-                <span class="material-symbols-outlined">grade</span> 
-                <span> REVIEWS ( 1 ) </span>
-                <span class="material-symbols-outlined">grade</span> 
-            </li>
-        </ul>
-    </div> 
-     <div class="decrepaos_boddy">
-            <?php  $descriptionsNspec = json_decode($pdescription, true);?>
-        <div id="deropto">
-            <b>DESCRIPTION</b><br/><br/>
-            <ul>
-                <?php echo $descriptionsNspec['Description'];?>
-            </ul>
 
-            <br/><br/>
-            <b>SPECIFICATIONS</b><br/><br/>
-            <ul class="pspeck">
-            <?php 
-            $specck="";
-            foreach ($descriptionsNspec['Specifications'] as $key => $value) {
-            $specck .= '<li><b>' . $key . ':</b> <span>' . $value . '</span></li>';
-            }
-            echo $specck;?>
-                
-            </ul>
+<div class="product_a_afterdisplay">
+        <div class="decrepaos product_a_description"  >
+            <div class="decrepaos_inner">
+                <ul class="product_a_description_header" >
+                    <li data-plupla="#deropto"><div>DESCRIPTION</div></li>
+                    <li data-plupla="#re83vws">
+                        <span class="material-symbols-outlined">grade</span> 
+                        <span> REVIEWS ( 1 ) </span>
+                        <span class="material-symbols-outlined">grade</span> 
+                    </li>
+                </ul>
+            </div> 
+            <div class="decrepaos_boddy">
+                    <?php  $descriptionsNspec = json_decode($pdescription, true);?>
+                <div id="deropto">
+                    <b>DESCRIPTION</b><br/><br/>
+                    <ul>
+                        <?php echo $descriptionsNspec['Description'];?>
+                    </ul>
 
-        </div> 
-        <div id="re83vws">review<br><br><br><br></div>
- 
-     </div>
- 
+                    <br/><br/>
+                    <b>SPECIFICATIONS</b><br/><br/>
+                    <ul class="pspeck">
+                    <?php 
+                    $specck="";
+                    foreach ($descriptionsNspec['Specifications'] as $key => $value) {
+                    $specck .= '<li><b>' . $key . ':</b> <span>' . $value . '</span></li>';
+                    }
+                    echo $specck;?>
+                        
+                    </ul>
+
+                </div> 
+                <div id="re83vws">review<br><br><br><br></div>
+        
+            </div>
+        
+        </div>
+
+        <div class="product_a_related">
+            <div style="box-shadow: 0 2px 15px -3px rgba(0,0,0,0.07), 0 10px 20px -2px rgba(0,0,0,0.04);padding: 13px">
+                    <p>Related:</p>
+                <ul>
+                <?php $gttw=db::stmt("SELECT * FROM `items_products` WHERE `item_id` != '$itemId' ORDER BY `item_id` ASC LIMIT 5");
+                while ($getInfo=mysqli_fetch_assoc($gttw)){
+                    echo '<li style="margin-bottom:30px;">
+                            <a href="/product/'.$getInfo["item_id"].'" style="display: flex;">
+                                <div style=" width: 100px;margin-right:6px">
+                                    <img data-srcimg="'.json_decode($getInfo["item_images"])[0].'" style="height:100%;object-fit: contain;" />
+                                </div>
+                                <div style="width: 100%;font-size:11px">'.$getInfo["item_title"].'</div>
+                            </a>
+                        </li>';
+                } ?>
+                </ul>
+            </div>
+        </div>
+
+
+
 </div>
 
 
-
-
  <!--ggggg-->
-  <br><br>
-    <div class="product_f3haw">
-        <div class="product_f3haw_q">Related</div>
-        <div class="product_f3haw_n">
-            <?php $gttw=db::stmt("SELECT * FROM `items_products` WHERE `item_id` != '$itemId' ORDER BY `item_id` ASC LIMIT 5");
-            while ($getInfo=mysqli_fetch_assoc($gttw)){
-                echo '<a href="/product/'.$getInfo["item_id"].'" class="product_f3haw_n_haj4"><div style=" height:292px " ><img data-srcimg="'.json_decode($getInfo["item_images"])[0].'" style="height:100%;object-fit: contain;" /></div><p>'.$getInfo["item_title"].'</p></a>';
-            } ?>
-        </div>
-    </div>
+  <br><br> 
     <br/>
     <div class="product_f3haw">
         <div class="product_f3haw_q">Suggested</div>
