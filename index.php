@@ -31,33 +31,34 @@
   object-position: center;
   filter: brightness(0.4);
   z-index: -1;
-  transition: var(--transition-timing) ease;
+  transition: 1s ease all;
 }
 .index_f_card:hover > .index_f_img {
   filter: brightness(1);
+  object--fit: contain;
 }
 </style>
 
 <div class="index_f_container">
      
     <div class="index_f_card">
-         <img class="index_f_img" data-srcimg="<?php echo tools::dir()->img;?>/gpugpu.jpg"/>
+         <img class="index_f_img" data-srcimg="<?php echo tools::dir()->img;?>/jjjj.png"/>
          <div></div>
     </div>
     <div class="index_f_card">
-         <img class="index_f_img" data-srcimg="<?php echo tools::dir()->img;?>/gpugpu.jpg"/>
+         <img class="index_f_img" data-srcimg="<?php echo tools::dir()->img;?>/iojj.png"/>
          <div></div>
     </div>
     <div class="index_f_card">
-         <img class="index_f_img" data-srcimg="<?php echo tools::dir()->img;?>/gpugpu.jpg"/>
+         <img class="index_f_img" data-srcimg="<?php echo tools::dir()->img;?>/oji.png"/>
          <div></div>
     </div>
     <div class="index_f_card">
-         <img class="index_f_img" data-srcimg="<?php echo tools::dir()->img;?>/gpugpu.jpg"/>
+         <img class="index_f_img" data-srcimg="<?php echo tools::dir()->img;?>/oijj.png"/>
          <div></div>
     </div>
     <div class="index_f_card">
-         <img class="index_f_img" data-srcimg="<?php echo tools::dir()->img;?>/gpugpu.jpg"/>
+         <img class="index_f_img" data-srcimg="<?php echo tools::dir()->img;?>/jiii.png"/>
          <div></div>
     </div>
 

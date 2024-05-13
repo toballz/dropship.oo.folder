@@ -217,7 +217,7 @@ $svgStar='<svg height="800px" width="800px" version="1.1" id="Capa_1" xmlns="htt
 
 
 <style type="text/css">
-    .decrepaos{background: var(--grey);margin-top: 24px;padding: 12px;}
+    .decrepaos{ margin-top: 24px;padding: 12px;}
     .decrepaos_inner{}
     .product_a_description_header{margin-bottom:12px;
     display: flex;
