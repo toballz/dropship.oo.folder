@@ -1,8 +1,7 @@
  
 <style>
 	header{background:var(--bg-color);}
-	.headerlogo{width:87px}
-	.header_rft7ik{display: flex;align-items: center;}
+	.headerlogo{width:87px} 
 .header_a3g{padding: 10px 31px;position: relative;}
 .header_a3g:after{content: '';
     display: table;
@@ -13,16 +12,9 @@
     left: 0;
     bottom: 0px;}
 .header_r5jj{display: flex;justify-content: space-between;}
-.header_shopingbag{color: #ccc;font-size:14px;display: flex;align-items: center;}
-.header_shopingbag.acc{margin-right:19px;margin-bottom:5px;} 
-.header_shopingbag>div{display: flex; flex-direction: column;font-size: 12px;align-items: center;}
-.header_shopingbag>div>.h_n{margin-top:3px; }
-.header_shopingbag>div>.hd{border-radius:11px;background: red;padding:2.6px 10px 1px 8px;text-align: center;margin-top: 6px;font-weight:600}
-.searchbtn{cursor: pointer;}
-
-	.a64irgsf,.ldi5{cursor:pointer;}
-	.a64irgsf{position:relative;}
-	.a64irgsf>.a64irgsf_droppeer{display:none;padding:12px;cursor:auto;position:absolute;top:52px;right:-10px;width:187px;height:122px;background:red;z-index:121}
+ .searchbtn{cursor: pointer;}
+ 
+	 .accountloggedin_dropdown{display:none; padding:12px;cursor:auto;position:absolute;top:52px;right:-10px;width:187px;height:122px;background:red;z-index:121}
 </style>
 
 
@@ -34,33 +26,81 @@
 
 <div class="header_r5jj">
 	<a href="<?php echo site::url('domain');?>" class="headerlogo"><img data-srcimg="<?php echo tools::dir()->img;?>/logo.jpg"/></a>
-	<div class="header_rft7ik">
-		<b class="header_shopingbag searchbtn">
-			<svg style="height:32px;margin-right:4px;" width="70px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11 6C13.7614 6 16 8.23858 16 11M16.6588 16.6549L21 21M19 11C19 15.4183 15.4183 19 11 19C6.58172 19 3 15.4183 3 11C3 6.58172 6.58172 3 11 3C15.4183 3 19 6.58172 19 11Z" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-		</b>
-		<script>
-			$(".searchbtn").click(function(){
-				$("#searchnavbar").css("display","flex");
-			});
-		</script> 
-	
-		<a class="header_shopingbag acc" href="<?php echo site::url("domain");?>/cart/">
-			<span class="material-symbols-outlined" style="font-size:41px;color:#fff"> shopping_bag </span>
-			<div>
-				<span class="hd"><?php echo tools::countQualCart("cartquantity")?></span>
-				<span class="h_n">Cart</span>
-			</div>
-		</a>
+ 
 
-		<b class="header_shopingbag <?php echo (session::user()->id)?"a64irgsf":"ldi5";?> " >
-			<span class="material-symbols-outlined" style="font-size:41px;color:#fff"> account_circle </span>
-			<span><?php echo (session::user()->id)?"(5055)":"";?></span> 
-			 
-			<?php echo (session::user()->id)?'<div class="a64irgsf_droppeer">
-				<a href="/account/account--0" style="padding:12px;background: green;width: 100%;text-align: center;font-size: 16px;font-weight: 800;margin-bottom:15px">Account</a><a href="javascript:void(0);" id="justlogout">Logout</a>
+
+
+<Style>
+	.breadcrumb li{position:relative;
+	float:right;
+	padding:5px;
+	border-radius:50px;
+	position:relative;
+	margin-left:-50px;
+	margin-top:3px;
+	background:#fff5e6;
+	transition:all 0.2s ease-in-out;  
+	}
+
+	.breadcrumb li .dircha{cursor:pointer;
+	overflow:hidden;
+	border-radius:50px;
+	transition:all 0.2s ease-in-out;
+	text-decoration:none;
+	width:80px;
+	height:50px;
+	color:red;
+	background:#ffd699;
+	text-align:center;
+	display:flex;align-items:center;	line-height:50px;
+	padding-left:52px;
+	padding-right:33.33px;
+	
+	}
+ 
+
+	.breadcrumb li .dircha .text{ display:none; opacity:0; }
+	.breadcrumb li .dircha:hover .text{ display:block; opacity:1; }
+
+	.breadcrumb li .dircha:hover{ width:210px; background:#ffccff; }
+ 
+ 
+
+	.breadcrumb li:last-child:hover{ padding:0 3px;  }
+ 
+	.breadcrumb li:last-child:hover .dircha{height:60px; }
+	</Style>
+	<ul class="breadcrumb">
+		<li>
+			<div class="dircha <?php echo (session::user()->id)?"accountloggedin":"accountloggedout";?> " >
+				<span class="material-symbols-outlined" style="font-size:31px;color:#fff"> account_circle </span>
+				<span class="text">Account<?php echo (session::user()->id)?"(5055)":"";?></span>
+			</div>
+					
+			<?php echo (session::user()->id)?'<div class="accountloggedin_dropdown">
+				<a href="/account/account--0" style="padding:12px;background: green;width: 100%;text-align: center;font-size: 16px;font-weight: 800;margin-bottom:15px">Account</a>
+				<a href="javascript:void(0);" id="justlogout">Logout</a>
 			</div>':'';?>
-		</b>
-	</div>
+		</li>
+
+        <li>
+			<div class="dircha" onclick="location.href='<?php echo site::url('domain').'/cart/';?>'">
+				<span class="material-symbols-outlined" style="font-size:31px;color:#fff"> shopping_bag </span>
+				<span class="text">Cart(<?php echo tools::countQualCart("cartquantity")?>)</span> 
+			</div>
+      </li>
+
+        <li>
+			<div  class="searchbtn dircha">
+				<span class="material-symbols-outlined" style="font-size:31px;color:#fff">search</span>
+				<span class="text">SEARCH</span>
+			</div>
+      </li> 
+    </ul>
+
+  
+
+
 </div>
 
 <br/>
@@ -88,12 +128,19 @@
 
 
 <script>
+	
+	$(".searchbtn").click(function(){
+				$("#searchnavbar").css("display","flex");
+			});
+			$(".searchbtn").click(function(){
+				$("#searchnavbar").css("display","flex");
+			});
 	$(".searchnavbar_voidlef,.closex").click(function(){
 		$("#searchnavbar").toggle();
 	});
 
-	$(".a64irgsf").click(function(){
-		$(".a64irgsf_droppeer").toggle();
+	$(".accountloggedin").click(function(){
+		$(".accountloggedin_dropdown").toggle();
 	});
 	
 </script>

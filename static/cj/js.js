@@ -1,6 +1,9 @@
-
+//reload page after gaining back focus
+window.addEventListener('focus', function() {
+    // location.reload();
+ });
 function httpResponse(httpResData, getFunction){ 
-    if(getFunction  && (httpResData.code in getFunction) ){
+    if(getFunction && (httpResData.code in getFunction) ){
         getFunction[httpResData.code]();
         console.log(getFunction );
         return;
@@ -214,6 +217,16 @@ function reloadStatics(){
     });
 
 }
+
+
+//toggle login modal
+$(".accountloggedout").click(function(){
+    if($(".logina1").length>0){
+        $(".logina1").css("display","flex");
+        return;
+    }
+    $.get(bH+"/cart/checkout/?lke86j=e0gay3", function(data){ $("body").append(data);});
+});
 
 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 //end

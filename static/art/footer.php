@@ -236,28 +236,6 @@
 </div>
 
 <script src="/static/cj/js.js?<?php echo $reloadStatic;?>"></script>
-<script type="text/javascript">
-//reload page after gaining back focus
-window.addEventListener('focus', function() {
-   // location.reload();
-});
-</script>
+ 
 
-
-<script>
-			$(".ldi5").click(function(){
-				if($(".logina1").length>0){
-					$(".logina1").css("display","flex");
-					return;
-				}
-				<?php if(!session::user()->id){
-					echo '$.get("'.site::url('domain').'/cart/checkout/?lke86j=e0gay3", function(data){
-			        	$("body").append(data);
-			    	});';
-				}else{
-					echo 'window.href.location="/user"';
-				}?>
-
-				//lke86je0gay3
-			});
-		</script>
+ 

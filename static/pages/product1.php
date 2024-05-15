@@ -236,7 +236,7 @@ $svgStar='<svg height="800px" width="800px" version="1.1" id="Capa_1" xmlns="htt
                 <div id="deropto">
                     <b>DESCRIPTION</b><br/><br/>
                     <ul>
-                        <?php echo $descriptionsNspec['Description'];?>
+                        <li><?php echo $descriptionsNspec['Description'];?></li>
                     </ul>
 
                     <br/><br/>
