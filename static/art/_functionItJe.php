@@ -1,5 +1,5 @@
 <?php
-$reloadStatic="a.oi,".substr(str_shuffle('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'), 0, 10);
+$reloadStatic="a.coi,".substr(str_shuffle('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'), 0, 10);
 //$_SESSION['usera01']
 //$_SESSION['cart']
 //$_SESSION['shippingPrice']

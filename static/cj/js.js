@@ -1,8 +1,49 @@
+
+function httpResponse(httpResData, getFunction){ 
+    if(getFunction  && (httpResData.code in getFunction) ){
+        getFunction[httpResData.code]();
+        console.log(getFunction );
+        return;
+    } 
+    if(httpResData.code == 301){
+        if(httpResData.message == "reload"){
+            location.reload();
+        }else{
+            window.location.href=httpResData.message;
+        }
+    }else{
+        alert(httpResData.message);
+    }  
+}
+var loader={
+    start: function(){$("body").append('<div class="loaderstartstop" style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:1212;background: rgb(0 0 0 / 69%);display:flex;justify-content: center;align-items:center;">'+
+        '<div style="height:95px;width:95px"><svg style="width:100%;height:100%" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" width="200" height="200" style="shape-rendering: auto; display: block; background: rgb(255, 255, 255);" xmlns:xlink="http://www.w3.org/1999/xlink"><g><rect x="19" y="19" width="20" height="20" fill="#505378">'+
+        '<animate attributeName="fill" values="#ffffff;#505378;#505378" keyTimes="0;0.125;1" dur="1s" repeatCount="indefinite" begin="0s" calcMode="discrete"></animate>'+
+        '</rect><rect x="40" y="19" width="20" height="20" fill="#505378">'+
+        '<animate attributeName="fill" values="#ffffff;#505378;#505378" keyTimes="0;0.125;1" dur="1s" repeatCount="indefinite" begin="0.125s" calcMode="discrete"></animate>'+
+        '</rect><rect x="61" y="19" width="20" height="20" fill="#505378">'+
+        '<animate attributeName="fill" values="#ffffff;#505378;#505378" keyTimes="0;0.125;1" dur="1s" repeatCount="indefinite" begin="0.25s" calcMode="discrete"></animate>'+
+        '</rect><rect x="19" y="40" width="20" height="20" fill="#505378">'+
+        '<animate attributeName="fill" values="#ffffff;#505378;#505378" keyTimes="0;0.125;1" dur="1s" repeatCount="indefinite" begin="0.875s" calcMode="discrete"></animate>'+
+        '</rect><rect x="61" y="40" width="20" height="20" fill="#505378">'+
+        '<animate attributeName="fill" values="#ffffff;#505378;#505378" keyTimes="0;0.125;1" dur="1s" repeatCount="indefinite" begin="0.375s" calcMode="discrete"></animate>'+
+        '</rect><rect x="19" y="61" width="20" height="20" fill="#505378">'+
+        '<animate attributeName="fill" values="#ffffff;#505378;#505378" keyTimes="0;0.125;1" dur="1s" repeatCount="indefinite" begin="0.75s" calcMode="discrete"></animate>'+
+        '</rect><rect x="40" y="61" width="20" height="20" fill="#505378">'+
+        '<animate attributeName="fill" values="#ffffff;#505378;#505378" keyTimes="0;0.125;1" dur="1s" repeatCount="indefinite" begin="0.625s" calcMode="discrete"></animate>'+
+        '</rect><rect x="61" y="61" width="20" height="20" fill="#505378">'+
+        '<animate attributeName="fill" values="#ffffff;#505378;#505378" keyTimes="0;0.125;1" dur="1s" repeatCount="indefinite" begin="0.5s" calcMode="discrete"></animate>'+
+        '</rect><g></g></g> </svg></div>'+
+        '</div>');
+    },
+    stop:function(){
+        setTimeout(function(){ $(".loaderstartstop").remove(); },2000);
+    } 
+}
 !(function(){
 var bH = document.baseURI;
 
 
- 
 //accoint page from[data-formpage] to[data-formpagereturn]
 $('[data-formpage]').click(function(){
     loader.start(); var tt=$(this);
@@ -34,17 +75,12 @@ $("#flam42").click(function(){
          colre: "red"
 
      }).done(function(data) {
-         if(data.code == 301){
-             window.location.href = data.message; 
-         }else{
-             alert(data.message); 
-         }
-       })
-       .fail(function(jqXHR, textStatus, errorThrown) {
+        httpResponse(data); 
+       }).fail(function(jqXHR, textStatus, errorThrown) {
          console.error("addcart-failed:", textStatus, errorThrown); 
        }).always(function() {
              loader.stop();
-        }); 
+       }); 
      },1000);
 
 });
@@ -137,9 +173,8 @@ setTimeout(function(){
     til=$(".product_sat_title").html();
 
 
-$.post("a/ig/apy.php", {o:"addcart", piid: pid, qunt: qui,color:col,tile:til })
-  .done(function(data) {
-    if(data.code == 200){
+$.post("a/ig/apy.php", {o:"addcart", piid: pid, qunt: qui,color:col,tile:til }).done(function(data) {
+    httpResponse(data,{200:()=>{
         $(".addedtocart_kej75_heaader").html($(".product_d_n").val()+" Item(s) Added to Cart");
         $(".addedtocart_kej75_1btitle").html($(".product_sat_title").html());
         var tt=$('.product_sat_color [name="product_color"]:checked');
@@ -149,7 +184,8 @@ $.post("a/ig/apy.php", {o:"addcart", piid: pid, qunt: qui,color:col,tile:til })
             $(".addedtocart_kej75_1bbdyimg>img").attr("src",$(".product_carosel_f5:first-child>img").attr("src") );
          }
         $(".addedtocart_6f75").css("display","flex");
-    }  
+    }
+    });
   }).fail(function(jqXHR, textStatus, errorThrown) {
     console.error("addcart-failed:", textStatus, errorThrown);
   }).always(function() {
@@ -176,7 +212,7 @@ $.post("a/ig/apy.php", {o:"addcart", piid: pid, qunt: qui,color:col,tile:til })
 //logout
 $("#justlogout").click(function(){
     $.post(bH+"a/ig/apy.php", {o:"justlogout"}).done(function(data) {
-        if(data.code == 301){if(data.message == "reload"){location.reload();}} 
+        httpResponse(data);
     }).fail(function(jqXHR, textStatus, errorThrown) {
         console.error("session null:", textStatus, errorThrown);
     });
@@ -187,22 +223,12 @@ $("#justlogout").click(function(){
 function reloadStatics(){
     // cart num
     $.post(bH+"a/ig/apy.php", {o:"getsession", re1: "cartnum"}).done(function(data) {
-        if(data.code == 200){
-            $("span.hd").html(data.message.cartnum);
-        }else{
-            alert("#3777-4777");
-        }
+        httpResponse(data,{200:()=>{$("span.hd").html(data.message.cartnum);}}); 
     }).fail(function(jqXHR, textStatus, errorThrown) {
         console.error("session null:", textStatus, errorThrown);
     });
 
 }
-$(document).ready(function(){
-
-//
-
-
-});
 
 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 //end
@@ -216,32 +242,7 @@ $(document).ready(function(){
 ////////////////////////////////////
 ///////////////////////////////////
 /////////////////////////////////////
-var loader={
-    start: function(){$("body").append('<div class="loaderstartstop" style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:1212;background: rgb(0 0 0 / 69%);display:flex;justify-content: center;align-items:center;">'+
-    '<div style="height:95px;width:95px"><svg style="width:100%;height:100%" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" width="200" height="200" style="shape-rendering: auto; display: block; background: rgb(255, 255, 255);" xmlns:xlink="http://www.w3.org/1999/xlink"><g><rect x="19" y="19" width="20" height="20" fill="#505378">'+
-  '<animate attributeName="fill" values="#ffffff;#505378;#505378" keyTimes="0;0.125;1" dur="1s" repeatCount="indefinite" begin="0s" calcMode="discrete"></animate>'+
-'</rect><rect x="40" y="19" width="20" height="20" fill="#505378">'+
-  '<animate attributeName="fill" values="#ffffff;#505378;#505378" keyTimes="0;0.125;1" dur="1s" repeatCount="indefinite" begin="0.125s" calcMode="discrete"></animate>'+
-'</rect><rect x="61" y="19" width="20" height="20" fill="#505378">'+
-  '<animate attributeName="fill" values="#ffffff;#505378;#505378" keyTimes="0;0.125;1" dur="1s" repeatCount="indefinite" begin="0.25s" calcMode="discrete"></animate>'+
-'</rect><rect x="19" y="40" width="20" height="20" fill="#505378">'+
-  '<animate attributeName="fill" values="#ffffff;#505378;#505378" keyTimes="0;0.125;1" dur="1s" repeatCount="indefinite" begin="0.875s" calcMode="discrete"></animate>'+
-'</rect><rect x="61" y="40" width="20" height="20" fill="#505378">'+
-  '<animate attributeName="fill" values="#ffffff;#505378;#505378" keyTimes="0;0.125;1" dur="1s" repeatCount="indefinite" begin="0.375s" calcMode="discrete"></animate>'+
-'</rect><rect x="19" y="61" width="20" height="20" fill="#505378">'+
-  '<animate attributeName="fill" values="#ffffff;#505378;#505378" keyTimes="0;0.125;1" dur="1s" repeatCount="indefinite" begin="0.75s" calcMode="discrete"></animate>'+
-'</rect><rect x="40" y="61" width="20" height="20" fill="#505378">'+
-  '<animate attributeName="fill" values="#ffffff;#505378;#505378" keyTimes="0;0.125;1" dur="1s" repeatCount="indefinite" begin="0.625s" calcMode="discrete"></animate>'+
-'</rect><rect x="61" y="61" width="20" height="20" fill="#505378">'+
-   '<animate attributeName="fill" values="#ffffff;#505378;#505378" keyTimes="0;0.125;1" dur="1s" repeatCount="indefinite" begin="0.5s" calcMode="discrete"></animate>'+
-'</rect><g></g></g> </svg></div>'+
-'</div>');},
-    stop:function(){
-        setTimeout(function(){
-            $(".loaderstartstop").remove();
-        },2000);
-    }
-} 
+ 
 
 
 //delete from cart
@@ -249,13 +250,9 @@ function deletefromcart(th,sa){
     loader.start();
     setTimeout(function(){
 
-        $.post("a/ig/apy.php", {o:"deltecart", cartid:sa, colre: th})
-        .done(function(data) {
-            if(data.code == 301){
-                window.location.href = data.message;
-            }  
-        })
-        .fail(function(jqXHR, textStatus, errorThrown) {
+        $.post("a/ig/apy.php", {o:"deltecart", cartid:sa, colre: th}).done(function(data) {
+            httpResponse(data);
+        }).fail(function(jqXHR, textStatus, errorThrown) {
             console.error("addcart-failed:", textStatus, errorThrown);
         }).always(function() {
             loader.stop();
