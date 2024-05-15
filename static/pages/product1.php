@@ -99,20 +99,8 @@ $svgStar='<svg height="800px" width="800px" version="1.1" id="Capa_1" xmlns="htt
       .product_f3haw_n_haj4 p{white-space:nowrap;overflow:hidden;text-overflow: ellipsis;width:100%}
 
 
-        .product_sat_dispec{ }
-        .product_sat_dispec_f{
-            padding:16px 12px;font-size: 16px;cursor: pointer;background: #ebebeb;
-            display: flex;align-items: center;font-weight: 600;margin-bottom:1px; 
-        }
-        .product_sat_dispec_o{overflow: hidden;
-            transition:all 0.2s ease;background-color:#f9f9f9;box-shadow:-3px 6px 9px 0 rgba(0,0,0,0.2);padding:0;height:0;letter-spacing:1.1px;line-height:19px;visibility:hidden;
-        }
-        .product_sat_dispec_o.o_display{visibility:visible;padding:12px 16px;height:auto;margin-bottom:12px;}
-        .product_sat_dispec_o pre{white-space:pre-wrap;margin:0}
-        ul.product_sat_dispec_o{font-size:13px}
-        ul.product_sat_dispec_o>li{ margin-left:4px;font-size:13px}
-        ul.product_sat_dispec_o>li>b{ margin-right:8px}
-
+      
+          
     .product_sat_color{display: flex;flex-wrap: wrap;}
     .product_sat_color>label{width:65px;margin-right:12px;margin-bottom:6px;border:2px solid var(--bg-color);cursor:pointer; }
     .product_sat_color input{display: none;}
@@ -203,15 +191,6 @@ $svgStar='<svg height="800px" width="800px" version="1.1" id="Capa_1" xmlns="htt
             <hr/>
             <button class="product_sat_share">
             <span class="material-symbols-outlined" style="font-size:17px;margin-right:4px"> upload </span>   Share   </button>
-
-            <div class="product_sat_dispec">
-                <div class="product_sat_dispec_f">
-                <span class="material-symbols-outlined">expand_more</span>                Free Shipping / Return Policy</div>
-                <ul class="product_sat_dispec_o">
-                    <li><b>✓</b> Free Shipping on orders <strong>above</strong> $60</li>
-                </ul>
-            </div>
-
         </div>
     </div>
 
@@ -227,7 +206,7 @@ $svgStar='<svg height="800px" width="800px" version="1.1" id="Capa_1" xmlns="htt
      [data-plupla="#re83vws"]>span{margin:0 4px; }
 
      .decrepaos_boddy{ padding: 12px;min-height:222px}
-    .decrepaos_boddy>div{transition:  opacity .15s linear;display: none;}
+    .decrepaos_boddy>div{transition:  opacity .15s linear;display: none;color:#fff;}
     #deropto{display: block;}
     #deropto>ul>li{margin-bottom:12px}
 
@@ -244,6 +223,7 @@ $svgStar='<svg height="800px" width="800px" version="1.1" id="Capa_1" xmlns="htt
             <div class="decrepaos_inner">
                 <ul class="product_a_description_header" >
                     <li data-plupla="#deropto"><div>DESCRIPTION</div></li>
+                    <li data-plupla="#shippi"><div>SHIPPING</div></li>
                     <li data-plupla="#re83vws">
                         <span class="material-symbols-outlined">grade</span> 
                         <span> REVIEWS ( 1 ) </span>
@@ -271,7 +251,14 @@ $svgStar='<svg height="800px" width="800px" version="1.1" id="Capa_1" xmlns="htt
                         
                     </ul>
 
-                </div> 
+                </div>
+                <div id="shippi">
+                    <b>Free Shipping / Return Policy</b><br/><br/>
+                    <ul class="product_sat_dispec_o">
+                        <li><b>✓</b> Free Shipping on orders <strong>above</strong> $60</li>
+                    </ul> 
+
+                </div>
                 <div id="re83vws">review<br><br><br><br></div>
         
             </div>

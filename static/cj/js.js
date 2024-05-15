@@ -102,22 +102,7 @@ $("#flam42").click(function(){
             $(".pa9h").html((Math.abs(atk/100)+1)+"/"+Math.abs(clen+1));
         }
     });
-
-
-        //descript/specific
-        $(".product_sat_dispec_f").click(function(){
-            // $(".product_sat_dispec_f").next().removeClass("o_display");
-            if($(this).next().hasClass("o_display")){
-                $(this).next().removeClass("o_display");
-            }else{
-                $(this).next().addClass("o_display");
-            }
-
-        });
-
-
-
-
+ 
     //add sub product quantity
     $(".product_d_m,.product_d_p").click(function(){
         var n=$(".product_d_n"),e=n.val(),k=parseInt(e)-1,g=parseInt(e)+1; 
