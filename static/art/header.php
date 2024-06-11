@@ -1,16 +1,11 @@
  
 <style>
-	header{background:var(--bg-color);}
-	.headerlogo{width:87px} 
-.header_a3g{padding: 10px 31px;position: relative;}
-.header_a3g:after{content: '';
-    display: table;
+	header{background:transparent;position: absolute;
     width: 100%;
-    height: 20px;
-    background: linear-gradient(to bottom, #15194b,var(--body) ,var(--body));
-    position: absolute;
     left: 0;
-    bottom: 0px;}
+    top: 0;z-index: 12;}
+	.headerlogo{width:87px} 
+.header_a3g{padding: 10px 31px;position: relative;} 
 .header_r5jj{display: flex;justify-content: space-between;}
  .searchbtn{cursor: pointer;}
  
@@ -19,8 +14,7 @@
 
 
 <header>
-
-<br/>
+ 
 <div class="header_a3g">
 
 
@@ -31,49 +25,44 @@
 
 
 <Style>
-	.breadcrumb li{position:relative;
-	float:right;
-	padding:5px;
-	border-radius:50px;
+	.breadcrumb li{
+	float:right;  
 	position:relative;
-	margin-left:-50px;
-	margin-top:3px;
-	background:#fff5e6;
-	transition:all 0.2s ease-in-out;  
-	}
-
-	.breadcrumb li .dircha{cursor:pointer;
-	overflow:hidden;
-	border-radius:50px;
+	margin-left:-50px; 
 	transition:all 0.2s ease-in-out;
-	text-decoration:none;
-	width:80px;
-	height:50px;
-	color:red;
-	background:#ffd699;
-	text-align:center;
-	display:flex;align-items:center;	line-height:50px;
-	padding-left:52px;
-	padding-right:33.33px;
-	
+	color:#fff
 	}
- 
 
-	.breadcrumb li .dircha .text{ display:none; opacity:0; }
+	.breadcrumb li .dircha{
+		cursor:pointer;
+		overflow:hidden;
+		border-radius:50px;
+		transition:all 0.2s ease-in-out; 
+		width:80px;
+		height:50px; 
+		background:#ffd699;
+		text-align:center;
+		display:flex; align-items:center; 
+		padding-left:52px;
+		padding-right:53px; 
+	}
+	.breadcrumb li:last-child .dircha{ padding-left:29px }
+	.breadcrumb li .dircha .text{
+		display:none; opacity:0;
+		font-size:16px;
+		padding-left:7px;
+		padding-top:3px;}
+	
+	.breadcrumb li .dircha:hover{ width:210px; background:#ffccff; padding-left: 70px;}
 	.breadcrumb li .dircha:hover .text{ display:block; opacity:1; }
 
-	.breadcrumb li .dircha:hover{ width:210px; background:#ffccff; }
- 
- 
-
 	.breadcrumb li:last-child:hover{ padding:0 3px;  }
- 
-	.breadcrumb li:last-child:hover .dircha{height:60px; }
+  
 	</Style>
 	<ul class="breadcrumb">
 		<li>
 			<div class="dircha <?php echo (session::user()->id)?"accountloggedin":"accountloggedout";?> " >
-				<span class="material-symbols-outlined" style="font-size:31px;color:#fff"> account_circle </span>
+				<span class="material-symbols-outlined" style=""> account_circle </span>
 				<span class="text">Account<?php echo (session::user()->id)?"(5055)":"";?></span>
 			</div>
 					
@@ -85,15 +74,15 @@
 
         <li>
 			<div class="dircha" onclick="location.href='<?php echo site::url('domain').'/cart/';?>'">
-				<span class="material-symbols-outlined" style="font-size:31px;color:#fff"> shopping_bag </span>
+				<span class="material-symbols-outlined" style=""> shopping_bag </span>
 				<span class="text">Cart(<?php echo tools::countQualCart("cartquantity")?>)</span> 
 			</div>
       </li>
 
         <li>
 			<div  class="searchbtn dircha">
-				<span class="material-symbols-outlined" style="font-size:31px;color:#fff">search</span>
-				<span class="text">SEARCH</span>
+				<span class="material-symbols-outlined" style="">search</span>
+				<span class="text">Search</span>
 			</div>
       </li> 
     </ul>

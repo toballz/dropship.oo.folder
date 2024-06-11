@@ -12,12 +12,54 @@
 <body>
     
     <?php include(tools::dir()->php."/header.php");?>
-     
-<br><br><br>
- 
+      
+ <style>section { position: relative; }
+.welcome-area {
+    height: 800px;
+    z-index: 1;
+}
+.shapes-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden!important;
+}
+.bg-shape {
+    position: absolute;
+    height: 190%;
+    width: 100%;
+    display: block;
+    border-radius: 120px;
+    background: linear-gradient(-47deg, #F956CB 0%, #F74B54 100%);
+    bottom: 0;
+    right: 0;
+    -webkit-transform: translate(35%,-28%) rotate(-35deg);
+    transform: translate(35%,-28%) rotate(-35deg);
+    z-index: 0;
+}</style>
 
-
- <section class="indexhome_container">
+<section class=" welcome-area ">
+    <div class="shapes-container">
+        <div class="bg-shape"></div>
+    </div>
+    <div class=" r_container"  style="display:flex;align-items:center; height: 100%;"> 
+        <div class="welcome-intro">
+            <span class="d-inline-block text-capitalize font-italic fw-3 mb-2">The next generation landing page</span>
+            <h1 class="text-capitalize">Get <span class="fw-3">Prolend</span> Product landing page</h1>
+            <p class="my-4">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+            <div class="button-group store-buttons d-flex">
+                <a class="btn prolend-primary" href="#">Get the App</a>
+                <a class="btn prolend-primary style-two" href="#">Learn More</a>
+            </div>
+        </div> 
+        <div class="welcome-thumb thumb-animated">
+            <img src="assets/img/welcome/welcome-mockup.png" alt="">
+        </div>
+     </div>
+</section> 
+ <section class="r_container">
 
 <style>
     .index_f_container{width:100%;height:340px;display:flex;gap:10px }
@@ -37,7 +79,18 @@
   filter: brightness(1);
   object--fit: contain;
 }
+
+
 </style>
+ 
+
+
+
+
+
+
+
+
 
 <div class="index_f_container">
      
